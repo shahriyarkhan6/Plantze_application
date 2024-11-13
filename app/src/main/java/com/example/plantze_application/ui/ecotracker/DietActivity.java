@@ -1,12 +1,11 @@
 package com.example.plantze_application.ui.ecotracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,48 +13,42 @@ import com.example.plantze_application.R;
 
 public class DietActivity extends AppCompatActivity {
 
-    RadioGroup dietRadioGroup;
-    Button calculateButton;  // Declare the button
-    TextView resultTextView;  // Declare the TextView to display results
+    private RadioGroup dietRadioGroup;
+    private Button submitButton;
+    private TextView resultTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diet);  // Use the correct layout file
+        setContentView(R.layout.activity_diet);
 
-        dietRadioGroup = findViewById(R.id.dietRadioGroup);  // Reference to the RadioGroup
-        calculateButton = findViewById(R.id.calculateButton);  // Reference to the Button
-        resultTextView = findViewById(R.id.resultTextView);  // Reference to the result TextView
+        dietRadioGroup = findViewById(R.id.dietRadioGroup);
+        submitButton = findViewById(R.id.submitButton);
+        resultTextView = findViewById(R.id.resultTextView);
 
-        calculateButton.setOnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selectedId = dietRadioGroup.getCheckedRadioButtonId();  // Get selected radio button id
+                int selectedId = dietRadioGroup.getCheckedRadioButtonId();
+                int carbonEmission = 0;
 
-                if (selectedId != -1) {  // Ensure a radio button is selected
-                    RadioButton selectedRadioButton = findViewById(selectedId);
-
-                    // Calculate emission based on the selected option using if-else
-                    int emission = 0;  // Default value
-                    if (selectedId == R.id.radioVegetarian) {
-                        emission = 1000;  // Vegetarian emission value
-                    } else if (selectedId == R.id.radioVegan) {
-                        emission = 500;   // Vegan emission value
-                    } else if (selectedId == R.id.radioPescatarian) {
-                        emission = 1500;  // Pescatarian emission value
-                    } else if (selectedId == R.id.radioMeatBased) {
-                        emission = 0;     // Meat-based emission value
-                    }
-
-                    // Display the calculated emission in the TextView
-                    resultTextView.setText("Carbon Emission: " + emission + " kg");
-
-                    // Show a confirmation toast
-                    Toast.makeText(DietActivity.this, selectedRadioButton.getText() + " selected", Toast.LENGTH_SHORT).show();
-                } else {
-                    // No selection made
-                    Toast.makeText(DietActivity.this, "Please select a diet type", Toast.LENGTH_SHORT).show();
+                // Calculate carbon emission based on diet choice
+                if (selectedId == R.id.radioVegetarian) {
+                    carbonEmission = 1000; // kg
+                } else if (selectedId == R.id.radioVegan) {
+                    carbonEmission = 500; // kg
+                } else if (selectedId == R.id.radioPescatarian) {
+                    carbonEmission = 1500; // kg
+                } else if (selectedId == R.id.radioMeatBased) {
+                    carbonEmission = 0; // kg
                 }
+
+                resultTextView.setText("Carbon Emission: " + carbonEmission + " kg");
+
+                // Pass the carbon emission to the next activity (BeefActivity)
+                Intent intent = new Intent(DietActivity.this, BeefActivity.class);
+                intent.putExtra("carbonEmission", carbonEmission);
+                startActivity(intent);
             }
         });
     }

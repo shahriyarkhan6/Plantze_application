@@ -14,7 +14,6 @@
         android:theme="@style/Theme.Plantze_application"
         tools:targetApi="31">
 
-        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -25,13 +24,21 @@
             </intent-filter>
         </activity>
 
-        <!-- EcoTracker Activity -->
-        <activity android:name=".ui.ecotracker.EcoTrackerActivity">
-        </activity>
+        <!-- EcoTrackerActivity with export flag -->
+        <activity android:name=".ui.ecotracker.EcoTrackerActivity" android:exported="true"/>
 
-        <!-- Diet Activity -->
-        <activity android:name=".ui.ecotracker.DietActivity">
-        </activity>
+        <!-- DietActivity with export flag -->
+        <activity android:name=".ui.ecotracker.DietActivity" android:exported="true"/>
+
+        <!-- BeefActivity with export flag -->
+        <activity android:name=".ui.ecotracker.BeefActivity" android:exported="true"/>
+
+        <!-- PorkActivity with export flag -->
+        <activity android:name=".ui.ecotracker.PorkActivity" android:exported="true" />
+
+        <activity android:name=".ui.ecotracker.ChickenActivity" />
+        <activity android:name=".ui.ecotracker.FishActivity" />
+
 
     </application>
 

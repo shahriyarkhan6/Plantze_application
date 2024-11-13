@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ecotracker.DietActivity">
+    tools:context=".ui.ecotracker.PorkActivity">
 
-    <!-- Title TextView -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What is your diet?"
+        android:text="What often do you eat pork?"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +20,7 @@
         android:gravity="center" />
 
     <RadioGroup
-        android:id="@+id/dietRadioGroup"
+        android:id="@+id/porkRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -29,28 +28,28 @@
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radioVegetarian"
+            android:id="@+id/radioDaily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegetarian (1000 kg)" />
+            android:text="Daily (1450 kg)" />
 
         <RadioButton
-            android:id="@+id/radioVegan"
+            android:id="@+id/radioFrequently"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegan (500 kg)" />
+            android:text="Frequently (3-5 times/week) (860 kg)" />
 
         <RadioButton
-            android:id="@+id/radioPescatarian"
+            android:id="@+id/radioOccasionally"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pescatarian (1500 kg)" />
+            android:text="Occasionally (1-2 times/week) (450 kg)" />
 
         <RadioButton
-            android:id="@+id/radioMeatBased"
+            android:id="@+id/radioNever"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Meat-based (0 kg)" />
+            android:text="Never (0 kg)" />
     </RadioGroup>
 
     <Button
@@ -58,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@id/dietRadioGroup"
+        app:layout_constraintTop_toBottomOf="@id/porkRadioGroup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"/>
@@ -67,7 +66,7 @@
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carbon Emission: 0 kg"
+        android:text="Current Carbon Emission: 0 kg"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/submitButton"
         app:layout_constraintStart_toStartOf="parent"
