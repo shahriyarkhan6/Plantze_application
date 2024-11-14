@@ -32,7 +32,6 @@ public class DietActivity extends AppCompatActivity {
                 int selectedId = dietRadioGroup.getCheckedRadioButtonId();
                 int carbonEmission = 0;
 
-                // Calculate carbon emission based on diet choice
                 if (selectedId == R.id.radioVegetarian) {
                     carbonEmission = 1000; // kg
                 } else if (selectedId == R.id.radioVegan) {
@@ -43,11 +42,22 @@ public class DietActivity extends AppCompatActivity {
                     carbonEmission = 0; // kg
                 }
 
-                resultTextView.setText("Carbon Emission: " + carbonEmission + " kg");
+                resultTextView.setText("Carbon Emission: " + carbonEmission + " CO₂");
 
-                // Pass the carbon emission to the next activity (BeefActivity)
-                Intent intent = new Intent(DietActivity.this, BeefActivity.class);
+                // Check the diet choice and navigate accordingly
+                Intent intent;
+                if (selectedId == R.id.radioMeatBased) {
+                    // If "Meat-based" diet, go to the next question (e.g., BeefActivity)
+                    intent = new Intent(DietActivity.this, BeefActivity.class);
+                } else {
+                    // If "Vegetarian", "Vegan", or "Pescatarian", go directly to FoodWasteActivity
+                    intent = new Intent(DietActivity.this, FoodWasteActivity.class);
+                }
+
+                // Pass the carbon emission value to the next activity
                 intent.putExtra("carbonEmission", carbonEmission);
+
+                // Start the activity
                 startActivity(intent);
             }
         });

@@ -12,20 +12,31 @@ import com.example.plantze_application.R;
 public class EcoTrackerActivity extends AppCompatActivity {
 
     private Button foodButton;
+    private Button transportationButton;  // Add a new button reference
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecotracker);
 
-        // Initialize the food button
         foodButton = findViewById(R.id.foodButton);
+        transportationButton = findViewById(R.id.transportationButton);  // Initialize the new button
 
-        // Set the OnClickListener for the food button
+        // Set OnClickListener for the Food button
         foodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EcoTrackerActivity.this, DietActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Set OnClickListener for the Transportation button
+        transportationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start TransportationActivity when the button is clicked
+                Intent intent = new Intent(EcoTrackerActivity.this, TransportationActivity.class);
                 startActivity(intent);
             }
         });

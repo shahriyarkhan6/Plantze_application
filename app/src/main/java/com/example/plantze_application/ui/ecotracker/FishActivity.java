@@ -21,16 +21,14 @@ public class FishActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fish); // Ensure this XML file exists
+        setContentView(R.layout.activity_fish);
 
         fishRadioGroup = findViewById(R.id.fishRadioGroup);
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
 
-        // Get the carbon emission passed from ChickenActivity
         currentEmission = getIntent().getIntExtra("carbonEmission", 0);
 
-        // Display the current carbon emission
         resultTextView.setText("Current Carbon Emission: " + currentEmission + " kg");
 
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -39,24 +37,23 @@ public class FishActivity extends AppCompatActivity {
                 int selectedId = fishRadioGroup.getCheckedRadioButtonId();
                 int fishEmission = 0;
 
-                // Calculate additional emission based on fish consumption
                 if (selectedId == R.id.radioDaily) {
-                    fishEmission = 800; // kg
+                    fishEmission = 2100; // kg
                 } else if (selectedId == R.id.radioFrequently) {
-                    fishEmission = 500; // kg
+                    fishEmission = 1300; // kg
                 } else if (selectedId == R.id.radioOccasionally) {
-                    fishEmission = 150; // kg
+                    fishEmission = 450; // kg
                 } else if (selectedId == R.id.radioNever) {
                     fishEmission = 0; // kg
                 }
 
-                // Add the fish emission to the existing carbon emission
                 currentEmission += fishEmission;
 
-                // Update the display with the new total emission
-                resultTextView.setText("Total Carbon Emission: " + currentEmission + " kg");
+                resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
 
-                // Optionally, you can add logic to transition to a summary screen or complete the process
+                Intent intent = new Intent(FishActivity.this, FoodWasteActivity.class);
+                intent.putExtra("carbonEmission", currentEmission);
+                startActivity(intent);
             }
         });
     }

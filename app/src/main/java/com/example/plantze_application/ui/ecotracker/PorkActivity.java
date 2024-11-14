@@ -27,10 +27,8 @@ public class PorkActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
 
-        // Get the carbon emission passed from BeefActivity
         currentEmission = getIntent().getIntExtra("carbonEmission", 0);
 
-        // Display the current carbon emission
         resultTextView.setText("Current Carbon Emission: " + currentEmission + " kg");
 
         submitButton.setOnClickListener(new View.OnClickListener() {

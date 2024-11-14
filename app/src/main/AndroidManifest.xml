@@ -24,20 +24,30 @@
             </intent-filter>
         </activity>
 
-        <!-- EcoTrackerActivity with export flag -->
         <activity android:name=".ui.ecotracker.EcoTrackerActivity" android:exported="true"/>
 
-        <!-- DietActivity with export flag -->
+
         <activity android:name=".ui.ecotracker.DietActivity" android:exported="true"/>
 
-        <!-- BeefActivity with export flag -->
         <activity android:name=".ui.ecotracker.BeefActivity" android:exported="true"/>
 
-        <!-- PorkActivity with export flag -->
         <activity android:name=".ui.ecotracker.PorkActivity" android:exported="true" />
 
         <activity android:name=".ui.ecotracker.ChickenActivity" />
         <activity android:name=".ui.ecotracker.FishActivity" />
+        <activity android:name=".ui.ecotracker.FoodWasteActivity" />
+
+        <activity android:name=".ui.ecotracker.TransportationActivity" />
+        <activity android:name=".ui.ecotracker.CarTypeActivity" />
+        <activity android:name=".ui.ecotracker.CarDistanceActivity" />
+        <activity android:name=".ui.ecotracker.PublicTransportFrequencyActivity" />
+        <activity android:name=".ui.ecotracker.PublicTransportTimeActivity" />
+
+
+
+
+
+
 
 
     </application>

@@ -1,75 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ecotracker.PorkActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
+    <!-- Title TextView -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What often do you eat pork?"
-        android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="60dp"
-        android:gravity="center" />
+        android:text="How often do you eat pork?"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp" />
 
+    <!-- RadioGroup for pork consumption options -->
     <RadioGroup
         android:id="@+id/porkRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/radioDaily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daily (1450 kg)" />
+            android:text="Daily" />
 
         <RadioButton
             android:id="@+id/radioFrequently"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Frequently (3-5 times/week) (860 kg)" />
+            android:text="Frequently (3-5 times/week)" />
 
         <RadioButton
             android:id="@+id/radioOccasionally"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Occasionally (1-2 times/week) (450 kg)" />
+            android:text="Occasionally (1-2 times/week)" />
 
         <RadioButton
             android:id="@+id/radioNever"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Never (0 kg)" />
+            android:text="Never" />
     </RadioGroup>
 
+    <!-- Result TextView -->
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Carbon Emission: 0 CO₂"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp" />
+
+    <!-- Submit Button -->
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@id/porkRadioGroup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
-
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Carbon Emission: 0 kg"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/submitButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="20dp" />
+</LinearLayout>

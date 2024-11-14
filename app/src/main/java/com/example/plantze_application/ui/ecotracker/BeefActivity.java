@@ -27,10 +27,8 @@ public class BeefActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
 
-        // Get the carbon emission passed from DietActivity
         currentEmission = getIntent().getIntExtra("carbonEmission", 0);
 
-        // Display the current carbon emission
         resultTextView.setText("Current Carbon Emission: " + currentEmission + " kg");
 
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +37,6 @@ public class BeefActivity extends AppCompatActivity {
                 int selectedId = beefRadioGroup.getCheckedRadioButtonId();
                 int beefEmission = 0;
 
-                // Calculate additional emission based on beef consumption
                 if (selectedId == R.id.radioDaily) {
                     beefEmission = 2500; // kg
                 } else if (selectedId == R.id.radioFrequently) {
@@ -50,13 +47,10 @@ public class BeefActivity extends AppCompatActivity {
                     beefEmission = 0; // kg
                 }
 
-                // Add the beef emission to the existing carbon emission
                 currentEmission += beefEmission;
 
-                // Update the display with the new total emission
-                resultTextView.setText("Total Carbon Emission: " + currentEmission + " kg");
+                resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
 
-                // Pass the updated carbon emission to the next activity (PorkActivity)
                 Intent intent = new Intent(BeefActivity.this, PorkActivity.class);
                 intent.putExtra("carbonEmission", currentEmission);
                 startActivity(intent);

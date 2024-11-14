@@ -5,33 +5,33 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Title TextView -->
+    <!-- Title TextView for the question -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How often do you eat chicken?"
+        android:text="How often do you waste food or throw away uneaten leftovers?"
         android:textSize="18sp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp" />
 
-    <!-- RadioGroup for chicken consumption options -->
+    <!-- RadioGroup for food waste options -->
     <RadioGroup
-        android:id="@+id/chickenRadioGroup"
+        android:id="@+id/foodWasteRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radioDaily"
+            android:id="@+id/radioNever"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daily" />
+            android:text="Never" />
 
         <RadioButton
-            android:id="@+id/radioFrequently"
+            android:id="@+id/radioRarely"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Frequently" />
+            android:text="Rarely" />
 
         <RadioButton
             android:id="@+id/radioOccasionally"
@@ -40,13 +40,13 @@
             android:text="Occasionally" />
 
         <RadioButton
-            android:id="@+id/radioNever"
+            android:id="@+id/radioFrequently"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Never" />
+            android:text="Frequently" />
     </RadioGroup>
 
-    <!-- Result TextView to display the total emission -->
+    <!-- Result TextView to display the current or total carbon emission -->
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
