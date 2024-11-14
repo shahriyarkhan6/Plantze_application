@@ -2,7 +2,7 @@ package com.example.plantze_application.ui.ecotracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.RadioButton;
+import android.os.Handler;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ public class CarDistanceActivity extends AppCompatActivity {
     private RadioGroup distanceGroup;
     private TextView resultTextView;
     private double emissionFactor;
+    private double emissions; // Declare emissions as an instance variable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,16 @@ public class CarDistanceActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 calculateAndDisplayEmissions(checkedId);
+
+                // Proceed to the next question after a short delay to allow user to view emissions
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(CarDistanceActivity.this, PublicTransportFrequencyActivity.class);
+                        intent.putExtra("currentEmission", emissions);  // Pass current emissions to next activity
+                        startActivity(intent);
+                    }
+                }, 2000); // 2-second delay to display result before moving to next question
             }
         });
     }
@@ -52,11 +63,12 @@ public class CarDistanceActivity extends AppCompatActivity {
         }
 
         // Calculate emissions based on the emission factor and distance driven
-        double emissions = emissionFactor * distanceDriven;
+        emissions = emissionFactor * distanceDriven;
 
         // Display the calculated emissions
         resultTextView.setText("Estimated Emissions: " + emissions + " kg CO₂ per year");
     }
 }
-// testing change
-// test test
+
+//transport done
+//
