@@ -31,7 +31,6 @@ public class FoodWasteActivity extends AppCompatActivity {
             int selectedId = foodWasteRadioGroup.getCheckedRadioButtonId();
             double foodWasteEmission = 0.0; // Use double for food waste emission values
 
-            // Assign the emission value based on selection
             if (selectedId == R.id.radioNever) {
                 foodWasteEmission = 0.0;
             } else if (selectedId == R.id.radioRarely) {
@@ -42,7 +41,7 @@ public class FoodWasteActivity extends AppCompatActivity {
                 foodWasteEmission = 140.4;
             }
 
-            double totalEmission = (double) currentEmission + foodWasteEmission; // Casting int to double
+            double totalEmission = (double) currentEmission + foodWasteEmission;
 
             resultTextView.setText("Total Carbon Emission: " + totalEmission + " CO₂");
         });

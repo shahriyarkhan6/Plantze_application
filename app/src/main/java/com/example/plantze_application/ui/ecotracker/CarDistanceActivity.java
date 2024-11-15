@@ -2,7 +2,7 @@ package com.example.plantze_application.ui.ecotracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,36 +12,34 @@ public class CarDistanceActivity extends AppCompatActivity {
 
     private RadioGroup distanceGroup;
     private TextView resultTextView;
+    private Button nextButton;
     private double emissionFactor;
-    private double emissions; // Declare emissions as an instance variable
-
+    private double emissions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_distance);
 
-        // Retrieve the emission factor passed from CarTypeActivity
         emissionFactor = getIntent().getDoubleExtra("emissionFactor", 0);
 
         distanceGroup = findViewById(R.id.distanceGroup);
         resultTextView = findViewById(R.id.resultTextView);
+        nextButton = findViewById(R.id.nextButton);  // Initialize the "Next" button
 
-        // Listen for changes in the selected distance option
+        nextButton.setEnabled(false);
+
         distanceGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 calculateAndDisplayEmissions(checkedId);
-
-                // Proceed to the next question after a short delay to allow user to view emissions
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(CarDistanceActivity.this, PublicTransportFrequencyActivity.class);
-                        intent.putExtra("currentEmission", emissions);  // Pass current emissions to next activity
-                        startActivity(intent);
-                    }
-                }, 2000); // 2-second delay to display result before moving to next question
+                nextButton.setEnabled(true);
             }
+        });
+
+        nextButton.setOnClickListener(v -> {
+            Intent intent = new Intent(CarDistanceActivity.this, PublicTransportFrequencyActivity.class);
+            intent.putExtra("CAR_EMISSIONS", emissions);  // Pass car emissions to the next activity
+            startActivity(intent);
         });
     }
 
@@ -62,13 +60,8 @@ public class CarDistanceActivity extends AppCompatActivity {
             distanceDriven = 35000;
         }
 
-        // Calculate emissions based on the emission factor and distance driven
         emissions = emissionFactor * distanceDriven;
 
-        // Display the calculated emissions
-        resultTextView.setText("Estimated Emissions: " + emissions + " kg CO₂ per year");
+        resultTextView.setText("Estimated Emissions: " + emissions + " CO₂ per year");
     }
 }
-
-//transport done
-//

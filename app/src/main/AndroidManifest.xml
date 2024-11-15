@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.plantze_application">
 
+    <!-- SDK versions -->
+    <uses-sdk
+        android:minSdkVersion="21"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,6 +18,7 @@
         android:theme="@style/Theme.Plantze_application"
         tools:targetApi="31">
 
+        <!-- MainActivity as the entry point -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -24,30 +29,23 @@
             </intent-filter>
         </activity>
 
+        <!-- EcoTracker related activities -->
         <activity android:name=".ui.ecotracker.EcoTrackerActivity" android:exported="true"/>
-
-
         <activity android:name=".ui.ecotracker.DietActivity" android:exported="true"/>
-
         <activity android:name=".ui.ecotracker.BeefActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.PorkActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.ChickenActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.FishActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.FoodWasteActivity" android:exported="true"/>
 
-        <activity android:name=".ui.ecotracker.PorkActivity" android:exported="true" />
-
-        <activity android:name=".ui.ecotracker.ChickenActivity" />
-        <activity android:name=".ui.ecotracker.FishActivity" />
-        <activity android:name=".ui.ecotracker.FoodWasteActivity" />
-
-        <activity android:name=".ui.ecotracker.TransportationActivity" />
-        <activity android:name=".ui.ecotracker.CarTypeActivity" />
-        <activity android:name=".ui.ecotracker.CarDistanceActivity" />
-        <activity android:name=".ui.ecotracker.PublicTransportFrequencyActivity" />
-        <activity android:name=".ui.ecotracker.PublicTransportTimeActivity" />
-
-
-
-
-
-
+        <!-- Transportation related activities -->
+        <activity android:name=".ui.ecotracker.TransportationActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.CarTypeActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.CarDistanceActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.PublicTransportFrequencyActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.PublicTransportTimeActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.ShortHaulFlightsActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.LongHaulFlightsActivity" android:exported="true"/>
 
 
     </application>

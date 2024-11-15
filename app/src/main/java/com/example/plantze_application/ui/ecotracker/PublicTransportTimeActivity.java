@@ -2,75 +2,129 @@ package com.example.plantze_application.ui.ecotracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
+import android.widget.Toast;
 import android.widget.TextView;
-import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.plantze_application.R;
 
 public class PublicTransportTimeActivity extends AppCompatActivity {
 
     private RadioGroup timeGroup;
     private Button calculateButton;
-    private TextView emissionsResult;
+    private TextView emissionsDisplay;
+    private String frequency;
+    private double carEmissions; // Received car emissions
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_transport_time);
 
+        // Retrieve frequency and car emissions from the previous activity
+        Intent intent = getIntent();
+        frequency = intent.getStringExtra("FREQUENCY");
+        carEmissions = intent.getDoubleExtra("CAR_EMISSIONS", 0);
+
+        // Initialize radio group, button, and emissions display
         timeGroup = findViewById(R.id.timeGroup);
         calculateButton = findViewById(R.id.calculateButton);
-        emissionsResult = findViewById(R.id.emissionsResult);
+        emissionsDisplay = findViewById(R.id.emissionsDisplay);
 
-        Intent intent = getIntent();
-        String frequency = intent.getStringExtra("FREQUENCY");
-        double carEmissions = intent.getDoubleExtra("CAR_EMISSIONS", 0.0);
+        calculateButton.setOnClickListener(v -> {
+            int selectedTimeId = timeGroup.getCheckedRadioButtonId();
 
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int selectedId = timeGroup.getCheckedRadioButtonId();
-                RadioButton selectedRadioButton = findViewById(selectedId);
-                String timeSpent = selectedRadioButton.getText().toString();
-
-                double publicTransportEmissions = 0.0;
-
-                if (frequency.equals("Never")) {
-                    publicTransportEmissions = 0;
-                } else if (frequency.equals("Occasionally")) {
-                    publicTransportEmissions = calculateEmissions(timeSpent, 246, 819, 1638, 3071, 4095);
-                } else if (frequency.equals("Frequently")) {
-                    publicTransportEmissions = calculateEmissions(timeSpent, 573, 1911, 3822, 7166, 9555);
-                } else if (frequency.equals("Always")) {
-                    publicTransportEmissions = calculateEmissions(timeSpent, 573, 1911, 3822, 7166, 9555);
-                }
-
-                double totalEmissions = carEmissions + publicTransportEmissions;
-
-                emissionsResult.setText("Total Carbon Emission: " + totalEmissions + " kg/year");
+            if (selectedTimeId == -1) {
+                Toast.makeText(this, "Please select a time spent option.", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            RadioButton selectedTimeButton = findViewById(selectedTimeId);
+            String timeSpent = selectedTimeButton.getText().toString();
+
+            double transportEmissions = calculateEmissions(frequency, timeSpent);
+
+            double totalEmissions = carEmissions + transportEmissions;
+
+            emissionsDisplay.setText("Estimated Emissions: " + totalEmissions + " CO₂ per year");
+
+            Intent intent1 = new Intent(PublicTransportTimeActivity.this, ShortHaulFlightsActivity.class);
+            intent1.putExtra("TOTAL_EMISSIONS", totalEmissions);  // Pass the emissions data
+            startActivity(intent1);
         });
     }
 
-    private double calculateEmissions(String timeSpent, int under1hr, int oneToThree, int threeToFive, int fiveToTen, int moreThanTen) {
+    private double calculateEmissions(String frequency, String timeSpent) {
+        double emissions = 0.0;
+
+        switch (frequency) {
+            case "Never":
+                emissions = 0.0;
+                break;
+            case "Occasionally (1-2 times/week)":
+                emissions = getOccasionallyEmissions(timeSpent);
+                break;
+            case "Frequently (3-4 times/week)":
+                emissions = getFrequentlyEmissions(timeSpent);
+                break;
+            case "Always (5+ times/week)":
+                emissions = getAlwaysEmissions(timeSpent);
+                break;
+        }
+
+        return emissions;
+    }
+
+    private double getOccasionallyEmissions(String timeSpent) {
         switch (timeSpent) {
             case "Under 1 hour":
-                return under1hr;
+                return 246;
             case "1-3 hours":
-                return oneToThree;
+                return 819;
             case "3-5 hours":
-                return threeToFive;
+                return 1638;
             case "5-10 hours":
-                return fiveToTen;
+                return 3071;
             case "More than 10 hours":
-                return moreThanTen;
+                return 4095;
             default:
-                return 0;
+                return 0.0;
+        }
+    }
+
+    private double getFrequentlyEmissions(String timeSpent) {
+        switch (timeSpent) {
+            case "Under 1 hour":
+                return 573;
+            case "1-3 hours":
+                return 1911;
+            case "3-5 hours":
+                return 3822;
+            case "5-10 hours":
+                return 7166;
+            case "More than 10 hours":
+                return 9555;
+            default:
+                return 0.0;
+        }
+    }
+
+    private double getAlwaysEmissions(String timeSpent) {
+        switch (timeSpent) {
+            case "Under 1 hour":
+                return 573;
+            case "1-3 hours":
+                return 1911;
+            case "3-5 hours":
+                return 3822;
+            case "5-10 hours":
+                return 7166;
+            case "More than 10 hours":
+                return 9555;
+            default:
+                return 0.0;
         }
     }
 }
