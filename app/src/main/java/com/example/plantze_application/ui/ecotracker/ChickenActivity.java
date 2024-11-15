@@ -21,7 +21,7 @@ public class ChickenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chicken); // Ensure this XML file exists
+        setContentView(R.layout.activity_chicken);
 
         chickenRadioGroup = findViewById(R.id.chickenRadioGroup);
         submitButton = findViewById(R.id.submitButton);

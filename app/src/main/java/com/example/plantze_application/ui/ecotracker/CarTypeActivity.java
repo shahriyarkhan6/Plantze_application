@@ -39,7 +39,6 @@ public class CarTypeActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Pass the emissionFactor to the CarDistanceActivity
                 Intent intent = new Intent(CarTypeActivity.this, CarDistanceActivity.class);
                 intent.putExtra("emissionFactor", emissionFactor);
                 startActivity(intent);

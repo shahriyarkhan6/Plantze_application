@@ -37,7 +37,6 @@ public class PorkActivity extends AppCompatActivity {
                 int selectedId = porkRadioGroup.getCheckedRadioButtonId();
                 int porkEmission = 0;
 
-                // Calculate additional emission based on pork consumption
                 if (selectedId == R.id.radioDaily) {
                     porkEmission = 1450; // kg
                 } else if (selectedId == R.id.radioFrequently) {
@@ -48,13 +47,10 @@ public class PorkActivity extends AppCompatActivity {
                     porkEmission = 0; // kg
                 }
 
-                // Add the pork emission to the existing carbon emission
                 currentEmission += porkEmission;
 
-                // Update the display with the new total emission
                 resultTextView.setText("Total Carbon Emission: " + currentEmission + " kg");
 
-                // Pass the updated carbon emission to the next activity (ChickenActivity)
                 Intent intent = new Intent(PorkActivity.this, ChickenActivity.class);
                 intent.putExtra("carbonEmission", currentEmission);
                 startActivity(intent);

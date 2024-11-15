@@ -21,22 +21,18 @@ public class TransportationActivity extends AppCompatActivity {
 
         carUsageRadioGroup = findViewById(R.id.carUsageRadioGroup);
 
-        // Set listener for the radio group
         carUsageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton selectedRadioButton = findViewById(checkedId);
             String selectedOption = selectedRadioButton.getText().toString();
 
-            // Check if the user selected "Yes" or "No"
 
-                // Redirect to CarTypeActivity for further questions
             if (selectedOption.equals("Yes")) {
                 Intent intent = new Intent(TransportationActivity.this, CarTypeActivity.class);
                 startActivity(intent);
 
 
             } else if (selectedOption.equals("No")) {
-                // Redirect to DietActivity
-                Intent intent = new Intent(TransportationActivity.this, DietActivity.class);
+                Intent intent = new Intent(TransportationActivity.this, PublicTransportFrequencyActivity.class);
                 startActivity(intent);
             }
         });

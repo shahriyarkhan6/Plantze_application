@@ -44,20 +44,15 @@ public class DietActivity extends AppCompatActivity {
 
                 resultTextView.setText("Carbon Emission: " + carbonEmission + " CO₂");
 
-                // Check the diet choice and navigate accordingly
                 Intent intent;
                 if (selectedId == R.id.radioMeatBased) {
-                    // If "Meat-based" diet, go to the next question (e.g., BeefActivity)
                     intent = new Intent(DietActivity.this, BeefActivity.class);
                 } else {
-                    // If "Vegetarian", "Vegan", or "Pescatarian", go directly to FoodWasteActivity
                     intent = new Intent(DietActivity.this, FoodWasteActivity.class);
                 }
 
-                // Pass the carbon emission value to the next activity
                 intent.putExtra("carbonEmission", carbonEmission);
 
-                // Start the activity
                 startActivity(intent);
             }
         });
