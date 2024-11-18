@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/recyclingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How often do you recycle?"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"/>
+
+    <RadioGroup
+        android:id="@+id/recyclingGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/neverRecycling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Never"
+            android:layout_marginBottom="10dp"/>
+
+        <RadioButton
+            android:id="@+id/occasionalRecycling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Occasionally"
+            android:layout_marginBottom="10dp"/>
+
+        <RadioButton
+            android:id="@+id/frequentRecycling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frequently"
+            android:layout_marginBottom="10dp"/>
+
+        <RadioButton
+            android:id="@+id/alwaysRecycling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Always"
+            android:layout_marginBottom="10dp"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/emissionsDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Emissions: 0 CO₂ per year"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:layout_gravity="center" />
+</LinearLayout>

@@ -3,8 +3,8 @@ package com.example.plantze_application.ui.ecotracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
@@ -13,7 +13,7 @@ public class PublicTransportFrequencyActivity extends AppCompatActivity {
 
     private RadioGroup frequencyGroup;
     private Button nextButton;
-    private double carEmissions;  // To hold the car emissions passed from the previous activity
+    private double carEmissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -14,6 +14,8 @@ public class EcoTrackerActivity extends AppCompatActivity {
     private Button foodButton;
     private Button transportationButton;
 
+    private Button consumptionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
 
         foodButton = findViewById(R.id.foodButton);
         transportationButton = findViewById(R.id.transportationButton);
+        consumptionButton = findViewById(R.id.consumptionButton);
 
         foodButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +37,14 @@ public class EcoTrackerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EcoTrackerActivity.this, TransportationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        consumptionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EcoTrackerActivity.this, ConsumptionActivity.class);
                 startActivity(intent);
             }
         });

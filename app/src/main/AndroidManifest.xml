@@ -47,6 +47,16 @@
         <activity android:name=".ui.ecotracker.ShortHaulFlightsActivity" android:exported="true"/>
         <activity android:name=".ui.ecotracker.LongHaulFlightsActivity" android:exported="true"/>
 
+        <!-- Consumption related activities -->
+        <activity android:name=".ui.ecotracker.ConsumptionActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.EcoFriendlyProductsActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.ElectronicDevicesActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.RecyclingActivity" android:exported="true"/>
+
+
+
+
+
 
     </application>
 

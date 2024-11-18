@@ -29,10 +29,8 @@ public class DashboardFragment extends Fragment {
         final TextView textView = binding.textDashboard;
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-        // Set up the Eco Tracker button click listener
-        Button ecoTrackerButton = binding.ecoTrackerButton;  // Reference the Eco Tracker button
+        Button ecoTrackerButton = binding.ecoTrackerButton;
         ecoTrackerButton.setOnClickListener(v -> {
-            // Start the EcoTrackerActivity when the button is clicked
             Intent intent = new Intent(getActivity(), EcoTrackerActivity.class);
             startActivity(intent);
         });
