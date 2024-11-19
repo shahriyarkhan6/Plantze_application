@@ -1,4 +1,4 @@
-package com.example.plantze_application.ui.ecotracker;
+package com.example.plantze_application.ui.annual_footprint;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
 
     private Button foodButton;
     private Button transportationButton;
+    private Button housingButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
 
         foodButton = findViewById(R.id.foodButton);
         transportationButton = findViewById(R.id.transportationButton);
+        housingButton = findViewById(R.id.housingButton);
 
         foodButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +36,14 @@ public class EcoTrackerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EcoTrackerActivity.this, TransportationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        housingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EcoTrackerActivity.this, HouseTypeActivity.class);
                 startActivity(intent);
             }
         });

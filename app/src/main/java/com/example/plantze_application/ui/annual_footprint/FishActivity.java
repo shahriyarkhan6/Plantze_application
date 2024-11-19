@@ -1,4 +1,4 @@
-package com.example.plantze_application.ui.ecotracker;
+package com.example.plantze_application.ui.annual_footprint;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.plantze_application.R;
 
-public class ChickenActivity extends AppCompatActivity {
+public class FishActivity extends AppCompatActivity {
 
-    private RadioGroup chickenRadioGroup;
+    private RadioGroup fishRadioGroup;
     private Button submitButton;
     private TextView resultTextView;
     private int currentEmission;
@@ -21,37 +21,37 @@ public class ChickenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chicken);
+        setContentView(R.layout.activity_fish);
 
-        chickenRadioGroup = findViewById(R.id.chickenRadioGroup);
+        fishRadioGroup = findViewById(R.id.fishRadioGroup);
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
 
         currentEmission = getIntent().getIntExtra("carbonEmission", 0);
 
-        resultTextView.setText("Current Carbon Emission: " + currentEmission + " CO₂");
+        resultTextView.setText("Current Carbon Emission: " + currentEmission + " kg");
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selectedId = chickenRadioGroup.getCheckedRadioButtonId();
-                int chickenEmission = 0;
+                int selectedId = fishRadioGroup.getCheckedRadioButtonId();
+                int fishEmission = 0;
 
                 if (selectedId == R.id.radioDaily) {
-                    chickenEmission = 950; // kg
+                    fishEmission = 2100; // kg
                 } else if (selectedId == R.id.radioFrequently) {
-                    chickenEmission = 600; // kg
+                    fishEmission = 1300; // kg
                 } else if (selectedId == R.id.radioOccasionally) {
-                    chickenEmission = 200; // kg
+                    fishEmission = 450; // kg
                 } else if (selectedId == R.id.radioNever) {
-                    chickenEmission = 0; // kg
+                    fishEmission = 0; // kg
                 }
 
-                currentEmission += chickenEmission;
+                currentEmission += fishEmission;
 
-                resultTextView.setText("Total Carbon Emission: " + currentEmission + " kg");
+                resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
 
-                Intent intent = new Intent(ChickenActivity.this, FishActivity.class);
+                Intent intent = new Intent(FishActivity.this, FoodWasteActivity.class);
                 intent.putExtra("carbonEmission", currentEmission);
                 startActivity(intent);
             }

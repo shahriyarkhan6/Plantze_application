@@ -1,4 +1,4 @@
-package com.example.plantze_application.ui.ecotracker;
+package com.example.plantze_application.ui.annual_footprint;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,27 +10,27 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
 
-public class LongHaulFlightsActivity extends AppCompatActivity {
+public class ShortHaulFlightsActivity extends AppCompatActivity {
 
     private RadioGroup flightsGroup;
-    private Button calculateButton;
+    private Button nextButton;
     private TextView emissionsDisplay;
     private double currentEmissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_long_haul_flights);
+        setContentView(R.layout.activity_short_haul_flights);
 
         currentEmissions = getIntent().getDoubleExtra("TOTAL_EMISSIONS", 0);
 
         flightsGroup = findViewById(R.id.flightsGroup);
-        calculateButton = findViewById(R.id.calculateButton);
+        nextButton = findViewById(R.id.nextButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
 
         emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO2");
 
-        calculateButton.setOnClickListener(v -> {
+        nextButton.setOnClickListener(v -> {
             int selectedFlightsId = flightsGroup.getCheckedRadioButtonId();
 
             if (selectedFlightsId == -1) {
@@ -47,6 +47,9 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
 
             emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO2");
 
+            Intent nextIntent = new Intent(ShortHaulFlightsActivity.this, LongHaulFlightsActivity.class);
+            nextIntent.putExtra("TOTAL_EMISSIONS", totalEmissions);
+            startActivity(nextIntent);
         });
     }
 
@@ -54,20 +57,17 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
         double emissions = 0.0;
 
         switch (flights) {
-            case "None":
-                emissions = 0; // No emissions if no flights
-                break;
             case "1-2 flights":
-                emissions = 825; // Emissions for 1-2 flights
+                emissions = 225; // Emissions for 1-2 short-haul flights
                 break;
             case "3-5 flights":
-                emissions = 2200; // Emissions for 3-5 flights
+                emissions = 600; // Emissions for 3-5 short-haul flights
                 break;
             case "6-10 flights":
-                emissions = 4400; // Emissions for 6-10 flights
+                emissions = 1200; // Emissions for 6-10 short-haul flights
                 break;
             case "More than 10 flights":
-                emissions = 6600; // Emissions for more than 10 flights
+                emissions = 1800; // Emissions for more than 10 short-haul flights
                 break;
         }
 
