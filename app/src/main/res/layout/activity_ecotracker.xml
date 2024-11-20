@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".EcoTrackerActivity">
 
-    <!-- Transportation Button -->
-    <Button
-        android:id="@+id/transportationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Transportation"
-        app:layout_constraintTop_toBottomOf="@id/foodButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
-
     <!-- Food Button -->
     <Button
         android:id="@+id/foodButton"
@@ -26,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
 
     <!-- Housing Button -->
     <Button
@@ -34,14 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Housing"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foodButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
 
-
-
-
-
+    <!-- Transportation Button -->
+    <Button
+        android:id="@+id/transportationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transportation"
+        app:layout_constraintTop_toBottomOf="@id/housingButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
