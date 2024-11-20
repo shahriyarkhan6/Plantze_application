@@ -1,4 +1,4 @@
-package com.example.plantze_application.ui.ecotracker;
+package com.example.plantze_application.ui.annual_footprint;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -41,9 +41,10 @@ public class FoodWasteActivity extends AppCompatActivity {
                 foodWasteEmission = 140.4;
             }
 
-            double totalEmission = (double) currentEmission + foodWasteEmission;
+            currentEmission += foodWasteEmission;
 
-            resultTextView.setText("Total Carbon Emission: " + totalEmission + " CO₂");
+            resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
+
         });
     }
 }

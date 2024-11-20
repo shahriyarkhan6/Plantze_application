@@ -1,4 +1,4 @@
-package com.example.plantze_application.ui.ecotracker;
+package com.example.plantze_application.ui.annual_footprint;
 
 import android.content.Intent;
 import android.os.Bundle;

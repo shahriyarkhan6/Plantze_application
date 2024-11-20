@@ -30,28 +30,37 @@
         </activity>
 
         <!-- EcoTracker related activities -->
-        <activity android:name=".ui.ecotracker.EcoTrackerActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.DietActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.BeefActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.PorkActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.ChickenActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.FishActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.FoodWasteActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.EcoTrackerActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.DietActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.BeefActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.PorkActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.ChickenActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.FishActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.FoodWasteActivity" android:exported="true"/>
+
+        <!-- Housing related activities -->
+        <activity android:name=".ui.annual_footprint.HouseTypeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HousePeopleNum" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseSize" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseElectricityBill" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseHeatType" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseHeatWaterType" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseRenewableEnergy" android:exported="true"/>
 
         <!-- Transportation related activities -->
-        <activity android:name=".ui.ecotracker.TransportationActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.CarTypeActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.CarDistanceActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.PublicTransportFrequencyActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.PublicTransportTimeActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.ShortHaulFlightsActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.LongHaulFlightsActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.TransportationActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.CarTypeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.CarDistanceActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.PublicTransportFrequencyActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.PublicTransportTimeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.ShortHaulFlightsActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.LongHaulFlightsActivity" android:exported="true"/>
 
         <!-- Consumption related activities -->
-        <activity android:name=".ui.ecotracker.ConsumptionActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.EcoFriendlyProductsActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.ElectronicDevicesActivity" android:exported="true"/>
-        <activity android:name=".ui.ecotracker.RecyclingActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.ConsumptionActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.EcoFriendlyProductsActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.ElectronicDevicesActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.RecyclingActivity" android:exported="true"/>
 
 
 

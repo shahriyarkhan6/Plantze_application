@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Title TextView for the question -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What is your average monthly electric bill?"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- RadioGroup for food waste options -->
+    <RadioGroup
+        android:id="@+id/houseElectricityBillRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioUnder50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Under $50" />
+
+        <RadioButton
+            android:id="@+id/radio50to100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$50-100" />
+
+        <RadioButton
+            android:id="@+id/radio100to150"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$100-150" />
+
+        <RadioButton
+            android:id="@+id/radio150to200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$150-200" />
+
+        <RadioButton
+            android:id="@+id/radioOver200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Over $200" />
+    </RadioGroup>
+
+    <!-- Result TextView to display the current or total carbon emission -->
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Carbon Emission: 0 CO₂"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

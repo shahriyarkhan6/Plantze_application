@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.plantze_application.databinding.FragmentDashboardBinding;
-import com.example.plantze_application.ui.ecotracker.EcoTrackerActivity;
+import com.example.plantze_application.ui.annual_footprint.EcoTrackerActivity;
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
