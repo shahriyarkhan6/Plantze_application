@@ -1,69 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ecotracker.DietActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Radio group for diet selection -->
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What is your diet?"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- RadioGroup for diet options -->
     <RadioGroup
         android:id="@+id/dietRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
 
-        <!-- Vegetarian option -->
         <RadioButton
             android:id="@+id/radioVegetarian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegetarian (1000 kg)" />
+            android:text="Vegetarian" />
 
-        <!-- Vegan option -->
         <RadioButton
             android:id="@+id/radioVegan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegan (500 kg)" />
+            android:text="Vegan" />
 
-        <!-- Pescatarian option -->
         <RadioButton
             android:id="@+id/radioPescatarian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pescatarian (1500 kg)" />
+            android:text="Pescatarian" />
 
-        <!-- Meat-based option -->
         <RadioButton
             android:id="@+id/radioMeatBased"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Meat-based (0 kg)" />
+            android:text="Meat-based" />
     </RadioGroup>
 
-    <!-- Button to calculate the carbon emission -->
-    <Button
-        android:id="@+id/calculateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calculate Emission"
-        app:layout_constraintTop_toBottomOf="@id/dietRadioGroup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
-
-    <!-- Text view to display the result -->
+    <!-- Result TextView -->
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carbon Emission: 0 kg"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/calculateButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Carbon Emission: 0 CO₂"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="20dp" />
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EcoTrackerActivity">
+
+    <!-- Car Type Question Text -->
+    <TextView
+        android:id="@+id/carTypeQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What type of car do you drive?"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <!-- RadioGroup for Car Types -->
+    <RadioGroup
+        android:id="@+id/carTypeGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/carTypeQuestion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/radioGasoline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gasoline" />
+
+        <RadioButton
+            android:id="@+id/radioDiesel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diesel" />
+
+        <RadioButton
+            android:id="@+id/radioHybrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hybrid" />
+
+        <RadioButton
+            android:id="@+id/radioElectric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Electric" />
+
+        <RadioButton
+            android:id="@+id/radioDontKnow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I don’t know" />
+    </RadioGroup>
+
+    <!-- Next Button -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        app:layout_constraintTop_toBottomOf="@id/carTypeGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

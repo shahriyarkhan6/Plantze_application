@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How often do you eat fish?"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- RadioGroup for fish consumption options -->
+    <RadioGroup
+        android:id="@+id/fishRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioDaily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daily" />
+
+        <RadioButton
+            android:id="@+id/radioFrequently"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frequently" />
+
+        <RadioButton
+            android:id="@+id/radioOccasionally"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Occasionally" />
+
+        <RadioButton
+            android:id="@+id/radioNever"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Never" />
+    </RadioGroup>
+
+    <!-- Result TextView to display the total emission -->
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Carbon Emission: 0 CO₂"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

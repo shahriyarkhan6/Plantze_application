@@ -12,8 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+
 import com.example.plantze_application.databinding.FragmentDashboardBinding;
-import com.example.plantze_application.ui.ecotracker.EcoTrackerActivity;
+
+import com.example.plantze_application.ui.annual_footprint.EcoTrackerActivity;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
+import java.util.ArrayList;
+
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
@@ -28,7 +37,16 @@ public class DashboardFragment extends Fragment {
 
         final TextView textView = binding.textDashboard;
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
+        // Set up line chart:
+        LineChart chart = binding.chart;
+        ArrayList<Entry> chart_entries = new ArrayList<>();
+        chart_entries.add(new Entry(5, 7));
+        chart_entries.add(new Entry(8, 10));
+        chart_entries.add(new Entry(12, 13));
+        LineDataSet chart_data = new LineDataSet(chart_entries, "CO2 Emissions over time");
+        LineData c_data = new LineData(chart_data);
+        chart.setData(c_data);
+        chart.invalidate();
         // Set up the Eco Tracker button click listener
         Button ecoTrackerButton = binding.ecoTrackerButton;  // Reference the Eco Tracker button
         ecoTrackerButton.setOnClickListener(v -> {
