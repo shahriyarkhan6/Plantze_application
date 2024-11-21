@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.annual_footprint.PublicTransportFrequencyActivity">
+
+    <!-- Title Text -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How often do you use public transportation?"
+        android:textSize="18sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/frequencyGroup"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+    <!-- Frequency Options RadioGroup -->
+    <RadioGroup
+        android:id="@+id/frequencyGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/titleText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp">
+
+        <RadioButton
+            android:id="@+id/radioNever"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Never" />
+
+        <RadioButton
+            android:id="@+id/radioOccasionally"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Occasionally (1-2 times/week)" />
+
+        <RadioButton
+            android:id="@+id/radioFrequently"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frequently (3-4 times/week)" />
+
+        <RadioButton
+            android:id="@+id/radioAlways"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Always (5+ times/week)" />
+    </RadioGroup>
+
+    <!-- Next Button -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/frequencyGroup"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

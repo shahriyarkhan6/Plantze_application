@@ -53,8 +53,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     // Import the BoM for the Firebase platform
     implementation(platform(libs.firebase.bom))
-
     // Declare the dependency for the Cloud Firestore library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation(libs.google.firebase.firestore)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
