@@ -3,7 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_welcome_activity">
+
+    <activity
+        android:id="@+id/navigation_welcome_activity"
+        android:name="com.example.plantze_application.ui.login.WelcomeActivity2"
+        android:label="Welcome Page"
+        tools:layout="@layout/activity_welcome2">
+
+        <!--Navigate to RegisterActivity -->
+        <action
+            android:id="@+id/action_welcome_to_registration"
+            app:destination="@id/navigation_register_activity" />
+
+        <!--Navigate to LoginActivity -->
+        <action
+            android:id="@+id/action_welcome_to_login"
+            app:destination="@id/navigation_login_activity" />
+    </activity>
+
+    <activity
+        android:id="@+id/navigation_login_activity"
+        android:name="com.example.plantze_application.ui.login.LoginActivity"
+        android:label="Login"
+        tools:layout="@layout/activity_login">
+
+        <!-- After login, navigate to Dashboard -->
+        <action
+            android:id="@+id/action_login_to_dashboard"
+            app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_login_to_forgot_password"
+            app:destination="@id/navigation_forgot_password_activity" />
+
+    </activity>
+
+
+    <activity
+        android:id="@+id/navigation_register_activity"
+        android:name="com.example.plantze_application.ui.registration.RegisterActivity"
+        android:label="Register"
+        tools:layout="@layout/activity_register">
+
+        <!-- After registration, navigate to LoginActivity -->
+        <action
+            android:id="@+id/action_registration_to_login"
+            app:destination="@id/navigation_login_activity" />
+    </activity>
+
+
+    <activity
+        android:id="@+id/navigation_forgot_password_activity"
+        android:name="com.example.plantze_application.ui.login.ForgotPasswordActivity"
+        android:label="Forgot Password"
+        tools:layout="@layout/activity_forgot_password">
+
+        <!-- Navigate back to LoginActivity after successful password reset -->
+        <action
+            android:id="@+id/action_forgot_password_to_login"
+            app:destination="@id/navigation_login_activity" />
+    </activity>
+
+
+
 
     <fragment
         android:id="@+id/navigation_home"

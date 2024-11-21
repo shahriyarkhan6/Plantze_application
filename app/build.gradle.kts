@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -43,9 +44,17 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation(libs.firebase.auth)
+    implementation(libs.activity)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
+    // Import the BoM for the Firebase platform
+    implementation(platform(libs.firebase.bom))
+    // Declare the dependency for the Cloud Firestore library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation(libs.google.firebase.firestore)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
