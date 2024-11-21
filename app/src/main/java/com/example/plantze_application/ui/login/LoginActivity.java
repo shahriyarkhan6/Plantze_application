@@ -42,15 +42,21 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        //if(currentUser != null){
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null){
 
-            //MIGHT NEED TO CHANGE TO DASHBOARD FRAGMENT
+            String userID = user.getUid(); // This UID is to be used in Firestore
 
-            //Intent intent = new Intent(LoginActivity.this, DashboardFragment.class);
+            SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("USER_ID", userID);
+            editor.apply(); // Save changes
+
+            // Now navigate to the next activity (e.g., Dashboard or MainActivity)
+            //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             //startActivity(intent);
             //finish();
-        //}
+        }
     }
 
 
@@ -112,34 +118,26 @@ public class LoginActivity extends AppCompatActivity {
                                     if (user != null){
                                         String userID = user.getUid(); // This UID is to be used in Firestore
 
-                                        //This allows the userID to be shared from anywhere within the app
+                                        SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPref.edit();
+                                        editor.putString("USER_ID", userID);
+                                        editor.apply(); // Save changes
 
-                                        //SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-                                        //SharedPreferences.Editor editor = sharedPref.edit();
-                                        //editor.putString("USER_ID", userID);
-                                        //editor.apply();
+                                        // Now navigate to the next activity (e.g., Dashboard or MainActivity)
+                                        //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        //startActivity(intent);
+                                        //finish();
 
-                                        //This is the code you use to retrieve the current user's userID after login from anywhere:
-                                        //SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-                                        //String userID = sharedPref.getString("USER_ID", null);  // Default is null if not found
+                                        //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        //intent.putExtra("OPEN_DASHBOARD", true); // Flag to indicate opening Dashboard
+                                        //startActivity(intent);
+                                        //finish(); // Prevent returning to LoginActivity
 
-                                        //This is how you can modify user details after getting the user's userID:
-                                        //Map<String, Object> updatedData = new HashMap<>();
-                                        //updatedData.put("address", "123 Main Street");  // Example of adding new info
-                                        //db.collection("users").document(userID)
-                                                //.update(updatedData);
 
 
                                     }
 
-
-
-                                    //MIGHT NEED TO CHANGE TO DASHBOARD FRAGMENT
-
-                                    //Intent intent = new Intent(LoginActivity.this, DashboardViewModel.class);
-                                    //startActivity(intent);
-                                    //finish();
-
+                                    // Now navigate to the next activity (e.g., Dashboard or MainActivity)
                                     //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     //startActivity(intent);
                                     //finish();

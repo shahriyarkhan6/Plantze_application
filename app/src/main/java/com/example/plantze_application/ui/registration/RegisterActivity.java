@@ -22,11 +22,14 @@ import com.example.plantze_application.ui.dashboard.DashboardFragment;
 import com.example.plantze_application.ui.dashboard.DashboardViewModel;
 import com.example.plantze_application.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -42,7 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputEditText editTextLastname;
     Button registerbutton;
     FirebaseAuth mAuth;
-    FirebaseFirestore datab = FirebaseFirestore.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     private boolean isValidEmail(String email){
         return email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -140,18 +144,47 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, "Account created.",
                                             Toast.LENGTH_SHORT).show();
 
+                                    // Get the currently signed-in user
+                                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                                    if (currentUser != null) {
+                                        // Prepare user data
+                                        String uid = currentUser.getUid();
+                                        Map<String, Object> user = new HashMap<>();
+                                        user.put("First Name", first_name);
+                                        user.put("Last Name", last_name);
+                                        user.put("Email", email);
+                                        user.put("Password", password);
+                                        user.put("User ID:", uid);
 
-                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                        // Save user data to Firestore using the UID as the document ID
+                                        db.collection("users").document(uid)
+                                                .set(user)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        // Navigate to LoginActivity
+                                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        // Log and show error if Firestore write fails
+                                                        Log.e("Firestore", "Error adding user to Firestore", e);
+                                                        Toast.makeText(RegisterActivity.this, "Failed to save user data. Please try again.", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                    }
 
-                                } else
+                                } else{
 
                                     // If sign in fails, display a message to the user.
 
                                     Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-                            }
+                            }}
 
 
 
