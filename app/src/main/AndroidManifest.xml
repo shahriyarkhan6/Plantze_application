@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.plantze_application">
 
+    <!-- SDK versions -->
+    <uses-sdk
+        android:minSdkVersion="21"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,7 +18,7 @@
         android:theme="@style/Theme.Plantze_application"
         tools:targetApi="31">
 
-        <!-- Main Activity -->
+        <!-- MainActivity as the entry point -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -25,13 +29,43 @@
             </intent-filter>
         </activity>
 
-        <!-- EcoTracker Activity -->
-        <activity android:name=".ui.ecotracker.EcoTrackerActivity">
-        </activity>
+        <!-- EcoTracker related activities -->
+        <activity android:name=".ui.annual_footprint.EcoTrackerActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.DietActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.BeefActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.PorkActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.ChickenActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.FishActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.FoodWasteActivity" android:exported="true"/>
 
-        <!-- Diet Activity -->
-        <activity android:name=".ui.ecotracker.DietActivity">
-        </activity>
+        <!-- Housing related activities -->
+        <activity android:name=".ui.annual_footprint.HouseTypeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HousePeopleNum" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseSize" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseElectricityBill" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseHeatType" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseHeatWaterType" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseRenewableEnergy" android:exported="true"/>
+
+        <!-- Transportation related activities -->
+        <activity android:name=".ui.annual_footprint.TransportationActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.CarTypeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.CarDistanceActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.PublicTransportFrequencyActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.PublicTransportTimeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.ShortHaulFlightsActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.LongHaulFlightsActivity" android:exported="true"/>
+
+        <!-- Consumption related activities -->
+        <activity android:name=".ui.annual_footprint.ConsumptionActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.EcoFriendlyProductsActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.ElectronicDevicesActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.RecyclingActivity" android:exported="true"/>
+
+
+
+
+
 
     </application>
 

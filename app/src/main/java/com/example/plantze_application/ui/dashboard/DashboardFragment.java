@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 
 import com.example.plantze_application.databinding.FragmentDashboardBinding;
-import com.example.plantze_application.ui.ecotracker.EcoTrackerActivity;
+
+import com.example.plantze_application.ui.annual_footprint.EcoTrackerActivity;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;

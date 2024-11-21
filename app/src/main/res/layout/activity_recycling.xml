@@ -5,61 +5,61 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Title TextView -->
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/recyclingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What is your diet?"
+        android:text="How often do you recycle?"
         android:textSize="18sp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"/>
 
-    <!-- RadioGroup for diet options -->
     <RadioGroup
-        android:id="@+id/dietRadioGroup"
+        android:id="@+id/recyclingGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radioVegetarian"
+            android:id="@+id/neverRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegetarian" />
+            android:text="Never"
+            android:layout_marginBottom="10dp"/>
 
         <RadioButton
-            android:id="@+id/radioVegan"
+            android:id="@+id/occasionalRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegan" />
+            android:text="Occasionally"
+            android:layout_marginBottom="10dp"/>
 
         <RadioButton
-            android:id="@+id/radioPescatarian"
+            android:id="@+id/frequentRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pescatarian" />
+            android:text="Frequently"
+            android:layout_marginBottom="10dp"/>
 
         <RadioButton
-            android:id="@+id/radioMeatBased"
+            android:id="@+id/alwaysRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Meat-based" />
+            android:text="Always"
+            android:layout_marginBottom="10dp"/>
     </RadioGroup>
 
-    <!-- Result TextView -->
     <TextView
-        android:id="@+id/resultTextView"
+        android:id="@+id/emissionsDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carbon Emission: 0 CO₂"
+        android:text="Current Emissions: 0 CO₂ per year"
         android:textSize="16sp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginBottom="20dp"/>
 
-    <!-- Submit Button -->
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:layout_marginTop="20dp" />
+        android:text="Next"
+        android:layout_gravity="center" />
 </LinearLayout>

@@ -5,53 +5,59 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Title TextView -->
+    <!-- Title TextView for the question -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What is your diet?"
+        android:text="What is your average monthly electric bill?"
         android:textSize="18sp"
         android:layout_marginBottom="20dp" />
 
-    <!-- RadioGroup for diet options -->
+    <!-- RadioGroup for food waste options -->
     <RadioGroup
-        android:id="@+id/dietRadioGroup"
+        android:id="@+id/houseElectricityBillRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radioVegetarian"
+            android:id="@+id/radioUnder50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegetarian" />
+            android:text="Under $50" />
 
         <RadioButton
-            android:id="@+id/radioVegan"
+            android:id="@+id/radio50to100"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegan" />
+            android:text="$50-100" />
 
         <RadioButton
-            android:id="@+id/radioPescatarian"
+            android:id="@+id/radio100to150"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pescatarian" />
+            android:text="$100-150" />
 
         <RadioButton
-            android:id="@+id/radioMeatBased"
+            android:id="@+id/radio150to200"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Meat-based" />
+            android:text="$150-200" />
+
+        <RadioButton
+            android:id="@+id/radioOver200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Over $200" />
     </RadioGroup>
 
-    <!-- Result TextView -->
+    <!-- Result TextView to display the current or total carbon emission -->
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carbon Emission: 0 CO₂"
+        android:text="Current Carbon Emission: 0 CO₂"
         android:textSize="16sp"
         android:layout_marginTop="20dp" />
 
@@ -62,4 +68,5 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:layout_marginTop="20dp" />
+
 </LinearLayout>

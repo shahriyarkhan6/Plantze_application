@@ -10,48 +10,48 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What is your diet?"
+        android:text="How often do you eat fish?"
         android:textSize="18sp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"/>
 
-    <!-- RadioGroup for diet options -->
+    <!-- RadioGroup for fish consumption options -->
     <RadioGroup
-        android:id="@+id/dietRadioGroup"
+        android:id="@+id/fishRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radioVegetarian"
+            android:id="@+id/radioDaily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegetarian" />
+            android:text="Daily" />
 
         <RadioButton
-            android:id="@+id/radioVegan"
+            android:id="@+id/radioFrequently"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegan" />
+            android:text="Frequently" />
 
         <RadioButton
-            android:id="@+id/radioPescatarian"
+            android:id="@+id/radioOccasionally"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pescatarian" />
+            android:text="Occasionally" />
 
         <RadioButton
-            android:id="@+id/radioMeatBased"
+            android:id="@+id/radioNever"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Meat-based" />
+            android:text="Never" />
     </RadioGroup>
 
-    <!-- Result TextView -->
+    <!-- Result TextView to display the total emission -->
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carbon Emission: 0 CO₂"
+        android:text="Current Carbon Emission: 0 CO₂"
         android:textSize="16sp"
         android:layout_marginTop="20dp" />
 
@@ -62,4 +62,5 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:layout_marginTop="20dp" />
+
 </LinearLayout>

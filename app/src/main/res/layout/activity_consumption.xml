@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConsumptionActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How often do you buy new clothes?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Frequency Options (RadioButtons) -->
+    <RadioGroup
+        android:id="@+id/frequencyGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/monthlyOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly" />
+
+        <RadioButton
+            android:id="@+id/quarterlyOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quarterly" />
+
+        <RadioButton
+            android:id="@+id/annuallyOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Annually" />
+
+        <RadioButton
+            android:id="@+id/rarelyOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rarely" />
+    </RadioGroup>
+
+    <!-- Emissions Display -->
+    <TextView
+        android:id="@+id/emissionsDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Emissions: 0 CO₂ per year"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/frequencyGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Next Button -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        app:layout_constraintTop_toBottomOf="@id/emissionsDisplay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

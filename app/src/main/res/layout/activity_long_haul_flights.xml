@@ -5,61 +5,61 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Title TextView -->
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What is your diet?"
+        android:text="How many long-haul flights have you taken in the past year?"
         android:textSize="18sp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="16dp"/>
 
-    <!-- RadioGroup for diet options -->
     <RadioGroup
-        android:id="@+id/dietRadioGroup"
+        android:id="@+id/flightsGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/radioVegetarian"
+            android:id="@+id/no_flights"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegetarian" />
+            android:text="None" />
 
         <RadioButton
-            android:id="@+id/radioVegan"
+            android:id="@+id/flights1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegan" />
+            android:text="1-2 flights" />
 
         <RadioButton
-            android:id="@+id/radioPescatarian"
+            android:id="@+id/flights3_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pescatarian" />
+            android:text="3-5 flights" />
 
         <RadioButton
-            android:id="@+id/radioMeatBased"
+            android:id="@+id/flights6_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Meat-based" />
+            android:text="6-10 flights" />
+
+        <RadioButton
+            android:id="@+id/flights10plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More than 10 flights" />
     </RadioGroup>
 
-    <!-- Result TextView -->
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Carbon Emission: 0 CO₂"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp" />
-
-    <!-- Submit Button -->
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/calculateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:layout_marginTop="20dp" />
+        android:text="Calculate Emissions" />
+
+    <TextView
+        android:id="@+id/emissionsDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Emissions: 0 CO2"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>
