@@ -5,53 +5,48 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Title TextView -->
+    <!-- Title TextView for the question -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What is your diet?"
+        android:text="What type of energy do you use to heat water?"
         android:textSize="18sp"
         android:layout_marginBottom="20dp" />
 
-    <!-- RadioGroup for diet options -->
+    <!-- RadioGroup for food waste options -->
     <RadioGroup
-        android:id="@+id/dietRadioGroup"
+        android:id="@+id/houseRenewableEnergyRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radioVegetarian"
+            android:id="@+id/radioPrimarily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegetarian" />
+            android:text="Yes, primarily" />
 
         <RadioButton
-            android:id="@+id/radioVegan"
+            android:id="@+id/radioPartially"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vegan" />
+            android:text="Yes, partially" />
 
         <RadioButton
-            android:id="@+id/radioPescatarian"
+            android:id="@+id/radioNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pescatarian" />
+            android:text="No" />
 
-        <RadioButton
-            android:id="@+id/radioMeatBased"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Meat-based" />
     </RadioGroup>
 
-    <!-- Result TextView -->
+    <!-- Result TextView to display the current or total carbon emission -->
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carbon Emission: 0 CO₂"
+        android:text="Current Carbon Emission: 0 CO₂"
         android:textSize="16sp"
         android:layout_marginTop="20dp" />
 
@@ -62,4 +57,5 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:layout_marginTop="20dp" />
+
 </LinearLayout>
