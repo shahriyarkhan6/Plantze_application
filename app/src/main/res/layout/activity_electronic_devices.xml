@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/emissionsDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Emissions: 0 CO₂ per year"
+        android:textSize="18sp"
+        android:paddingBottom="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"/>
+
+    <RadioGroup
+        android:id="@+id/devicesGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+
+        <RadioButton
+            android:id="@+id/radioNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None" />
+
+        <RadioButton
+            android:id="@+id/radioOneTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 Time" />
+
+        <RadioButton
+            android:id="@+id/radioTwoTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 Times" />
+
+        <RadioButton
+            android:id="@+id/radioThreeOrMoreTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 or More Times" />
+
+        <RadioButton
+            android:id="@+id/radioFourOrMoreTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 or More Times" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>
