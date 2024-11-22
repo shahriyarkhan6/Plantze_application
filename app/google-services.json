@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "276930573035",
+    "firebase_url": "https://cscb07-planetze-registerlogin-default-rtdb.firebaseio.com",
+    "project_id": "cscb07-planetze-registerlogin",
+    "storage_bucket": "cscb07-planetze-registerlogin.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276930573035:android:4ea12a06d5403bd4b704ae",
+        "android_client_info": {
+          "package_name": "com.example.plantze_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCczuWrMdMCATqCT0jCC0FNW_WBE5uQZ48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
