@@ -54,7 +54,9 @@ public class LoginActivity extends AppCompatActivity {
             editor.apply(); // Save changes
 
             // Now navigate to the next activity (e.g., Dashboard or MainActivity)
-
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 
@@ -127,14 +129,16 @@ public class LoginActivity extends AppCompatActivity {
                                         SharedPreferences.Editor editor = sharedPref.edit();
                                         editor.putString("USER_ID", userID);
                                         editor.apply(); // Save changes
-                                        //new navigate to dashboard
-
-
+                                        //now navigate to dashboard
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
 
                                     //now navigate to dashboard
-
-
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
 
                                 } else {
                                     // If sign in fails, display a message to the user.
