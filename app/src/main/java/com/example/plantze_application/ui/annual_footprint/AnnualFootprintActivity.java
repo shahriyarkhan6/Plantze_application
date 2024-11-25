@@ -19,7 +19,7 @@ public class AnnualFootprintActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ecotracker);
+        setContentView(R.layout.activity_annualfootprint);
 
         // Initialize buttons
         foodButton = findViewById(R.id.foodButton);
