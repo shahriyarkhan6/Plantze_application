@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meal information"
+        android:textSize="40sp" />
+
+    <!-- Subtitle TextView -->
+    <TextView
+        android:id="@+id/vehicleTypeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type of meal"
+        android:textSize="24sp"
+        android:layout_marginTop="20dp"/>
+
+    <!-- RadioGroup for food waste options -->
+    <RadioGroup
+        android:id="@+id/mealRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/beefRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Beef" />
+
+        <RadioButton
+            android:id="@+id/porkRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Pork" />
+
+        <RadioButton
+            android:id="@+id/chickenRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Chicken" />
+
+        <RadioButton
+            android:id="@+id/fishRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Fish" />
+
+        <RadioButton
+            android:id="@+id/plantRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Plant-based" />
+
+    </RadioGroup>
+
+
+    <!-- Subtitle TextView -->
+    <TextView
+        android:id="@+id/hoursText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of servings consumed"
+        android:textSize="24sp"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Numeric Input Field -->
+    <EditText
+        android:id="@+id/servingsInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:textSize="20dp"
+        android:hint="Enter serving amount"
+        android:layout_marginTop="6dp" />
+
+
+    <!-- Result TextView to display the current or total carbon emission -->
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Carbon Emission: 0 CO₂"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

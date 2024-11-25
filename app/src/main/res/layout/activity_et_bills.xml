@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Electronics"
+        android:textSize="40sp" />
+
+    <!-- Subtitle TextView -->
+    <TextView
+        android:id="@+id/billTypeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type of electronic devce"
+        android:textSize="24sp"
+        android:layout_marginTop="20dp"/>
+
+    <!-- RadioGroup for food waste options -->
+    <RadioGroup
+        android:id="@+id/billRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/electricityRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Electricity" />
+
+        <RadioButton
+            android:id="@+id/gasRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Gas" />
+
+        <RadioButton
+            android:id="@+id/waterRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Water" />
+    </RadioGroup>
+
+
+    <!-- Subtitle TextView -->
+    <TextView
+        android:id="@+id/amountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bill amount"
+        android:textSize="24sp"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Numeric Input Field -->
+    <EditText
+        android:id="@+id/billInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:textSize="20dp"
+        android:hint="Enter amount"
+        android:layout_marginTop="6dp" />
+
+
+    <!-- Result TextView to display the current or total carbon emission -->
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Carbon Emission: 0 CO₂"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
