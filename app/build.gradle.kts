@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.database)
+    implementation(libs.play.services.tasks)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -56,5 +57,6 @@ dependencies {
     // Declare the dependency for the Cloud Firestore library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation(libs.google.firebase.firestore)
+    //For chart
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }

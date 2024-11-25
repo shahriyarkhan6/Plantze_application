@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
@@ -53,11 +54,13 @@ public class LoginActivity extends AppCompatActivity {
             editor.apply(); // Save changes
 
             // Now navigate to the next activity (e.g., Dashboard or MainActivity)
-            //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            //startActivity(intent);
-            //finish();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
+
+
 
 
     @Override
@@ -65,6 +68,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
+
+        //New code
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -122,25 +129,16 @@ public class LoginActivity extends AppCompatActivity {
                                         SharedPreferences.Editor editor = sharedPref.edit();
                                         editor.putString("USER_ID", userID);
                                         editor.apply(); // Save changes
-
-                                        // Now navigate to the next activity (e.g., Dashboard or MainActivity)
-                                        //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        //startActivity(intent);
-                                        //finish();
-
-                                        //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        //intent.putExtra("OPEN_DASHBOARD", true); // Flag to indicate opening Dashboard
-                                        //startActivity(intent);
-                                        //finish(); // Prevent returning to LoginActivity
-
-
-
+                                        //now navigate to dashboard
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
 
-                                    // Now navigate to the next activity (e.g., Dashboard or MainActivity)
-                                    //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    //startActivity(intent);
-                                    //finish();
+                                    //now navigate to dashboard
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
 
                                 } else {
                                     // If sign in fails, display a message to the user.

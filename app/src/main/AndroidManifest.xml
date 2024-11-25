@@ -47,13 +47,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"></activity> <!-- EcoTracker Activity -->
-        <activity android:name=".ui.ecotracker.EcoTrackerActivity" /> <!-- Diet Activity -->
-        <activity android:name=".ui.ecotracker.DietActivity" />
+            android:label="@string/app_name"></activity>
 
 
         <!-- EcoTracker related activities -->
-        <activity android:name=".ui.annual_footprint.EcoTrackerActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.AnnualFootprintActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.DietActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.BeefActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.PorkActivity" android:exported="true"/>

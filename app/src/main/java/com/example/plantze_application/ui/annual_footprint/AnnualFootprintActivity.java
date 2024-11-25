@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.plantze_application.R;
 
-public class EcoTrackerActivity extends AppCompatActivity {
+public class AnnualFootprintActivity extends AppCompatActivity {
 
     private Button foodButton;
     private Button transportationButton;
@@ -19,7 +19,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ecotracker);
+        setContentView(R.layout.activity_annualfootprint);
 
         // Initialize buttons
         foodButton = findViewById(R.id.foodButton);
@@ -31,7 +31,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
         foodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EcoTrackerActivity.this, DietActivity.class);
+                Intent intent = new Intent(AnnualFootprintActivity.this, DietActivity.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +39,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
         transportationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EcoTrackerActivity.this, TransportationActivity.class);
+                Intent intent = new Intent(AnnualFootprintActivity.this, TransportationActivity.class);
                 startActivity(intent);
             }
         });
@@ -47,7 +47,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
         consumptionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EcoTrackerActivity.this, ConsumptionActivity.class);
+                Intent intent = new Intent(AnnualFootprintActivity.this, ConsumptionActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +55,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
         housingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EcoTrackerActivity.this, HouseTypeActivity.class);
+                Intent intent = new Intent(AnnualFootprintActivity.this, HouseTypeActivity.class);
                 startActivity(intent);
             }
         });
