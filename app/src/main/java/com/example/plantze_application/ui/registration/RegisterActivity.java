@@ -17,6 +17,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
 import com.example.plantze_application.ui.dashboard.DashboardFragment;
 import com.example.plantze_application.ui.dashboard.DashboardViewModel;
@@ -55,16 +56,6 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        //if(currentUser != null){
-
-            //MIGHT NEED TO CHANGE TO DASHBOARD FRAGMENT
-
-            //Intent intent = new Intent(RegisterActivity.this, DashboardFragment.class);
-            //startActivity(intent);
-            //finish();
-        //}
     }
 
     @SuppressLint("MissingInflatedId")
@@ -154,7 +145,9 @@ public class RegisterActivity extends AppCompatActivity {
                                         user.put("Last Name", last_name);
                                         user.put("Email", email);
                                         user.put("Password", password);
-                                        user.put("User ID:", uid);
+                                        user.put("User ID", uid);
+                                        user.put("Login#","0");
+
 
                                         // Save user data to Firestore using the UID as the document ID
                                         db.collection("users").document(uid)
