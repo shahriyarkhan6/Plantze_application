@@ -1,92 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:padding="16dp">
 
-    <!-- Question -->
     <TextView
-        android:id="@+id/questionText"
+        android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="How often do you recycle?"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginBottom="20dp" />
+        android:padding="16dp" />
 
-    <!-- Recycling options -->
-    <RadioGroup
-        android:id="@+id/recyclingGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="20dp">
-
-        <RadioButton
-            android:id="@+id/recyclingNever"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Never"
-            android:padding="10dp"
-            android:textSize="16sp" />
-
-        <RadioButton
-            android:id="@+id/recyclingOccasional"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Occasionally"
-            android:padding="10dp"
-            android:textSize="16sp" />
-
-        <RadioButton
-            android:id="@+id/recyclingFrequent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Frequently"
-            android:padding="10dp"
-            android:textSize="16sp" />
-
-        <RadioButton
-            android:id="@+id/recyclingAlways"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Always"
-            android:padding="10dp"
-            android:textSize="16sp" />
-    </RadioGroup>
-
-    <!-- Display emissions -->
     <TextView
         android:id="@+id/emissionsDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Current Emissions: 0 CO₂ per year"
+        android:text="Adjusted Emissions: 0 CO₂ per year"
         android:textSize="18sp"
         android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp" />
+        android:padding="16dp" />
 
-    <!-- Automatic action display -->
-    <TextView
-        android:id="@+id/actionFeedback"
+    <RadioGroup
+        android:id="@+id/recyclingGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your recycling choice will automatically adjust emissions."
-        android:textSize="14sp"
-        android:gravity="center"
-        android:layout_marginBottom="20dp" />
+        android:orientation="vertical">
 
-    <!-- Next button -->
+        <RadioButton
+            android:id="@+id/rb_never"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Never" />
+
+        <RadioButton
+            android:id="@+id/rb_occasional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Occasionally" />
+
+        <RadioButton
+            android:id="@+id/rb_frequent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frequently" />
+
+        <RadioButton
+            android:id="@+id/rb_always"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Always" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:background="?android:attr/selectableItemBackground" />
+        android:text="Submit"
+        android:layout_marginTop="16dp" />
+
 </LinearLayout>

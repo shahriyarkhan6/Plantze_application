@@ -85,8 +85,18 @@ public class RecyclingActivity extends AppCompatActivity {
             // Update the emissions display
             updateEmissionsDisplay();
 
+            // Save the adjusted emissions to Firestore
+            db.collection("users").document(userId).update("Annual Consumption Emissions", currentEmissions)
+                    .addOnSuccessListener(aVoid -> Log.d("Firestore", "Emissions updated successfully."))
+                    .addOnFailureListener(e -> Log.e("Firestore", "Error updating emissions", e));
+
             Log.d("RecyclingActivity", "Reductions applied. Clothing: " + clothingReduction + ", Device: " + deviceReduction + ", Total: " + totalReduction);
 
+            // Proceed to the next activity (if applicable)
+            // Uncomment below lines to proceed to a new activity
+            // Intent intent = new Intent(this, NextActivity.class);
+            // intent.putExtra("CURRENT_EMISSIONS", currentEmissions);
+            // startActivity(intent);
         });
     }
 
