@@ -82,7 +82,7 @@
         <activity android:name=".ui.annual_footprint.EcoFriendlyProductsActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.ElectronicDevicesActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.RecyclingActivity" android:exported="true"/>
-
+        <activity android:name=".ui.annual_footprint.LocationActivity" android:exported="true"/>
 
 
 

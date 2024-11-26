@@ -1,6 +1,9 @@
 package com.example.plantze_application.ui.annual_footprint;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
@@ -8,6 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LongHaulFlightsActivity extends AppCompatActivity {
 
@@ -46,6 +53,8 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
 
             emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO2");
 
+            // Update Firestore and SharedPreferences
+            updateFirestoreAndPreferences(totalEmissions);
         });
     }
 
@@ -71,5 +80,28 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
         }
 
         return emissions;
+    }
+
+    private void updateFirestoreAndPreferences(double totalEmissions) {
+        SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        String userID = sharedPref.getString("USER_ID", null);
+
+        if (userID != null) {
+            Map<String, Object> updatedData = new HashMap<>();
+            updatedData.put("Annaul Transportation Emissions", totalEmissions);
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            db.collection("users").document(userID)
+                    .update(updatedData)
+                    .addOnSuccessListener(aVoid -> {
+                        // Update successful
+                        Toast.makeText(LongHaulFlightsActivity.this, "User info updated successfully!", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        // Handle error
+                        Log.e("Firestore", "Error updating user info", e);
+                    });
+        }
     }
 }

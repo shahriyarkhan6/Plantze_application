@@ -2,6 +2,7 @@ package com.example.plantze_application.ui.annual_footprint;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,6 +21,7 @@ public class PublicTransportFrequencyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_transport_frequency);
 
+        // Retrieve the car emissions value from the previous activity
         carEmissions = getIntent().getDoubleExtra("CAR_EMISSIONS", 0);
 
         frequencyGroup = findViewById(R.id.frequencyGroup);
@@ -35,6 +37,9 @@ public class PublicTransportFrequencyActivity extends AppCompatActivity {
 
             RadioButton selectedFrequencyButton = findViewById(selectedFrequencyId);
             String frequency = selectedFrequencyButton.getText().toString();
+
+            // Debug log to verify received car emissions
+            Log.d("PublicTransport", "Car Emissions: " + carEmissions);
 
             Intent intent = new Intent(PublicTransportFrequencyActivity.this, PublicTransportTimeActivity.class);
             intent.putExtra("FREQUENCY", frequency);

@@ -2,7 +2,7 @@ package com.example.plantze_application.ui.annual_footprint;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.RadioButton;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ public class CarDistanceActivity extends AppCompatActivity {
     private RadioGroup distanceGroup;
     private TextView resultTextView;
     private double emissionFactor;
+    private double emissions = 0;
+    private Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +26,16 @@ public class CarDistanceActivity extends AppCompatActivity {
 
         distanceGroup = findViewById(R.id.distanceGroup);
         resultTextView = findViewById(R.id.resultTextView);
+        nextButton = findViewById(R.id.nextButton);
 
         // Listen for changes in the selected distance option
-        distanceGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                calculateAndDisplayEmissions(checkedId);
-            }
+        distanceGroup.setOnCheckedChangeListener((group, checkedId) -> calculateAndDisplayEmissions(checkedId));
+
+        // Navigate to the next activity
+        nextButton.setOnClickListener(v -> {
+            Intent intent = new Intent(CarDistanceActivity.this, PublicTransportFrequencyActivity.class);
+            intent.putExtra("CAR_EMISSIONS", emissions); // Pass calculated emissions
+            startActivity(intent);
         });
     }
 
@@ -52,11 +57,9 @@ public class CarDistanceActivity extends AppCompatActivity {
         }
 
         // Calculate emissions based on the emission factor and distance driven
-        double emissions = emissionFactor * distanceDriven;
+        emissions = emissionFactor * distanceDriven;
 
         // Display the calculated emissions
         resultTextView.setText("Estimated Emissions: " + emissions + " kg CO₂ per year");
     }
 }
-// testing change
-// test test

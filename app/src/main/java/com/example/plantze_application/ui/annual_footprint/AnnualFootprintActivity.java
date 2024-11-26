@@ -15,6 +15,7 @@ public class AnnualFootprintActivity extends AppCompatActivity {
     private Button transportationButton;
     private Button consumptionButton;
     private Button housingButton;
+    private Button locationButton; // New button
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class AnnualFootprintActivity extends AppCompatActivity {
         transportationButton = findViewById(R.id.transportationButton);
         consumptionButton = findViewById(R.id.consumptionButton);
         housingButton = findViewById(R.id.housingButton);
+        locationButton = findViewById(R.id.locationButton); // Initialize location button
 
         // Set click listeners for buttons
         foodButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +58,14 @@ public class AnnualFootprintActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AnnualFootprintActivity.this, HouseTypeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        locationButton.setOnClickListener(new View.OnClickListener() { // Handle Location button click
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AnnualFootprintActivity.this, LocationActivity.class); // Update with the actual activity class
                 startActivity(intent);
             }
         });

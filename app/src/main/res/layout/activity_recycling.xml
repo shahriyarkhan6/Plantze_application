@@ -1,65 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
+    <!-- Question -->
     <TextView
-        android:id="@+id/recyclingText"
-        android:layout_width="wrap_content"
+        android:id="@+id/questionText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="How often do you recycle?"
-        android:textSize="18sp"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
 
+    <!-- Recycling options -->
     <RadioGroup
         android:id="@+id/recyclingGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
 
         <RadioButton
-            android:id="@+id/neverRecycling"
+            android:id="@+id/recyclingNever"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Never"
-            android:layout_marginBottom="10dp"/>
+            android:padding="10dp"
+            android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/occasionalRecycling"
+            android:id="@+id/recyclingOccasional"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Occasionally"
-            android:layout_marginBottom="10dp"/>
+            android:padding="10dp"
+            android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/frequentRecycling"
+            android:id="@+id/recyclingFrequent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Frequently"
-            android:layout_marginBottom="10dp"/>
+            android:padding="10dp"
+            android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/alwaysRecycling"
+            android:id="@+id/recyclingAlways"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Always"
-            android:layout_marginBottom="10dp"/>
+            android:padding="10dp"
+            android:textSize="16sp" />
     </RadioGroup>
 
+    <!-- Display emissions -->
     <TextView
         android:id="@+id/emissionsDisplay"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Current Emissions: 0 CO₂ per year"
-        android:textSize="16sp"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
 
+    <!-- Automatic action display -->
+    <TextView
+        android:id="@+id/actionFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your recycling choice will automatically adjust emissions."
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Next button -->
     <Button
         android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next"
-        android:layout_gravity="center" />
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="?android:attr/selectableItemBackground" />
 </LinearLayout>
