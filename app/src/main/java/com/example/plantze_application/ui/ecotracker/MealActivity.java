@@ -14,7 +14,6 @@ import com.example.plantze_application.R;
 
 public class MealActivity extends AppCompatActivity {
     private RadioGroup mealRadioGroup;
-
     private EditText servingsInput;
     private Button submitButton;
 
@@ -30,9 +29,12 @@ public class MealActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                String input = servingsInput.getText().toString();
+                /* check that it is not null nor negative*/
+                double finalEmission, servings=Double.parseDouble(input);
+
                 int selectedId = mealRadioGroup.getCheckedRadioButtonId();
                 double emission=0;
-                double final_emission;
 
                 if (selectedId == R.id.beefRadio) {
                     emission = 1; // kg
@@ -44,23 +46,11 @@ public class MealActivity extends AppCompatActivity {
                     emission = 4; // kg
                 }
 
-                String input = servingsInput.getText().toString();
-                double servings=Double.parseDouble(input);
-                if (!input.isEmpty()) {
-                    try {
-                        servings = Double.parseDouble(input);
-                    } catch (NumberFormatException e) {
-                        // Handle invalid input (for example, show a Toast or error message)
-                        Toast.makeText(MealActivity.this, "Invalid input. Please enter a valid number.", Toast.LENGTH_SHORT).show();
-                        return;  // Exit early if input is invalid
-                    }
-                } else {
-                    // Handle empty input (for example, show a Toast or error message)
-                    Toast.makeText(MealActivity.this, "Please enter a number for servings.", Toast.LENGTH_SHORT).show();
-                    return;  // Exit early if input is empty
-                }
-                final_emission=emission*servings;
-                Intent intent = new Intent(MealActivity.this, CategoryActivity.class);
+                finalEmission=emission*servings;
+                Intent intent = new Intent(MealActivity.this, ResultActivity.class);
+                intent.putExtra("finalEmission", String.valueOf(finalEmission));
+                intent.putExtra("category", "Consumption");
+                intent.putExtra("type", "Meal");
                 startActivity(intent);
             }
         });

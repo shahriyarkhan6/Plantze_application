@@ -27,13 +27,24 @@
         app:layout_constraintVertical_bias="0.658" />
 
     <Button
-        android:id="@+id/ecoTrackerButton"
+        android:id="@+id/annualEmissionsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
-        android:text="Eco Tracker"
+        android:text="Annual Carbon Emissions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_dashboard" />
+
+
+    <Button
+        android:id="@+id/ecotrackerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Ecotracker"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_dashboard" />
 

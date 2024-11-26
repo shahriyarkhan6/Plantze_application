@@ -50,7 +50,7 @@
             android:label="@string/app_name"></activity>
 
 
-        <!-- EcoTracker related activities -->
+        <!-- Annual Emissions related activities -->
         <activity android:name=".ui.annual_footprint.AnnualFootprintActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.DietActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.BeefActivity" android:exported="true"/>
@@ -82,6 +82,17 @@
         <activity android:name=".ui.annual_footprint.EcoFriendlyProductsActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.ElectronicDevicesActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.RecyclingActivity" android:exported="true"/>
+
+        <!-- Ecotracker Menus-->
+        <activity android:name=".ui.ecotracker.CategoryActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.TransportationActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.ConsumptionActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.ResultActivity" android:exported="true"/>
+
+        <!-- Ecotracker Final Menus-->
+        <activity android:name=".ui.ecotracker.MealActivity" android:exported="true"/>
+
+
 
 
 
