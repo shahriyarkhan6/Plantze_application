@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
+import com.example.plantze_application.ui.annual_footprint.AnnualFootprintActivity;
 import com.example.plantze_application.ui.dashboard.DashboardFragment;
 import com.example.plantze_application.ui.dashboard.DashboardViewModel;
 import com.example.plantze_application.ui.registration.RegisterActivity;
@@ -29,6 +30,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,30 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     Button loginbutton;
     Button forgotpasswordbutton;
     FirebaseAuth mAuth;
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null){
-
-            String userID = user.getUid(); // This UID is to be used in Firestore
-
-            SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString("USER_ID", userID);
-            editor.apply(); // Save changes
-
-            // Now navigate to the next activity (e.g., Dashboard or MainActivity)
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-
-
+    FirebaseFirestore db;
 
 
     @Override
@@ -68,9 +51,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-
-        //New code
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -89,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         mAuth=FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
@@ -129,16 +110,43 @@ public class LoginActivity extends AppCompatActivity {
                                         SharedPreferences.Editor editor = sharedPref.edit();
                                         editor.putString("USER_ID", userID);
                                         editor.apply(); // Save changes
-                                        //now navigate to dashboard
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
+                                        // Fetch Login# from Firestore
+                                        db.collection("users").document(userID).get()
+                                                .addOnCompleteListener(task1 -> {
+                                                    if (task1.isSuccessful() && task1.getResult() != null) {
+                                                        DocumentSnapshot documentSnapshot = task1.getResult();
+                                                        if (documentSnapshot.exists()) {
+                                                            String loginNumber = documentSnapshot.getString("Login#");
+                                                            if ("0".equals(loginNumber)) {
+                                                                // New user: Update Login# to 1
+                                                                Map<String, Object> update = new HashMap<>();
+                                                                update.put("Login#", "1");
+                                                                db.collection("users").document(userID).update(update)
+                                                                        .addOnCompleteListener(updateTask -> {
+                                                                            if (updateTask.isSuccessful()) {
+                                                                                // Navigate to the AnnualFootPrintActivity for the new user
+                                                                                Intent intent = new Intent(LoginActivity.this, AnnualFootprintActivity.class);
+                                                                                startActivity(intent);
+                                                                                finish();
+                                                                            } else {
+                                                                                Toast.makeText(LoginActivity.this, "Failed to update user status.", Toast.LENGTH_SHORT).show();
+                                                                            }
+                                                                        });
+                                                            } else {
+                                                                // Old user: Navigate to the main activity
+                                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                                startActivity(intent);
+                                                                finish();
+                                                            }
+                                                        } else {
+                                                            Toast.makeText(LoginActivity.this, "User data not found.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    } else {
+                                                        Toast.makeText(LoginActivity.this, "Failed to fetch user data.", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                     }
 
-                                    //now navigate to dashboard
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
 
                                 } else {
                                     // If sign in fails, display a message to the user.
