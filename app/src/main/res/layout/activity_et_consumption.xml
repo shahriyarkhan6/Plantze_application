@@ -15,55 +15,40 @@
         android:textSize="40sp"
         android:layout_marginBottom="10dp"/>
 
-    <!-- RadioGroup for food waste options -->
-    <RadioGroup
-        android:id="@+id/consumptionRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/mealRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Meal" />
-
-        <RadioButton
-            android:id="@+id/clothesRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Clothes" />
-
-        <RadioButton
-            android:id="@+id/electronicsRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Electronics" />
-
-        <RadioButton
-            android:id="@+id/billsRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Bills" />
-
-        <RadioButton
-            android:id="@+id/othersRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Others" />
-    </RadioGroup>
-
-    <!-- Submit Button -->
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/mealButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue"
-        android:layout_marginTop="20dp" />
+        android:textSize="16dp"
+        android:text="Meal" />
+
+    <Button
+        android:id="@+id/clothesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Clothes" />
+
+    <Button
+        android:id="@+id/electronicsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Electronics" />
+
+    <Button
+        android:id="@+id/billsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Bills" />
+
+    <Button
+        android:id="@+id/othersButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Others" />
+    
 
 </LinearLayout>

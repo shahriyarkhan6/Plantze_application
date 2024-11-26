@@ -15,34 +15,20 @@
         android:textSize="40sp"
         android:layout_marginBottom="10dp"/>
 
-    <!-- RadioGroup for food waste options -->
-    <RadioGroup
-        android:id="@+id/categoryRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/transportationRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Transportation" />
-
-        <RadioButton
-            android:id="@+id/consumptionRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Train" />
-    </RadioGroup>
-
-    <!-- Submit Button -->
+    <!-- Transportation Button -->
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/transportationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue"
+        android:text="Transportation"
+        android:layout_marginTop="20dp" />
+
+    <!-- Consumption Button -->
+    <Button
+        android:id="@+id/consumptionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consumption"
         android:layout_marginTop="20dp" />
 
 </LinearLayout>

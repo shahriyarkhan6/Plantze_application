@@ -15,49 +15,33 @@
         android:textSize="40sp"
         android:layout_marginBottom="10dp"/>
 
-    <!-- RadioGroup for food waste options -->
-    <RadioGroup
-        android:id="@+id/transportationRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/personalRadio"
-            android:layout_width="168dp"
-            android:layout_height="wrap_content"
-            android:text="Personal Vehicle"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/publicRadio"
-            android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:text="Public Transport"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/cycleWalkRadio"
-            android:layout_width="212dp"
-            android:layout_height="wrap_content"
-            android:text="Cycling or Walking"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/flightRadio"
-            android:layout_width="168dp"
-            android:layout_height="wrap_content"
-            android:text="Flight"
-            android:textSize="16dp" />
-
-    </RadioGroup>
-
-    <!-- Submit Button -->
     <Button
-        android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/personalButton"
+        android:layout_width="168dp"
         android:layout_height="wrap_content"
-        android:text="Continue"
-        android:layout_marginTop="20dp" />
+        android:text="Personal Vehicle"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/publicButton"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:text="Public Transport"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/cycleWalkButton"
+        android:layout_width="212dp"
+        android:layout_height="wrap_content"
+        android:text="Cycling or Walking"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/flightButton"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:text="Flight"
+        android:textSize="16dp" />
+
 
 </LinearLayout>
