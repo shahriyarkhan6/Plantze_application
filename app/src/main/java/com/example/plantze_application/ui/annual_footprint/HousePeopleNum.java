@@ -35,13 +35,13 @@ public class HousePeopleNum extends AppCompatActivity {
             int selectedId = housePeopleNumRadioGroup.getCheckedRadioButtonId();
 
             if (selectedId == R.id.radio1) {
-                currentArrayRow = currentArrayRow + 1;
+                currentArrayRow = currentArrayRow + 0;
             } else if (selectedId == R.id.radio2) {
-                currentArrayRow = currentArrayRow + 2;
+                currentArrayRow = currentArrayRow + 1;
             } else if (selectedId == R.id.radio3to4) {
-                currentArrayRow = currentArrayRow + 3;
+                currentArrayRow = currentArrayRow + 2;
             } else if (selectedId == R.id.radio5ormore) {
-                currentArrayRow = currentArrayRow + 4;
+                currentArrayRow = currentArrayRow + 3;
             }
 
             resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
