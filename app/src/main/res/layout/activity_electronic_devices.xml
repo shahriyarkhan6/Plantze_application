@@ -7,6 +7,17 @@
     android:gravity="center">
 
     <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How many electronic devices have you purchased in the past year?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center" />
+
+    <TextView
         android:id="@+id/emissionsDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +25,7 @@
         android:textSize="18sp"
         android:paddingBottom="20dp"
         android:layout_marginBottom="20dp"
-        android:gravity="center"/>
+        android:gravity="center" />
 
     <RadioGroup
         android:id="@+id/devicesGroup"
