@@ -1,11 +1,20 @@
 package com.example.plantze_application.ui.annual_footprint;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FoodWasteActivity extends AppCompatActivity {
 
@@ -44,6 +53,29 @@ public class FoodWasteActivity extends AppCompatActivity {
             currentEmission += foodWasteEmission;
 
             resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
+
+
+            SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+            String userID = sharedPref.getString("USER_ID", null);
+
+            if (userID != null) {
+                Map<String, Object> updatedData = new HashMap<>();
+                updatedData.put("Annual Food Emission", currentEmission); // Example data
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                db.collection("users").document(userID)
+                        .update(updatedData)
+                        .addOnSuccessListener(aVoid -> {
+                            // Update successful
+                            Toast.makeText(FoodWasteActivity.this, "User info updated successfully!", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            // Handle error
+                            Log.e("Firestore", "Error updating user info", e);
+                        });
+            }
+
 
         });
     }
