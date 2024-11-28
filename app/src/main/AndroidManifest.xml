@@ -87,19 +87,19 @@
         <activity android:name=".ui.ecotracker.CategoryActivity" android:exported="true"/>
         <activity android:name=".ui.ecotracker.TransportationActivity" android:exported="true"/>
         <activity android:name=".ui.ecotracker.ConsumptionActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.DateActivity" android:exported="true"/>
         <activity android:name=".ui.ecotracker.ResultActivity" android:exported="true"/>
 
         <!-- Ecotracker Final Menus-->
+        <activity android:name=".ui.ecotracker.BillsActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.ClothesActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.CycleWalkActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.ElectronicsActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.FlightActivity" android:exported="true"/>
         <activity android:name=".ui.ecotracker.MealActivity" android:exported="true"/>
-
-
-
-
-
-
-
-
-
+        <activity android:name=".ui.ecotracker.OthersActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.PersonalActivity" android:exported="true"/>
+        <activity android:name=".ui.ecotracker.PublicActivity" android:exported="true"/>
     </application>
 
 </manifest>

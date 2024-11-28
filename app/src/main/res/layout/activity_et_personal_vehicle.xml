@@ -26,7 +26,7 @@
 
     <!-- Numeric Input Field -->
     <EditText
-        android:id="@+id/flightsInput"
+        android:id="@+id/distanceInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -43,7 +43,7 @@
         android:textSize="24sp"
         android:layout_marginTop="20dp"/>
 
-    <!-- RadioGroup for food waste options -->
+    <!-- RadioGroup for options -->
     <RadioGroup
         android:id="@+id/vehicleRadioGroup"
         android:layout_width="match_parent"
@@ -84,18 +84,7 @@
             android:layout_height="wrap_content"
             android:textSize="16dp"
             android:text="I don't know" />
-
-
     </RadioGroup>
-
-    <!-- Result TextView to display the current or total carbon emission -->
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Carbon Emission: 0 CO₂"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp" />
 
     <!-- Submit Button -->
     <Button

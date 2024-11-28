@@ -57,10 +57,7 @@
             android:layout_height="wrap_content"
             android:textSize="16dp"
             android:text="Other" />
-
-
     </RadioGroup>
-
 
     <!-- Subtitle TextView -->
     <TextView
@@ -80,16 +77,6 @@
         android:textSize="20dp"
         android:hint="Enter amount"
         android:layout_marginTop="6dp" />
-
-
-    <!-- Result TextView to display the current or total carbon emission -->
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Carbon Emission: 0 CO₂"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp" />
 
     <!-- Submit Button -->
     <Button

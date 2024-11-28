@@ -2,6 +2,7 @@ package com.example.plantze_application.ui.ecotracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,7 @@ public class MealActivity extends AppCompatActivity {
     private Button submitButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_et_meals);
 
@@ -26,15 +27,20 @@ public class MealActivity extends AppCompatActivity {
         servingsInput = findViewById(R.id.servingsInput);
         submitButton = findViewById(R.id.submitButton);
 
-        submitButton.setOnClickListener(new View.OnClickListener(){
+        mealRadioGroup.check(R.id.beefRadio);
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String input = servingsInput.getText().toString();
-                /* check that it is not null nor negative*/
-                double finalEmission, servings=Double.parseDouble(input);
+                String input = servingsInput.getText().toString().trim();
+
+                if(TextUtils.isEmpty(input)){
+                    Toast.makeText(MealActivity.this, "Enter input", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                double finalEmission, d_input = Double.parseDouble(input);
 
                 int selectedId = mealRadioGroup.getCheckedRadioButtonId();
-                double emission=0;
+                double emission = 0;
 
                 if (selectedId == R.id.beefRadio) {
                     emission = 1; // kg
@@ -46,8 +52,8 @@ public class MealActivity extends AppCompatActivity {
                     emission = 4; // kg
                 }
 
-                finalEmission=emission*servings;
-                Intent intent = new Intent(MealActivity.this, ResultActivity.class);
+                finalEmission = emission * d_input;
+                Intent intent = new Intent(MealActivity.this, DateActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Meal");
