@@ -13,7 +13,7 @@ public class HouseHeatWaterType extends AppCompatActivity {
     private RadioGroup houseHeatWaterTypeRadioGroup;
     private Button submitButton;
     private TextView resultTextView;
-    private int currentEmission;
+    private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
     private int energyComparison;
@@ -27,7 +27,7 @@ public class HouseHeatWaterType extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
 
-        currentEmission = getIntent().getIntExtra("carbonEmission", 0);
+        housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
         currentColumnRow = getIntent().getIntExtra("ColumnRow", 0);
         energyComparison = getIntent().getIntExtra("EnergyComparison", 0);
@@ -38,26 +38,26 @@ public class HouseHeatWaterType extends AppCompatActivity {
             int selectedId = houseHeatWaterTypeRadioGroup.getCheckedRadioButtonId();
 
             if (selectedId == R.id.radioNaturalGas && energyComparison != 1) {
-                currentEmission = currentEmission + 233;
+                housingCurrentEmission = housingCurrentEmission + 233;
             } else if (selectedId == R.id.radioElectricity && energyComparison != 2) {
-                currentEmission = currentEmission + 233;
+                housingCurrentEmission = housingCurrentEmission + 233;
             } else if (selectedId == R.id.radioOil && energyComparison != 3) {
-                currentEmission = currentEmission + 233;
+                housingCurrentEmission = housingCurrentEmission + 233;
             } else if (selectedId == R.id.radioPropane && energyComparison != 4) {
-                currentEmission = currentEmission + 233;
+                housingCurrentEmission = housingCurrentEmission + 233;
             } else if (selectedId == R.id.radioWood && energyComparison != 5) {
-                currentEmission = currentEmission + 233;
+                housingCurrentEmission = housingCurrentEmission + 233;
             } else if (selectedId == R.id.radioOther && energyComparison != 6) {
-                currentEmission = currentEmission + 233;
+                housingCurrentEmission = housingCurrentEmission + 233;
             }
 
-            resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
+            resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
 
             Intent intent = new Intent(HouseHeatWaterType.this, HouseRenewableEnergy.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("ColumnRow", currentColumnRow);
             intent.putExtra("EnergyComparison", energyComparison);
-            intent.putExtra("carbonEmission", currentEmission);
+            intent.putExtra("carbonEmission", housingCurrentEmission);
             startActivity(intent);
 
         });

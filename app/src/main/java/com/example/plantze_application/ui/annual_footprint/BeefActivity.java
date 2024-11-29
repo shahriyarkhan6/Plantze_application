@@ -17,6 +17,7 @@ public class BeefActivity extends AppCompatActivity {
     private Button submitButton;
     private TextView resultTextView;
     private int currentEmission;
+    private int foodCurrentEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class BeefActivity extends AppCompatActivity {
         resultTextView = findViewById(R.id.resultTextView);
 
         currentEmission = getIntent().getIntExtra("carbonEmission", 0);
+        foodCurrentEmission = getIntent().getIntExtra("foodCarbonEmission", 0);
 
         resultTextView.setText("Current Carbon Emission: " + currentEmission + " kg");
 
@@ -48,11 +50,15 @@ public class BeefActivity extends AppCompatActivity {
                 }
 
                 currentEmission += beefEmission;
+                foodCurrentEmission += beefEmission;
+
 
                 resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
 
                 Intent intent = new Intent(BeefActivity.this, PorkActivity.class);
                 intent.putExtra("carbonEmission", currentEmission);
+                intent.putExtra("foodCarbonEmission", foodCurrentEmission);
+
                 startActivity(intent);
             }
         });

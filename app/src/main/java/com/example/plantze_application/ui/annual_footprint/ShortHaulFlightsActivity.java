@@ -16,13 +16,15 @@ public class ShortHaulFlightsActivity extends AppCompatActivity {
     private Button nextButton;
     private TextView emissionsDisplay;
     private double currentEmissions;
+    private double transportCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_short_haul_flights);
 
-        currentEmissions = getIntent().getDoubleExtra("TOTAL_EMISSIONS", 0);
+        currentEmissions = getIntent().getDoubleExtra("carbonEmission", 0);
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
         flightsGroup = findViewById(R.id.flightsGroup);
         nextButton = findViewById(R.id.nextButton);
@@ -44,11 +46,13 @@ public class ShortHaulFlightsActivity extends AppCompatActivity {
             double flightEmissions = getFlightEmissions(flights);
 
             double totalEmissions = currentEmissions + flightEmissions;
+            transportCarbonEmission = transportCarbonEmission + flightEmissions;
 
             emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO2");
 
             Intent nextIntent = new Intent(ShortHaulFlightsActivity.this, LongHaulFlightsActivity.class);
-            nextIntent.putExtra("TOTAL_EMISSIONS", totalEmissions);
+            nextIntent.putExtra("carbonEmission", totalEmissions);
+            nextIntent.putExtra("transportCarbonEmission", transportCarbonEmission);
             startActivity(nextIntent);
         });
     }

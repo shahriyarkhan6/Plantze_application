@@ -13,7 +13,7 @@ public class HouseTypeActivity extends AppCompatActivity {
     private RadioGroup houseTypeRadioGroup;
     private Button submitButton;
     private TextView resultTextView;
-    private int currentEmission;
+    private int housingCurrentEmission;
     private int currentArrayRow;
 
     @Override
@@ -25,7 +25,7 @@ public class HouseTypeActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
 
-        currentEmission = getIntent().getIntExtra("carbonEmission", 0);
+        housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
 
         resultTextView.setText("Final value will be displayed after answering all housing questions!");
 
@@ -45,11 +45,11 @@ public class HouseTypeActivity extends AppCompatActivity {
                 currentArrayRow = 24;
             }
 
-            resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
+            resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
 
             Intent intent = new Intent(HouseTypeActivity.this, HouseSize.class);
             intent.putExtra("ArrayRow", currentArrayRow);
-            intent.putExtra("carbonEmission", currentEmission);
+            intent.putExtra("carbonEmission", housingCurrentEmission);
             startActivity(intent);
 
         });

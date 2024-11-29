@@ -1,6 +1,9 @@
 package com.example.plantze_application.ui.annual_footprint;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
@@ -8,6 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LongHaulFlightsActivity extends AppCompatActivity {
 
@@ -15,13 +22,15 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
     private Button calculateButton;
     private TextView emissionsDisplay;
     private double currentEmissions;
+    private double transportCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_long_haul_flights);
 
-        currentEmissions = getIntent().getDoubleExtra("TOTAL_EMISSIONS", 0);
+        currentEmissions = getIntent().getDoubleExtra("carbonEmission", 0);
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
         flightsGroup = findViewById(R.id.flightsGroup);
         calculateButton = findViewById(R.id.calculateButton);
@@ -43,10 +52,33 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
             double flightEmissions = getFlightEmissions(flights);
 
             double totalEmissions = currentEmissions + flightEmissions;
+            transportCarbonEmission = transportCarbonEmission + flightEmissions;
 
             emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO2");
 
         });
+
+        //Adding Housing Carbon Data to user info
+        SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        String userID = sharedPref.getString("USER_ID", null);
+
+        if(userID != null){
+            Map<String, Object> updatedData = new HashMap<>();
+            updatedData.put("Transportation Annual Carbon Emission", transportCarbonEmission);
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            db.collection("users").document(userID)
+                    .update(updatedData)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(LongHaulFlightsActivity.this, "User info updated successfully!", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+
+                        Log.e("Firestore", "Error updating user info", e);
+                    });
+
+
+        }
     }
 
     private double getFlightEmissions(String flights) {

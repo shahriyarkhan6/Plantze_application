@@ -31,15 +31,20 @@ public class DietActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int selectedId = dietRadioGroup.getCheckedRadioButtonId();
                 int carbonEmission = 0;
+                int foodCarbonEmission = 0;
 
                 if (selectedId == R.id.radioVegetarian) {
                     carbonEmission = 1000; // kg
+                    foodCarbonEmission = 1000; // kg
                 } else if (selectedId == R.id.radioVegan) {
                     carbonEmission = 500; // kg
+                    foodCarbonEmission = 500; // kg
                 } else if (selectedId == R.id.radioPescatarian) {
                     carbonEmission = 1500; // kg
+                    foodCarbonEmission = 1500; // kg
                 } else if (selectedId == R.id.radioMeatBased) {
                     carbonEmission = 0; // kg
+                    foodCarbonEmission = 0; // kg
                 }
 
                 resultTextView.setText("Carbon Emission: " + carbonEmission + " CO₂");
@@ -52,6 +57,7 @@ public class DietActivity extends AppCompatActivity {
                 }
 
                 intent.putExtra("carbonEmission", carbonEmission);
+                intent.putExtra("foodCarbonEmission", foodCarbonEmission);
 
                 startActivity(intent);
             }

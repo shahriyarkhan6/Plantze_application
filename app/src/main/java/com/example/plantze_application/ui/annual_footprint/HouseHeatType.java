@@ -13,7 +13,7 @@ public class HouseHeatType extends AppCompatActivity {
     private RadioGroup houseHeatTypeRadioGroup;
     private Button submitButton;
     private TextView resultTextView;
-    private int currentEmission;
+    private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
     private int energyComparison;
@@ -27,7 +27,7 @@ public class HouseHeatType extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
 
-        currentEmission = getIntent().getIntExtra("carbonEmission", 0);
+        housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
         currentColumnRow = getIntent().getIntExtra("ColumnRow", 0);
 
@@ -56,13 +56,13 @@ public class HouseHeatType extends AppCompatActivity {
                 energyComparison = 6;
             }
 
-            resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
+            resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
 
             Intent intent = new Intent(HouseHeatType.this, HouseHeatWaterType.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("ColumnRow", currentColumnRow);
             intent.putExtra("EnergyComparison", energyComparison);
-            intent.putExtra("carbonEmission", currentEmission);
+            intent.putExtra("carbonEmission", housingCurrentEmission);
             startActivity(intent);
 
         });

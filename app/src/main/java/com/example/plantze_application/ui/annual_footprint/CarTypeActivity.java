@@ -22,24 +22,26 @@ public class CarTypeActivity extends AppCompatActivity {
         findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double emissionFactor = 0;
+                double carbonEmission = 0;
+                double transportCarbonEmission = 0;
                 int selectedId = carTypeGroup.getCheckedRadioButtonId();
 
                 if (selectedId == R.id.radioGasoline) {
-                    emissionFactor = 0.24;
+                    carbonEmission = 0.24;
                 } else if (selectedId == R.id.radioDiesel) {
-                    emissionFactor = 0.27;
+                    carbonEmission = 0.27;
                 } else if (selectedId == R.id.radioHybrid) {
-                    emissionFactor = 0.16;
+                    carbonEmission = 0.16;
                 } else if (selectedId == R.id.radioElectric) {
-                    emissionFactor = 0.05;
+                    carbonEmission = 0.05;
                 } else if (selectedId == R.id.radioDontKnow) {
                     Toast.makeText(CarTypeActivity.this, "Please select a car type to proceed.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 Intent intent = new Intent(CarTypeActivity.this, CarDistanceActivity.class);
-                intent.putExtra("emissionFactor", emissionFactor);
+                intent.putExtra("carbonEmission", carbonEmission);
+                intent.putExtra("transportCarbonEmission", carbonEmission);
                 startActivity(intent);
             }
         });
