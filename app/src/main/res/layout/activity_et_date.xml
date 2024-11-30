@@ -8,71 +8,30 @@
 
     <!-- Title TextView -->
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Date"
+        android:text="Date"
         android:textSize="40sp" />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/createButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:text="Create activity"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999" />
+
+    <LinearLayout
+        android:id="@+id/dateActivitiesLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginTop="16dp">
 
-        <!-- Numeric Input Field -->
-        <EditText
-            android:id="@+id/yearInput"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textSize="20dp"
-            android:hint="Year"
-            android:layout_marginRight="6dp" />
-
-        <TextView
-            android:id="@+id/splitYearMonthText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/"
-            android:textSize="24sp"
-            android:layout_marginRight="6dp" />
-
-        <!-- Numeric Input Field -->
-        <EditText
-            android:id="@+id/monthInput"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textSize="20dp"
-            android:hint="Month"
-            android:layout_marginRight="12dp" />
-
-        <TextView
-            android:id="@+id/splitMonthDayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/"
-            android:textSize="24sp"
-            android:layout_marginRight="6dp" />
-
-        <!-- Numeric Input Field -->
-        <EditText
-            android:id="@+id/dayInput"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textSize="20dp"
-            android:hint="Day"
-            android:layout_marginRight="12dp" />
     </LinearLayout>
 
-    <!-- Finish Button -->
-    <Button
-        android:id="@+id/continueButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Continue"
-        android:layout_marginTop="20dp" />
+
 
 </LinearLayout>

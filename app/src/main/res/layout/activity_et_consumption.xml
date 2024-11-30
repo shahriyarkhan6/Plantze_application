@@ -19,36 +19,41 @@
         android:id="@+id/mealButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Meal" />
+        android:text="Meal"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
 
     <Button
         android:id="@+id/clothesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Clothes" />
+        android:text="Clothes"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
 
     <Button
         android:id="@+id/electronicsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Electronics" />
+        android:text="Electronics"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
 
     <Button
         android:id="@+id/billsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Bills" />
+        android:text="Bills"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
 
     <Button
         android:id="@+id/othersButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Others" />
+        android:text="Others"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
     
 
 </LinearLayout>

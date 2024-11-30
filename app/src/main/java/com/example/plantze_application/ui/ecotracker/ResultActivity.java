@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.plantze_application.R;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.CollectionReference;
 
@@ -50,35 +51,34 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Save the activity to Firestore and move to the next activity
                 saveActivityToFirestore();
-                Intent intent = new Intent(ResultActivity.this, CategoryActivity.class);
+                Intent intent = new Intent(ResultActivity.this, CalendarActivity.class);
                 startActivity(intent);
             }
         });
     }
-
     private void saveActivityToFirestore() {
         SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
         String userID = sharedPref.getString("USER_ID", null);
         Log.d("ResultActivity", "User ID: " + userID);
 
         if (userID != null) {
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            CollectionReference logsRef = db.collection("users").document(userID).collection("logs");
-
+            // Create a map to represent the activity
             Map<String, Object> activity = new HashMap<>();
-            activity.put("name", category);
-            activity.put("type", type);
-            activity.put("date", date);
-            activity.put("finalEmission", finalEmission);
+            activity.put("Category", category);
+            activity.put("Type", type);
+            activity.put("Date", date);
+            activity.put("Emission", Double.valueOf(finalEmission));
 
-            logsRef.add(activity)
-                    .addOnSuccessListener(documentReference -> {
-                        Log.d("ResultActivity", "Activity added with ID: " + documentReference.getId());
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("users").document(userID)
+                    .update("Activities", FieldValue.arrayUnion(activity))
+                    .addOnSuccessListener(aVoid -> {
+                        Log.d("ResultActivity", "Activity added to list");
                         Toast.makeText(ResultActivity.this, "Activity saved successfully!", Toast.LENGTH_SHORT).show();
                     })
                     .addOnFailureListener(e -> {
                         Log.e("ResultActivity", "Error saving activity", e);
                         Toast.makeText(ResultActivity.this, "Failed to save activity", Toast.LENGTH_SHORT).show();
                     });
-
-        }}}
+        }
+    }}

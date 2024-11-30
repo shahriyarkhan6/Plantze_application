@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.plantze_application.databinding.FragmentDashboardBinding;
 
 import com.example.plantze_application.ui.annual_footprint.AnnualFootprintActivity;
-import com.example.plantze_application.ui.ecotracker.CategoryActivity;
+import com.example.plantze_application.ui.ecotracker.CalendarActivity;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -59,10 +59,9 @@ public class DashboardFragment extends Fragment {
         Button ecotrackerButton = binding.ecotrackerButton;  // Reference the Ecotracker button
         ecotrackerButton.setOnClickListener(v -> {
             // Start the Ecotracker when the button is clicked
-            Intent intent = new Intent(getActivity(), CategoryActivity.class);
+            Intent intent = new Intent(getActivity(), CalendarActivity.class);
             startActivity(intent);
         });
-
         return root;
     }
 

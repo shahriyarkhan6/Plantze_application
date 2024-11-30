@@ -53,7 +53,7 @@ public class PersonalActivity extends AppCompatActivity {
                 }
 
                 finalEmission = emission * d_input;
-                Intent intent = new Intent(PersonalActivity.this, DateActivity.class);
+                Intent intent = new Intent(PersonalActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");
                 intent.putExtra("type", "Personal vehicle");

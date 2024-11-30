@@ -55,7 +55,7 @@ public class MealActivity extends AppCompatActivity {
                 }
 
                 finalEmission = emission * d_input;
-                Intent intent = new Intent(MealActivity.this, DateActivity.class);
+                Intent intent = new Intent(MealActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Meal");

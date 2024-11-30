@@ -43,15 +43,15 @@ public class OthersActivity extends AppCompatActivity {
                 double emission = 0;
 
                 if (selectedId == R.id.furnitureRadio) {
-                    emission = 1; // kg
+                    emission = 350; // kg
                 } else if (selectedId == R.id.appliancesRadio) {
-                    emission = 2; // kg
+                    emission = 1358; // kg, amounting for average lifetime use
                 } else if (selectedId == R.id.otherRadio) {
-                    emission = 3; // kg
+                    emission = 100; // kg, arbitrary educated number
                 }
 
                 finalEmission = emission * d_input;
-                Intent intent = new Intent(OthersActivity.this, DateActivity.class);
+                Intent intent = new Intent(OthersActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Others");

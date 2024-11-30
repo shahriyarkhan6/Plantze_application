@@ -53,7 +53,7 @@ public class ElectronicsActivity extends AppCompatActivity {
                 }
 
                 finalEmission = emission * d_input;
-                Intent intent = new Intent(ElectronicsActivity.this, DateActivity.class);
+                Intent intent = new Intent(ElectronicsActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Electronics");

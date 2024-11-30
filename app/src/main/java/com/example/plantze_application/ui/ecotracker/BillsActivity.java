@@ -50,7 +50,7 @@ public class BillsActivity extends AppCompatActivity {
                 }
 
                 finalEmission = emission * d_input;
-                Intent intent = new Intent(BillsActivity.this, DateActivity.class);
+                Intent intent = new Intent(BillsActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Bills");

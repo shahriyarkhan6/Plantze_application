@@ -36,7 +36,7 @@ public class ClothesActivity extends AppCompatActivity {
                 // Average clothing emissions
                 double emission = 6;
                 double finalEmission = Double.parseDouble(input) * emission;
-                Intent intent = new Intent(ClothesActivity.this, DateActivity.class);
+                Intent intent = new Intent(ClothesActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Clothes");

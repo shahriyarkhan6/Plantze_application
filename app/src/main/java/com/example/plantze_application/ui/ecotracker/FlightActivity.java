@@ -35,7 +35,7 @@ public class FlightActivity extends AppCompatActivity {
                     return;
                 }
                 double finalEmission = Double.parseDouble(input) * 0.09;
-                Intent intent = new Intent(FlightActivity.this, DateActivity.class);
+                Intent intent = new Intent(FlightActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");
                 intent.putExtra("type", "Flight");

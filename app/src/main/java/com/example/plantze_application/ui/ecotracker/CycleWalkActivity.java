@@ -33,7 +33,7 @@ public class CycleWalkActivity extends AppCompatActivity {
                     return;
                 }
                 double finalEmission = Double.parseDouble(input) * 0.05;
-                Intent intent = new Intent(CycleWalkActivity.this, DateActivity.class);
+                Intent intent = new Intent(CycleWalkActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");
                 intent.putExtra("type", "Cycling or walking");

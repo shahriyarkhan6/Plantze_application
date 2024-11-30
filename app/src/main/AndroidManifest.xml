@@ -84,6 +84,7 @@
         <activity android:name=".ui.annual_footprint.RecyclingActivity" android:exported="true"/>
 
         <!-- Ecotracker Menus-->
+        <activity android:name=".ui.ecotracker.CalendarActivity" android:exported="true"/>
         <activity android:name=".ui.ecotracker.CategoryActivity" android:exported="true"/>
         <activity android:name=".ui.ecotracker.TransportationActivity" android:exported="true"/>
         <activity android:name=".ui.ecotracker.ConsumptionActivity" android:exported="true"/>

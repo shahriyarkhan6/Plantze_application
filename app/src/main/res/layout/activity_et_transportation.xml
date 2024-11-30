@@ -17,31 +17,39 @@
 
     <Button
         android:id="@+id/personalButton"
-        android:layout_width="168dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Personal Vehicle"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
 
     <Button
         android:id="@+id/publicButton"
-        android:layout_width="232dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Public Transport"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
 
     <Button
         android:id="@+id/cycleWalkButton"
-        android:layout_width="212dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cycling or Walking"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
 
     <Button
         android:id="@+id/flightButton"
-        android:layout_width="168dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Flight"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#009999"/>
 
 
 </LinearLayout>

@@ -54,7 +54,7 @@ public class PublicActivity extends AppCompatActivity {
                 }
 
                 finalEmission = emission * d_input;
-                Intent intent = new Intent(PublicActivity.this, DateActivity.class);
+                Intent intent = new Intent(PublicActivity.this, ResultActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");
                 intent.putExtra("type", "Public transportation");
