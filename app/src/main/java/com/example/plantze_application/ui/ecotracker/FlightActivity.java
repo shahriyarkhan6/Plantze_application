@@ -15,7 +15,6 @@ import com.example.plantze_application.R;
 
 public class FlightActivity extends AppCompatActivity {
     private EditText flightsInput;
-    private RadioGroup distanceRadioGroup;
     private Button submitButton;
 
     @Override
@@ -24,30 +23,18 @@ public class FlightActivity extends AppCompatActivity {
         setContentView(R.layout.activity_et_flights);
 
         flightsInput = findViewById(R.id.flightsInput);
-        distanceRadioGroup = findViewById(R.id.distanceRadioGroup);
         submitButton = findViewById(R.id.submitButton);
 
-        distanceRadioGroup.check(R.id.shortHaulRadio);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Every 1000 km, 90kg per person
                 String input = flightsInput.getText().toString().trim();
                 if(TextUtils.isEmpty(input)){
                     Toast.makeText(FlightActivity.this, "Enter input", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                double finalEmission, d_input = Double.parseDouble(input);
-
-                int selectedId = distanceRadioGroup.getCheckedRadioButtonId();
-                double emission = 0;
-
-                if (selectedId == R.id.shortHaulRadio) {
-                    emission = 1; // kg
-                } else if (selectedId == R.id.longHaulRadio) {
-                    emission = 2; // kg
-                }
-
-                finalEmission = emission * d_input;
+                double finalEmission = Double.parseDouble(input) * 0.09;
                 Intent intent = new Intent(FlightActivity.this, DateActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");

@@ -20,7 +20,7 @@
         android:id="@+id/flightsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of flights today"
+        android:text="Total distance covered (km)"
         android:textSize="24sp"
         android:layout_marginBottom="0dp" />
 
@@ -31,40 +31,8 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:textSize="20dp"
-        android:hint="Enter number"
+        android:hint="Enter distance"
         android:layout_marginTop="6dp" />
-
-    <!-- Subtitle TextView -->
-    <TextView
-        android:id="@+id/distanceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Overall distance"
-        android:textSize="24sp"
-        android:layout_marginTop="20dp"/>
-
-    <!-- RadioGroup for options -->
-    <RadioGroup
-        android:id="@+id/distanceRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/shortHaulRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Under 1500 km" />
-
-        <RadioButton
-            android:id="@+id/longHaulRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="1500 km or more" />
-
-    </RadioGroup>
 
     <!-- Submit Button -->
     <Button
