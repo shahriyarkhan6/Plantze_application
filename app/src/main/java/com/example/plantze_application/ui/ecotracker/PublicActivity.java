@@ -17,7 +17,7 @@ public class PublicActivity extends AppCompatActivity {
     private RadioGroup transportRadioGroup;
     private EditText hoursInput;
     private Button submitButton;
-
+    private String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,7 @@ public class PublicActivity extends AppCompatActivity {
         transportRadioGroup = findViewById(R.id.transportRadioGroup);
         hoursInput = findViewById(R.id.hoursInput);
         submitButton = findViewById(R.id.submitButton);
+        date = getIntent().getStringExtra("date");
 
         transportRadioGroup.check(R.id.busRadio);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,7 @@ public class PublicActivity extends AppCompatActivity {
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");
                 intent.putExtra("type", "Public transportation");
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });

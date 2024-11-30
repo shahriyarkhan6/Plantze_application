@@ -16,6 +16,7 @@ import com.example.plantze_application.R;
 public class ClothesActivity extends AppCompatActivity {
     private EditText itemsInput;
     private Button submitButton;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class ClothesActivity extends AppCompatActivity {
 
         itemsInput = findViewById(R.id.itemsInput);
         submitButton = findViewById(R.id.submitButton);
+        date = getIntent().getStringExtra("date");
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,7 @@ public class ClothesActivity extends AppCompatActivity {
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Clothes");
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });

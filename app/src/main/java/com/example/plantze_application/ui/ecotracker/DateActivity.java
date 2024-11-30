@@ -38,6 +38,7 @@ public class DateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DateActivity.this, CategoryActivity.class);
+                intent.putExtra("date",s_date);
                 startActivity(intent);
             }
         });

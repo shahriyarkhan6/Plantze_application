@@ -15,6 +15,7 @@ import com.example.plantze_application.R;
 public class CycleWalkActivity extends AppCompatActivity {
     private EditText distanceInput;
     private Button submitButton;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class CycleWalkActivity extends AppCompatActivity {
 
         distanceInput = findViewById(R.id.distanceInput);
         submitButton = findViewById(R.id.submitButton);
+        date = getIntent().getStringExtra("date");
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +39,7 @@ public class CycleWalkActivity extends AppCompatActivity {
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");
                 intent.putExtra("type", "Cycling or walking");
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });

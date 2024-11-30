@@ -20,7 +20,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Personal Vehicle"
-        android:textSize="16dp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#009999"/>
 
@@ -29,7 +28,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Public Transport"
-        android:textSize="16dp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#009999"/>
 
@@ -38,7 +36,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cycling or Walking"
-        android:textSize="16dp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#009999"/>
 
@@ -47,7 +44,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Flight"
-        android:textSize="16dp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#009999"/>
 

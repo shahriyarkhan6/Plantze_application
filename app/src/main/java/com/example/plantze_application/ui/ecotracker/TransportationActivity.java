@@ -2,6 +2,7 @@ package com.example.plantze_application.ui.ecotracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,28 +11,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
 
 public class TransportationActivity extends AppCompatActivity{
-    private Button personalButton;
-    private Button publicButton;
-    private Button cycleWalkButton;
-    private Button flightButton;
-
+    private Button personalButton, publicButton, cycleWalkButton, flightButton;
+    private String date;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_et_transportation);
 
-        // Initialize buttons
         personalButton = findViewById(R.id.personalButton);
         publicButton = findViewById(R.id.publicButton);
         cycleWalkButton = findViewById(R.id.cycleWalkButton);
         flightButton = findViewById(R.id.flightButton);
+        date = getIntent().getStringExtra("date");
 
+        Log.d(date,date);
 
-        // Set click listeners for buttons
         personalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TransportationActivity.this, PersonalActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });
@@ -40,6 +39,7 @@ public class TransportationActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TransportationActivity.this, PublicActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });
@@ -48,6 +48,7 @@ public class TransportationActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TransportationActivity.this, CycleWalkActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });
@@ -56,6 +57,7 @@ public class TransportationActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TransportationActivity.this, FlightActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });

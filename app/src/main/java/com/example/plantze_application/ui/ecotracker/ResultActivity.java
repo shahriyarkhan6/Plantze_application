@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.plantze_application.R;
@@ -17,6 +18,9 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.CollectionReference;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +28,19 @@ public class ResultActivity extends AppCompatActivity {
     private Button finishButton;
     private TextView resultText, categoryText, typeText, dateText;
     private String finalEmission, category, type, date;
+
+    public static String formatDate(String inputDate) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MMMM d, yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date date = inputFormat.parse(inputDate);
+            return outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +83,7 @@ public class ResultActivity extends AppCompatActivity {
             Map<String, Object> activity = new HashMap<>();
             activity.put("Category", category);
             activity.put("Type", type);
-            activity.put("Date", date);
+            activity.put("Date", formatDate(date));
             activity.put("Emission", Double.valueOf(finalEmission));
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();

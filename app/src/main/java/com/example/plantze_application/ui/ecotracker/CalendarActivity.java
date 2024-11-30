@@ -2,7 +2,6 @@ package com.example.plantze_application.ui.ecotracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -90,7 +89,6 @@ public class CalendarActivity extends AppCompatActivity {
         fifthRow.removeAllViews();
 
         for (int i = 1; i <= numberOfDays; i++) {
-            // Instead of using a shared 'date' variable, directly create the date string
             String currentDate = s_month + " " + i + ", " + year;
 
             Button button = new Button(this);
