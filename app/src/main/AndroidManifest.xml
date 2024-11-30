@@ -60,8 +60,6 @@
             android:label="@string/app_name"></activity>
 
 
-
-
         <!-- EcoTracker related activities -->
         <activity android:name=".ui.annual_footprint.AnnualFootprintActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.DietActivity" android:exported="true"/>

@@ -3,7 +3,9 @@ package com.example.plantze_application.ui.habit_tracking;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,33 +13,44 @@ import com.example.plantze_application.R;
 
 public class FoodHabitsActivity extends AppCompatActivity {
 
-    private Button meatFreeHabitButton;
-    private Button reducedFoodWasteHabitButton;
+    private ListView foodHabitListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_habits);
 
-        // Initialize buttons
-        meatFreeHabitButton = findViewById(R.id.meatFreeHabitButton);
-        reducedFoodWasteHabitButton = findViewById(R.id.reducedFoodWasteHabitButton);
+        // Initialize ListView
+        foodHabitListView = findViewById(R.id.foodHabitListView);
 
-        // Set click listener for Meat-Free Habit button
-        meatFreeHabitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FoodHabitsActivity.this, MeatFreeHabitActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Define food habit options
+        String[] habitOptions = {
+                "Meat-Free Habit",
+                "Reduced Food Waste Habit"
+        };
 
-        // Set click listener for Reduced Food Waste Habit button
-        reducedFoodWasteHabitButton.setOnClickListener(new View.OnClickListener() {
+        // Set up ArrayAdapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                habitOptions
+        );
+
+        // Attach adapter to ListView
+        foodHabitListView.setAdapter(adapter);
+
+        // Set click listener for ListView items
+        foodHabitListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FoodHabitsActivity.this, ReducedFoodWasteHabitActivity.class);
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0: // Meat-Free Habit
+                        startActivity(new Intent(FoodHabitsActivity.this, MeatFreeHabitActivity.class));
+                        break;
+                    case 1: // Reduced Food Waste Habit
+                        startActivity(new Intent(FoodHabitsActivity.this, ReducedFoodWasteHabitActivity.class));
+                        break;
+                }
             }
         });
     }

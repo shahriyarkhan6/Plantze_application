@@ -3,7 +3,9 @@ package com.example.plantze_application.ui.habit_tracking;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,55 +13,52 @@ import com.example.plantze_application.R;
 
 public class HabitTrackingActivity extends AppCompatActivity {
 
-    private Button ecoFriendlyTransportationButton;
-    private Button ecoFriendlyFoodButton;
-    private Button ecoFriendlyConsumptionButton;
-    private Button ecoFriendlyEnergyButton;
+    private ListView habitListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habit_tracking);
 
-        // Initialize buttons
-        ecoFriendlyTransportationButton = findViewById(R.id.ecoFriendlyTransportationButton);
-        ecoFriendlyFoodButton = findViewById(R.id.ecoFriendlyFoodButton);
-        ecoFriendlyConsumptionButton = findViewById(R.id.ecoFriendlyConsumptionButton);
-        ecoFriendlyEnergyButton = findViewById(R.id.ecoFriendlyEnergyButton);
+        // Initialize ListView
+        habitListView = findViewById(R.id.habitListView);
 
-        // Set click listener for Eco-Friendly Transportation Habits button
-        ecoFriendlyTransportationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HabitTrackingActivity.this, TransportationHabitsActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Define habit options
+        String[] habitOptions = {
+                "Eco-Friendly Transportation Habits",
+                "Eco-Friendly Food Habits",
+                "Eco-Friendly Consumption Habits",
+                "Eco-Friendly Energy Habits"
+        };
 
-        // Set click listener for Eco-Friendly Food Habits button
-        ecoFriendlyFoodButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HabitTrackingActivity.this, FoodHabitsActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Set up ArrayAdapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                habitOptions
+        );
 
-        // Set click listener for Eco-Friendly Consumption Habits button
-        ecoFriendlyConsumptionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HabitTrackingActivity.this, ConsumptionHabitsActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Attach adapter to ListView
+        habitListView.setAdapter(adapter);
 
-        // Set click listener for Eco-Friendly Energy Habits button
-        ecoFriendlyEnergyButton.setOnClickListener(new View.OnClickListener() {
+        // Set click listener for ListView items
+        habitListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HabitTrackingActivity.this, EnergyHabitsActivity.class);
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0: // Eco-Friendly Transportation Habits
+                        startActivity(new Intent(HabitTrackingActivity.this, TransportationHabitsActivity.class));
+                        break;
+                    case 1: // Eco-Friendly Food Habits
+                        startActivity(new Intent(HabitTrackingActivity.this, FoodHabitsActivity.class));
+                        break;
+                    case 2: // Eco-Friendly Consumption Habits
+                        startActivity(new Intent(HabitTrackingActivity.this, ConsumptionHabitsActivity.class));
+                        break;
+                    case 3: // Eco-Friendly Energy Habits
+                        startActivity(new Intent(HabitTrackingActivity.this, EnergyHabitsActivity.class));
+                        break;
+                }
             }
         });
     }

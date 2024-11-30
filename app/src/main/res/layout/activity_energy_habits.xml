@@ -7,28 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.habit_tracking.EnergyHabitsActivity">
 
-    <!-- Button to navigate to Renewable Energy Habit Activity -->
-    <Button
-        android:id="@+id/renewableEnergyHabitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Renewable Energy Habit"
+    <!-- ListView for energy habit options -->
+    <ListView
+        android:id="@+id/energyHabitListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <Button
-        android:id="@+id/energyConservationHabitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Energy Conservation Habit"
-        app:layout_constraintTop_toBottomOf="@id/renewableEnergyHabitButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-
-
-
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
