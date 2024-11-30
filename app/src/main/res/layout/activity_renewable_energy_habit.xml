@@ -5,26 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.habit_tracking.FoodHabitsActivity">
+    tools:context=".ui.habit_tracking.RenewableEnergyHabitActivity">
 
-    <!-- Button to navigate to Meat-Free Habit Activity -->
-    <Button
-        android:id="@+id/meatFreeHabitButton"
+    <!-- TextView to display renewable energy usage days -->
+    <TextView
+        android:id="@+id/renewableEnergyDaysTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Meat-Free Habit"
+        android:text="You’ve logged 0 days of renewable energy usage."
+        android:textSize="18sp"
+        android:layout_marginTop="32dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Button to increment renewable energy usage days -->
     <Button
-        android:id="@+id/reducedFoodWasteHabitButton"
+        android:id="@+id/incrementRenewableEnergyDaysButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Reduced Food Waste Habit"
-        app:layout_constraintTop_toBottomOf="@id/meatFreeHabitButton"
+        android:text="Log a Renewable Energy Day"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/renewableEnergyDaysTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

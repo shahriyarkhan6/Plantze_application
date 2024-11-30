@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.habit_tracking.EnergyConservationHabitActivity">
+
+    <!-- TextView to display energy conservation days -->
+    <TextView
+        android:id="@+id/energyConservationDaysTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You’ve practiced energy conservation for 0 days this year."
+        android:textSize="18sp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button to increment energy conservation days -->
+    <Button
+        android:id="@+id/incrementEnergyConservationDaysButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log an Energy Conservation Day"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/energyConservationDaysTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

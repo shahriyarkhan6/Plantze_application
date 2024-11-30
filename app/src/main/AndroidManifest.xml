@@ -104,6 +104,16 @@
         <activity android:name=".ui.habit_tracking.CyclingHabitActivity" />
         <activity android:name=".ui.habit_tracking.FoodHabitsActivity" />
         <activity android:name=".ui.habit_tracking.MeatFreeHabitActivity" />
+        <activity android:name=".ui.habit_tracking.ReducedFoodWasteHabitActivity" />
+        <activity android:name=".ui.habit_tracking.EcoFriendlyPurchasesHabitActivity" />
+        <activity android:name=".ui.habit_tracking.ConsumptionHabitsActivity" />
+        <activity android:name=".ui.habit_tracking.RecyclingHabitActivity" />
+        <activity android:name=".ui.habit_tracking.RenewableEnergyHabitActivity" />
+        <activity android:name=".ui.habit_tracking.EnergyHabitsActivity" />
+        <activity android:name=".ui.habit_tracking.EnergyConservationHabitActivity" />
+
+
+
 
 
 
