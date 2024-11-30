@@ -15,6 +15,7 @@ public class HouseSize extends AppCompatActivity {
     private TextView resultTextView;
     private int housingCurrentEmission;
     private int currentArrayRow;
+    private double foodCarbonEmission;
 
 
     @Override
@@ -28,6 +29,7 @@ public class HouseSize extends AppCompatActivity {
 
         housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
 
         resultTextView.setText("Final value will be displayed after answering all housing questions!");
 
@@ -47,6 +49,7 @@ public class HouseSize extends AppCompatActivity {
             Intent intent = new Intent(HouseSize.this, HousePeopleNum.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("carbonEmission", housingCurrentEmission);
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             startActivity(intent);
 
         });

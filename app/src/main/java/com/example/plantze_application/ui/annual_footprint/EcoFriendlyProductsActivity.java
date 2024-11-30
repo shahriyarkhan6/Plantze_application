@@ -16,6 +16,7 @@ public class EcoFriendlyProductsActivity extends AppCompatActivity {
     private TextView emissionsDisplay;
     private double currentEmissions;
     private String clothingFrequency;
+    private double foodCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,8 @@ public class EcoFriendlyProductsActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.nextButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
         emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO₂ per year");
+
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
 
         nextButton.setOnClickListener(v -> {
             int selectedId = ecoFriendlyGroup.getCheckedRadioButtonId();
@@ -45,6 +48,8 @@ public class EcoFriendlyProductsActivity extends AppCompatActivity {
             Intent intent = new Intent(EcoFriendlyProductsActivity.this, ElectronicDevicesActivity.class);
             intent.putExtra("CURRENT_EMISSIONS", adjustedEmissions);
             intent.putExtra("CLOTHING_FREQUENCY", clothingFrequency); // Pass clothing frequency
+
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             startActivity(intent);
         });
     }

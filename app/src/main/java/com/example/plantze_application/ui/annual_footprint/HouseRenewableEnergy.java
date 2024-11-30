@@ -32,6 +32,7 @@ public class HouseRenewableEnergy extends AppCompatActivity {
     private int currentColumnRow;
     private int currentArrayRow;
     private int energyComparison;
+    private double foodCarbonEmission;
 
 //    private List<HousingDataModel> dataHolder;
 
@@ -49,6 +50,8 @@ public class HouseRenewableEnergy extends AppCompatActivity {
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
         currentColumnRow = getIntent().getIntExtra("ColumnRow", 0);
         energyComparison = getIntent().getIntExtra("EnergyComparison", 0);
+
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
 
         resultTextView.setText("Current Carbon Emission: " + housingCurrentEmission + " CO₂");
 
@@ -148,6 +151,7 @@ public class HouseRenewableEnergy extends AppCompatActivity {
             }
 
             Intent intent = new Intent(HouseRenewableEnergy.this, ConsumptionActivity.class);
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             startActivity(intent);
 
 
@@ -158,6 +162,7 @@ public class HouseRenewableEnergy extends AppCompatActivity {
         returnHomeButton.setOnClickListener(v -> {
 
             Intent intent = new Intent(HouseRenewableEnergy.this, MainActivity.class);
+            intent.putExtra("housingCarbonEmission", housingCurrentEmission);
             startActivity(intent);
 
         });

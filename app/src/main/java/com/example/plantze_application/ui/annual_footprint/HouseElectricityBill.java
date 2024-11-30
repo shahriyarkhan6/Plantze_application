@@ -16,6 +16,7 @@ public class HouseElectricityBill extends AppCompatActivity {
     private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
+    private double foodCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class HouseElectricityBill extends AppCompatActivity {
 
         housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
 
         resultTextView.setText("Final value will be displayed after answering all housing questions!");
 
@@ -53,6 +55,7 @@ public class HouseElectricityBill extends AppCompatActivity {
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("ColumnRow", currentColumnRow);
             intent.putExtra("carbonEmission", housingCurrentEmission);
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             startActivity(intent);
 
         });

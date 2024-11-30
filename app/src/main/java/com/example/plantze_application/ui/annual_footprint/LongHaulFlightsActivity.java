@@ -56,7 +56,7 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
 
 
             Intent intent = new Intent(LongHaulFlightsActivity.this, DietActivity.class);
-            intent.putExtra("carbonEmission", carbonEmission);
+            intent.putExtra("transportCarbonEmission", carbonEmission);
             startActivity(intent);
 
         });

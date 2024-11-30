@@ -55,7 +55,10 @@ public class FoodWasteActivity extends AppCompatActivity {
 
             resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
 
+            double foodCarbonEmission = currentEmission;
+
             Intent intent = new Intent(FoodWasteActivity.this, HouseTypeActivity.class);
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             startActivity(intent);
 
         });

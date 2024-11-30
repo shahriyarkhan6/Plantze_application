@@ -17,6 +17,7 @@ public class HouseHeatType extends AppCompatActivity {
     private int currentColumnRow;
     private int currentArrayRow;
     private int energyComparison;
+    private double foodCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class HouseHeatType extends AppCompatActivity {
         housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
         currentColumnRow = getIntent().getIntExtra("ColumnRow", 0);
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
 
         resultTextView.setText("Final value will be displayed after answering all housing questions!");
         submitButton.setOnClickListener(v -> {
@@ -63,6 +65,7 @@ public class HouseHeatType extends AppCompatActivity {
             intent.putExtra("ColumnRow", currentColumnRow);
             intent.putExtra("EnergyComparison", energyComparison);
             intent.putExtra("carbonEmission", housingCurrentEmission);
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             startActivity(intent);
 
         });

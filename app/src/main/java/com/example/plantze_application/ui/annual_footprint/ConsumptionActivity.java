@@ -15,6 +15,7 @@ public class ConsumptionActivity extends AppCompatActivity {
     private Button nextButton;
     private TextView emissionsDisplay;
     private double currentEmissions;
+    private double foodCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class ConsumptionActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.nextButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
         emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO₂ per year");
+
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
 
         frequencyGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId != -1) {
@@ -53,6 +56,8 @@ public class ConsumptionActivity extends AppCompatActivity {
             Intent intent = new Intent(ConsumptionActivity.this, EcoFriendlyProductsActivity.class);
             intent.putExtra("CURRENT_EMISSIONS", totalEmissions);
             intent.putExtra("CLOTHING_FREQUENCY", frequency); // Pass clothing frequency
+
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
 
             startActivity(intent);
         });
