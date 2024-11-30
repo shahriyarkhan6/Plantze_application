@@ -53,6 +53,7 @@ public class ConsumptionActivity extends AppCompatActivity {
             Intent intent = new Intent(ConsumptionActivity.this, EcoFriendlyProductsActivity.class);
             intent.putExtra("CURRENT_EMISSIONS", totalEmissions);
             intent.putExtra("CLOTHING_FREQUENCY", frequency); // Pass clothing frequency
+
             startActivity(intent);
         });
     }

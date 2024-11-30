@@ -46,6 +46,7 @@ public class ElectronicDevicesActivity extends AppCompatActivity {
             Intent intent = new Intent(ElectronicDevicesActivity.this, RecyclingActivity.class);
             intent.putExtra("CURRENT_EMISSIONS", totalEmissions);
             intent.putExtra("CLOTHING_FREQUENCY", clothingFrequency); // Pass clothing frequency
+
             startActivity(intent);
         });
     }

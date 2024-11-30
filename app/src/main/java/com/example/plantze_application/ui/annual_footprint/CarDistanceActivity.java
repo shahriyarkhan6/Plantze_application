@@ -16,7 +16,6 @@ public class CarDistanceActivity extends AppCompatActivity {
     private RadioGroup distanceGroup;
     private TextView resultTextView;
     private double carbonEmission;
-    private double transportCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,6 @@ public class CarDistanceActivity extends AppCompatActivity {
 
         // Retrieve the emission factor passed from CarTypeActivity
         carbonEmission = getIntent().getDoubleExtra("carbonEmission", 0);
-        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
         distanceGroup = findViewById(R.id.distanceGroup);
         resultTextView = findViewById(R.id.resultTextView);
@@ -55,15 +53,14 @@ public class CarDistanceActivity extends AppCompatActivity {
 
                 // Calculate emissions based on the emission factor and distance driven
                 carbonEmission = carbonEmission * distanceDriven;
-                transportCarbonEmission = transportCarbonEmission * distanceDriven;
 
 
                 // Display the calculated emissions
                 resultTextView.setText("Total Carbon Emission: " + carbonEmission + " CO₂");
 
+
                 Intent intent = new Intent(CarDistanceActivity.this, PublicTransportFrequencyActivity.class);
                 intent.putExtra("carbonEmission", carbonEmission);
-                intent.putExtra("transportCarbonEmission", transportCarbonEmission);
                 startActivity(intent);
 
 

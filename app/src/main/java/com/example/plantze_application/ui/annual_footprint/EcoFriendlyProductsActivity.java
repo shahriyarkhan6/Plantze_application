@@ -40,6 +40,7 @@ public class EcoFriendlyProductsActivity extends AppCompatActivity {
             double reductionPercentage = calculateEcoFriendlyReduction(ecoFriendlyChoice);
             double adjustedEmissions = currentEmissions * (1 - reductionPercentage);
 
+
             // Pass updated emissions and clothing frequency to next activity
             Intent intent = new Intent(EcoFriendlyProductsActivity.this, ElectronicDevicesActivity.class);
             intent.putExtra("CURRENT_EMISSIONS", adjustedEmissions);

@@ -147,6 +147,9 @@ public class HouseRenewableEnergy extends AppCompatActivity {
 
             }
 
+            Intent intent = new Intent(HouseRenewableEnergy.this, ConsumptionActivity.class);
+            startActivity(intent);
+
 
 
         });

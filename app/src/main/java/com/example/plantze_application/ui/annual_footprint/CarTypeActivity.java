@@ -41,7 +41,6 @@ public class CarTypeActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(CarTypeActivity.this, CarDistanceActivity.class);
                 intent.putExtra("carbonEmission", carbonEmission);
-                intent.putExtra("transportCarbonEmission", carbonEmission);
                 startActivity(intent);
             }
         });

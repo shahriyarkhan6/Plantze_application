@@ -1,6 +1,7 @@
 package com.example.plantze_application.ui.annual_footprint;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,22 +22,20 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
     private RadioGroup flightsGroup;
     private Button calculateButton;
     private TextView emissionsDisplay;
-    private double currentEmissions;
-    private double transportCarbonEmission;
+    private double carbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_long_haul_flights);
 
-        currentEmissions = getIntent().getDoubleExtra("carbonEmission", 0);
-        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
+        carbonEmission = getIntent().getDoubleExtra("carbonEmission", 0);
 
         flightsGroup = findViewById(R.id.flightsGroup);
         calculateButton = findViewById(R.id.calculateButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
 
-        emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO2");
+        emissionsDisplay.setText("Current Emissions: " + carbonEmission + " CO2");
 
         calculateButton.setOnClickListener(v -> {
             int selectedFlightsId = flightsGroup.getCheckedRadioButtonId();
@@ -51,34 +50,18 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
 
             double flightEmissions = getFlightEmissions(flights);
 
-            double totalEmissions = currentEmissions + flightEmissions;
-            transportCarbonEmission = transportCarbonEmission + flightEmissions;
+            carbonEmission = carbonEmission + flightEmissions;
 
-            emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO2");
+            emissionsDisplay.setText("Total Emissions: " + carbonEmission + " CO₂ per year");
+
+
+            Intent intent = new Intent(LongHaulFlightsActivity.this, DietActivity.class);
+            intent.putExtra("carbonEmission", carbonEmission);
+            startActivity(intent);
 
         });
 
-        //Adding Housing Carbon Data to user info
-        SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-        String userID = sharedPref.getString("USER_ID", null);
 
-        if(userID != null){
-            Map<String, Object> updatedData = new HashMap<>();
-            updatedData.put("Transportation Annual Carbon Emission", transportCarbonEmission);
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-            db.collection("users").document(userID)
-                    .update(updatedData)
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(LongHaulFlightsActivity.this, "User info updated successfully!", Toast.LENGTH_SHORT).show();
-                    })
-                    .addOnFailureListener(e -> {
-
-                        Log.e("Firestore", "Error updating user info", e);
-                    });
-
-
-        }
     }
 
     private double getFlightEmissions(String flights) {
