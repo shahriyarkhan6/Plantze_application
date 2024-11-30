@@ -98,6 +98,17 @@
         <activity android:name=".ui.annual_footprint.ElectronicDevicesActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.RecyclingActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.LocationActivity" android:exported="true"/>
+        <activity android:name=".ui.habit_tracking.HabitTrackingActivity" />
+        <activity android:name=".ui.habit_tracking.TransportationHabitsActivity" />
+        <activity android:name=".ui.habit_tracking.WalkingHabitActivity" />
+        <activity android:name=".ui.habit_tracking.CyclingHabitActivity" />
+        <activity android:name=".ui.habit_tracking.FoodHabitsActivity" />
+        <activity android:name=".ui.habit_tracking.MeatFreeHabitActivity" />
+
+
+
+
+
 
 
 

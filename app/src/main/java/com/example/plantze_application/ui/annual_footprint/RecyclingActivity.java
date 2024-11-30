@@ -109,11 +109,6 @@ public class RecyclingActivity extends AppCompatActivity {
             Log.d("RecyclingActivity", "Reductions applied. Clothing: " + clothingReduction + ", Device: " + deviceReduction + ", Total: " + totalReduction);
 
 
-            // Proceed to the next activity (if applicable)
-            // Uncomment below lines to proceed to a new activity
-            // Intent intent = new Intent(this, NextActivity.class);
-            // intent.putExtra("CURRENT_EMISSIONS", currentEmissions);
-            // startActivity(intent);
         });
     }
 

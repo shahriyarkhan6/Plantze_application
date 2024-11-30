@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.habit_tracking.HabitTrackingActivity">
+
+    <!-- Eco-Friendly Transportation Habits Button -->
+    <Button
+        android:id="@+id/ecoFriendlyTransportationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eco-Friendly Transportation Habits"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Eco-Friendly Energy Habits Button -->
+    <Button
+        android:id="@+id/ecoFriendlyEnergyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eco-Friendly Energy Habits"
+        app:layout_constraintTop_toBottomOf="@id/ecoFriendlyTransportationButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Eco-Friendly Food Habits Button -->
+    <Button
+        android:id="@+id/ecoFriendlyFoodButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eco-Friendly Food Habits"
+        app:layout_constraintTop_toBottomOf="@id/ecoFriendlyEnergyButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+
+
+    <!-- Eco-Friendly Consumption Habits Button -->
+    <Button
+        android:id="@+id/ecoFriendlyConsumptionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eco-Friendly Consumption Habits"
+        app:layout_constraintTop_toBottomOf="@id/ecoFriendlyFoodButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
