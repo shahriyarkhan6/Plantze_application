@@ -45,18 +45,18 @@
             android:text="Train" />
 
         <RadioButton
-            android:id="@+id/subwayRadio"
+            android:id="@+id/electricRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
             android:text="Subway" />
 
         <RadioButton
-            android:id="@+id/otherRadio"
+            android:id="@+id/subwayRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Other" />
+            android:text="Subway" />
 
     </RadioGroup>
 

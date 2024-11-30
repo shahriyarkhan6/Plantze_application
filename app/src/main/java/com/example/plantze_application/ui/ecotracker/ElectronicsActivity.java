@@ -43,13 +43,13 @@ public class ElectronicsActivity extends AppCompatActivity {
                 double emission = 0;
 
                 if (selectedId == R.id.smartphoneRadio) {
-                    emission = 1; // kg
+                    emission = 55; // kg
                 } else if (selectedId == R.id.computerRadio) {
-                    emission = 2; // kg
+                    emission = 225; // kg
                 } else if (selectedId == R.id.tvRadio) {
-                    emission = 3; // kg
+                    emission = 500; // kg
                 } else if (selectedId == R.id.otherRadio) {
-                    emission = 4; // kg
+                    emission = 250; // kg
                 }
 
                 finalEmission = emission * d_input;

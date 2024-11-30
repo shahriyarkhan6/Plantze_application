@@ -32,7 +32,7 @@ public class CycleWalkActivity extends AppCompatActivity {
                     Toast.makeText(CycleWalkActivity.this, "Enter input", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                double finalEmission = Double.parseDouble(input);
+                double finalEmission = Double.parseDouble(input) * 0.05;
                 Intent intent = new Intent(CycleWalkActivity.this, DateActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");

@@ -33,7 +33,9 @@ public class ClothesActivity extends AppCompatActivity {
                     Toast.makeText(ClothesActivity.this, "Enter input", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                double finalEmission = Double.parseDouble(input);
+                // Average clothing emissions
+                double emission = 6;
+                double finalEmission = Double.parseDouble(input) * emission;
                 Intent intent = new Intent(ClothesActivity.this, DateActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");

@@ -39,15 +39,15 @@ public class FlightActivity extends AppCompatActivity {
                 double finalEmission, d_input = Double.parseDouble(input);
 
                 int selectedId = distanceRadioGroup.getCheckedRadioButtonId();
-                double distance = 0;
+                double emission = 0;
 
                 if (selectedId == R.id.shortHaulRadio) {
-                    distance = 1; // kg
+                    emission = 1; // kg
                 } else if (selectedId == R.id.longHaulRadio) {
-                    distance = 2; // kg
+                    emission = 2; // kg
                 }
 
-                finalEmission = distance * d_input;
+                finalEmission = emission * d_input;
                 Intent intent = new Intent(FlightActivity.this, DateActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Transportation");

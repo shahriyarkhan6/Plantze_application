@@ -43,15 +43,13 @@ public class PersonalActivity extends AppCompatActivity {
                 double emission = 0;
 
                 if (selectedId == R.id.gasolineRadio) {
-                    emission = 1; // kg
+                    emission = 0.24; // kg
                 } else if (selectedId == R.id.dieselRadio) {
-                    emission = 2; // kg
+                    emission = 0.27; // kg
                 } else if (selectedId == R.id.hybridRadio) {
-                    emission = 3; // kg
+                    emission = 0.16; // kg
                 } else if (selectedId == R.id.electricRadio) {
-                    emission = 4; // kg
-                } else if (selectedId == R.id.unknownRadio) {
-                    emission = 5; // kg
+                    emission = 0.05; // kg
                 }
 
                 finalEmission = emission * d_input;

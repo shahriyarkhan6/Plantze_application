@@ -43,13 +43,15 @@ public class MealActivity extends AppCompatActivity {
                 double emission = 0;
 
                 if (selectedId == R.id.beefRadio) {
-                    emission = 1; // kg
+                    emission = 45; // kg
                 } else if (selectedId == R.id.porkRadio) {
-                    emission = 2; // kg
+                    emission = 10; // kg
                 } else if (selectedId == R.id.chickenRadio) {
-                    emission = 3; // kg
+                    emission = 5.5; // kg
+                } else if (selectedId == R.id.fishRadio) {
+                    emission = 4.5; // kg
                 } else if (selectedId == R.id.plantRadio) {
-                    emission = 4; // kg
+                    emission = 0.7; // kg
                 }
 
                 finalEmission = emission * d_input;

@@ -77,13 +77,6 @@
             android:layout_height="wrap_content"
             android:textSize="16dp"
             android:text="Electric" />
-
-        <RadioButton
-            android:id="@+id/unknownRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="I don't know" />
     </RadioGroup>
 
     <!-- Submit Button -->

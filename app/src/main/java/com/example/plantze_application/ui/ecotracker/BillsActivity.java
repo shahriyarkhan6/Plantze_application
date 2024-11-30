@@ -39,17 +39,17 @@ public class BillsActivity extends AppCompatActivity {
                 double finalEmission, d_input = Double.parseDouble(input);
 
                 int selectedId = billRadioGroup.getCheckedRadioButtonId();
-                double distance = 0;
+                double emission = 0;
 
                 if (selectedId == R.id.electricityRadio) {
-                    distance = 1; // kg
+                    emission = 2; // kg
                 } else if (selectedId == R.id.gasRadio) {
-                    distance = 2; // kg
+                    emission = 0.4; // kg
                 } else if (selectedId == R.id.waterRadio) {
-                    distance = 3; // kg
+                    emission = 1; // kg
                 }
 
-                finalEmission = distance * d_input;
+                finalEmission = emission * d_input;
                 Intent intent = new Intent(BillsActivity.this, DateActivity.class);
                 intent.putExtra("finalEmission", String.valueOf(finalEmission));
                 intent.putExtra("category", "Consumption");

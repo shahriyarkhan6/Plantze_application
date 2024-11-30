@@ -42,14 +42,15 @@ public class PublicActivity extends AppCompatActivity {
                 int selectedId = transportRadioGroup.getCheckedRadioButtonId();
                 double emission = 0;
 
+                // ChatGPT how much CO2 released per hour per person
                 if (selectedId == R.id.busRadio) {
-                    emission = 1; // kg
+                    emission = 0.5; // kg
                 } else if (selectedId == R.id.trainRadio) {
-                    emission = 2; // kg
+                    emission = 3.2; // kg
+                } else if (selectedId == R.id.electricRadio) {
+                    emission = 1.5; // kg
                 } else if (selectedId == R.id.subwayRadio) {
-                    emission = 3; // kg
-                } else if (selectedId == R.id.otherRadio) {
-                    emission = 4; // kg
+                    emission = 1.1; // kg
                 }
 
                 finalEmission = emission * d_input;
