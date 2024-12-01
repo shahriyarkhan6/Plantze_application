@@ -18,6 +18,7 @@ public class OthersActivity extends AppCompatActivity {
     private EditText othersInput;
     private Button submitButton;
     private String date;
+    private boolean status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class OthersActivity extends AppCompatActivity {
         othersInput = findViewById(R.id.othersInput);
         submitButton = findViewById(R.id.submitButton);
         date = getIntent().getStringExtra("date");
+        status=getIntent().getBooleanExtra("new",true);
 
         othersRadioGroup.check(R.id.furnitureRadio);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +59,7 @@ public class OthersActivity extends AppCompatActivity {
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Others");
                 intent.putExtra("date",date);
+                intent.putExtra("new",status);
                 startActivity(intent);
             }
         });

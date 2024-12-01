@@ -17,7 +17,7 @@ public class BillsActivity extends AppCompatActivity {
     private EditText billInput;
     private RadioGroup billRadioGroup;
     private Button submitButton;
-
+    private boolean status;
     private String date;
 
     @Override
@@ -25,6 +25,7 @@ public class BillsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_et_bills);
         date = getIntent().getStringExtra("date");
+        status=getIntent().getBooleanExtra("new",true);
 
         billInput = findViewById(R.id.billInput);
         billRadioGroup = findViewById(R.id.billRadioGroup);
@@ -58,6 +59,7 @@ public class BillsActivity extends AppCompatActivity {
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Bills");
                 intent.putExtra("date",date);
+                intent.putExtra("new",status);
                 startActivity(intent);
             }
         });

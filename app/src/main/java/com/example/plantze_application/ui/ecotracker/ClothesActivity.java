@@ -17,7 +17,7 @@ public class ClothesActivity extends AppCompatActivity {
     private EditText itemsInput;
     private Button submitButton;
     private String date;
-
+    private boolean status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,7 @@ public class ClothesActivity extends AppCompatActivity {
         itemsInput = findViewById(R.id.itemsInput);
         submitButton = findViewById(R.id.submitButton);
         date = getIntent().getStringExtra("date");
+        status=getIntent().getBooleanExtra("new",true);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,7 @@ public class ClothesActivity extends AppCompatActivity {
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Clothes");
                 intent.putExtra("date",date);
+                intent.putExtra("new",status);
                 startActivity(intent);
             }
         });

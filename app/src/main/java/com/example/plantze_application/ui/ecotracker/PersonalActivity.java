@@ -18,6 +18,7 @@ public class PersonalActivity extends AppCompatActivity {
     private EditText distanceInput;
     private Button submitButton;
     private String date;
+    private boolean status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class PersonalActivity extends AppCompatActivity {
         distanceInput = findViewById(R.id.distanceInput);
         submitButton = findViewById(R.id.submitButton);
         date = getIntent().getStringExtra("date");
+        status=getIntent().getBooleanExtra("new",true);
 
         vehicleRadioGroup.check(R.id.gasolineRadio);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +61,7 @@ public class PersonalActivity extends AppCompatActivity {
                 intent.putExtra("category", "Transportation");
                 intent.putExtra("type", "Personal vehicle");
                 intent.putExtra("date",date);
+                intent.putExtra("new",status);
                 startActivity(intent);
             }
         });

@@ -21,8 +21,8 @@ public class CalendarActivity extends AppCompatActivity {
             "July", "August", "September", "October", "November", "December"
     };
     private int month = calendar.get(Calendar.MONTH), year = calendar.get(Calendar.YEAR);
-    private String s_month = monthNames[month],date;
-
+    private String s_month = monthNames[month];
+    private boolean status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

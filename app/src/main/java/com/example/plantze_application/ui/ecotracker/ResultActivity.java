@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.CollectionReference;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +27,7 @@ public class ResultActivity extends AppCompatActivity {
     private Button finishButton;
     private TextView resultText, categoryText, typeText, dateText;
     private String finalEmission, category, type, date;
-
+    private boolean status;
     public static String formatDate(String inputDate) {
         SimpleDateFormat inputFormat = new SimpleDateFormat("MMMM d, yyyy");
         SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -51,6 +50,7 @@ public class ResultActivity extends AppCompatActivity {
         category = getIntent().getStringExtra("category");
         type = getIntent().getStringExtra("type");
         date = getIntent().getStringExtra("date");
+        status=getIntent().getBooleanExtra("new",true);
 
         resultText = findViewById(R.id.resultText);
         categoryText = findViewById(R.id.categoryText);
