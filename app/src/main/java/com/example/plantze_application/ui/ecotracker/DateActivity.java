@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 import java.util.List;
@@ -44,6 +45,52 @@ public class DateActivity extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private void deleteActivity(String id_){
+        SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        String userID = sharedPref.getString("USER_ID", null);
+        if (userID != null) {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("users").document(userID).get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            List<Map<String, Object>> activities = (List<Map<String, Object>>) documentSnapshot.get("Activities");
+
+                            if (activities != null && !activities.isEmpty()) {
+                                List<Map<String, Object>> updatedActivities = new ArrayList<>();
+
+                                for (Map<String, Object> activity : activities) {
+                                    String activityId = (String) activity.get("ActivityID"); // Get ActivityID for comparison
+                                    if (!id_.equals(activityId)) {
+                                        updatedActivities.add(activity);  // Keep the activity if the ID does not match
+                                    }
+                                }
+
+                                if (updatedActivities.size() < activities.size()) {
+                                    db.collection("users").document(userID)
+                                            .update("Activities", updatedActivities)
+                                            .addOnSuccessListener(aVoid -> {
+                                                Log.d("Firestore", "Activity deleted successfully.");
+                                                Toast.makeText(DateActivity.this, "Activity deleted!", Toast.LENGTH_SHORT).show();
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Log.e("Firestore", "Error deleting activity", e);
+                                                Toast.makeText(DateActivity.this, "Failed to delete activity", Toast.LENGTH_SHORT).show();
+                                            });
+                                } else {
+                                    Log.d("Firestore", "No matching activity found to delete.");
+                                    Toast.makeText(DateActivity.this, "Activity not found", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.e("Firestore", "Error retrieving activities", e);
+                        Toast.makeText(DateActivity.this, "Failed to retrieve activities", Toast.LENGTH_SHORT).show();
+                    });
+        }
+
     }
     private void createLog(String id_, double emission_, String category_, String type_){
         LinearLayout activityLog = new LinearLayout(this);
@@ -83,6 +130,12 @@ public class DateActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        delete.setOnClickListener(v-> {
+            Intent intent = new Intent(DateActivity.this, CalendarActivity.class);
+            deleteActivity(id_);
+            startActivity(intent);
+        });
+
         buttonRow.addView(edit);
         buttonRow.addView(delete);
 
@@ -104,20 +157,7 @@ public class DateActivity extends AppCompatActivity {
         dateActivitiesLayout.addView(activityLog);
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_et_date);
-
-        s_date = getIntent().getStringExtra("date");
-
-        createButton = findViewById(R.id.createButton);
-        dateText = findViewById(R.id.dateText);
-        dateActivitiesLayout= findViewById(R.id.dateActivitiesLayout);
-
-        dateText.setText(s_date);
-        String formattedDate=formatDate(s_date);
+    private void displayLogs(String date_){
         SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
         String userID = sharedPref.getString("USER_ID", null);
         Log.d("ResultActivity", "User ID: " + userID);
@@ -146,7 +186,7 @@ public class DateActivity extends AppCompatActivity {
 
                                     if (emission != null) {
                                         Log.d("Firestore", "Activity: "+activityId +": "+ type + ", " + category + ", " + emission + ", " + date);
-                                        if (Objects.equals(date, formattedDate))
+                                        if (Objects.equals(date, date_))
                                             createLog(activityId,emission,category,type);
                                     } else {
                                         Log.d("Firestore", "No activities found for given date");
@@ -165,6 +205,24 @@ public class DateActivity extends AppCompatActivity {
                         Toast.makeText(DateActivity.this, "Failed to load activities", Toast.LENGTH_SHORT).show();
                     });
         }
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_et_date);
+
+        s_date = getIntent().getStringExtra("date");
+
+        createButton = findViewById(R.id.createButton);
+        dateText = findViewById(R.id.dateText);
+        dateActivitiesLayout= findViewById(R.id.dateActivitiesLayout);
+
+        dateText.setText(s_date);
+        String formattedDate=formatDate(s_date);
+
+        displayLogs(formattedDate);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
