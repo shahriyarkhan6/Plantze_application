@@ -23,6 +23,7 @@ public class FoodWasteActivity extends AppCompatActivity {
     private Button submitButton;
     private TextView resultTextView;
     private int currentEmission;
+    private double transportCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class FoodWasteActivity extends AppCompatActivity {
         resultTextView = findViewById(R.id.resultTextView);
 
         currentEmission = getIntent().getIntExtra("carbonEmission", 0);
+
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
         resultTextView.setText("Current Carbon Emission: " + currentEmission + " CO₂");
 
@@ -59,6 +62,8 @@ public class FoodWasteActivity extends AppCompatActivity {
 
             Intent intent = new Intent(FoodWasteActivity.this, HouseTypeActivity.class);
             intent.putExtra("foodCarbonEmission", foodCarbonEmission);
+
+            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
             startActivity(intent);
 
         });

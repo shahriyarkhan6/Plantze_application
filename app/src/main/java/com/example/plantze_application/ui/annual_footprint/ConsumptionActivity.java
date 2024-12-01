@@ -16,6 +16,9 @@ public class ConsumptionActivity extends AppCompatActivity {
     private TextView emissionsDisplay;
     private double currentEmissions;
     private double foodCarbonEmission;
+    private double transportCarbonEmission;
+    private double housingCarbonEmission;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,8 @@ public class ConsumptionActivity extends AppCompatActivity {
         emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO₂ per year");
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
+        housingCarbonEmission = getIntent().getDoubleExtra("housingCarbonEmission", 0);
 
         frequencyGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId != -1) {
@@ -58,6 +63,8 @@ public class ConsumptionActivity extends AppCompatActivity {
             intent.putExtra("CLOTHING_FREQUENCY", frequency); // Pass clothing frequency
 
             intent.putExtra("foodCarbonEmission", foodCarbonEmission);
+            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
+            intent.putExtra("housingCarbonEmission", housingCarbonEmission);
 
             startActivity(intent);
         });
