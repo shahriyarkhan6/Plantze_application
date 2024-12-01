@@ -15,9 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.plantze_application.R;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.example.plantze_application.ui.dashboard.DashboardViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.ParseException;
@@ -92,12 +90,12 @@ public class DateActivity extends AppCompatActivity {
         }
 
     }
-    private void createLog(String id_, double emission_, String category_, String type_){
-        LinearLayout activityLog = new LinearLayout(this);
-        activityLog.setOrientation(LinearLayout.HORIZONTAL);
+    private void createEntry(String id_, double emission_, String category_, String type_){
+        LinearLayout activityEntry = new LinearLayout(this);
+        activityEntry.setOrientation(LinearLayout.HORIZONTAL);
 
-        LinearLayout textLog = new LinearLayout(this);
-        textLog.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout textEntry = new LinearLayout(this);
+        textEntry.setOrientation(LinearLayout.VERTICAL);
 
         TextView emission = new TextView(this);
         emission.setText(emission_ + " kg of CO2");
@@ -109,9 +107,9 @@ public class DateActivity extends AppCompatActivity {
         type.setText("Type: "+type_);
         type.setTextSize(16);
 
-        textLog.addView(emission);
-        textLog.addView(category);
-        textLog.addView(type);
+        textEntry.addView(emission);
+        textEntry.addView(category);
+        textEntry.addView(type);
 
         LinearLayout buttonRow = new LinearLayout(this);
         buttonRow.setOrientation(LinearLayout.HORIZONTAL);
@@ -139,25 +137,25 @@ public class DateActivity extends AppCompatActivity {
         buttonRow.addView(edit);
         buttonRow.addView(delete);
 
-        activityLog.addView(textLog);
+        activityEntry.addView(textEntry);
 
         LinearLayout.LayoutParams spaceParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f);
         space.setLayoutParams(spaceParams);
-        activityLog.addView(space);
+        activityEntry.addView(space);
 
-        activityLog.addView(buttonRow);
+        activityEntry.addView(buttonRow);
 
-        LinearLayout.LayoutParams activityLogParams = new LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams activityEntryParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        activityLogParams.setMargins(0, 0, 0, 50);
-        activityLog.setLayoutParams(activityLogParams);
+        activityEntryParams.setMargins(0, 0, 0, 50);
+        activityEntry.setLayoutParams(activityEntryParams);
 
-        dateActivitiesLayout.addView(activityLog);
+        dateActivitiesLayout.addView(activityEntry);
     }
 
-    private void displayLogs(String date_){
+    private void displayEntries(String date_){
         SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
         String userID = sharedPref.getString("USER_ID", null);
         Log.d("ResultActivity", "User ID: " + userID);
@@ -187,7 +185,7 @@ public class DateActivity extends AppCompatActivity {
                                     if (emission != null) {
                                         Log.d("Firestore", "Activity: "+activityId +": "+ type + ", " + category + ", " + emission + ", " + date);
                                         if (Objects.equals(date, date_))
-                                            createLog(activityId,emission,category,type);
+                                            createEntry(activityId,emission,category,type);
                                     } else {
                                         Log.d("Firestore", "No activities found for given date");
                                     }
@@ -207,7 +205,6 @@ public class DateActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -222,7 +219,7 @@ public class DateActivity extends AppCompatActivity {
         dateText.setText(s_date);
         String formattedDate=formatDate(s_date);
 
-        displayLogs(formattedDate);
+        displayEntries(formattedDate);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -233,7 +230,5 @@ public class DateActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 }
