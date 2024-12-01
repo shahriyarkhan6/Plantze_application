@@ -22,6 +22,7 @@ import java.util.Map;
 
 public class WalkingHabitActivity extends AppCompatActivity {
 
+
     private TextView walkingDaysTextView;
     private Button incrementDaysButton;
     private int walkingDays = 0;

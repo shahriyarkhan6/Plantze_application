@@ -109,6 +109,8 @@
         <activity android:name=".ui.habit_tracking.RenewableEnergyHabitActivity" />
         <activity android:name=".ui.habit_tracking.EnergyHabitsActivity" />
         <activity android:name=".ui.habit_tracking.EnergyConservationHabitActivity" />
+        <receiver android:name=".ui.habit_tracking.NotificationReceiver" />
+
 
 
 
