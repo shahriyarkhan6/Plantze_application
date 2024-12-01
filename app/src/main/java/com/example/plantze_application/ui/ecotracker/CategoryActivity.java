@@ -14,8 +14,7 @@ import com.example.plantze_application.ui.ecotracker.TransportationActivity;
 
 public class CategoryActivity extends AppCompatActivity{
     private Button transportationButton, consumptionButton;
-    private String date;
-    private boolean status;
+    private String date, activityId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +24,14 @@ public class CategoryActivity extends AppCompatActivity{
         transportationButton = findViewById(R.id.transportationButton);
         consumptionButton = findViewById(R.id.consumptionButton);
         date = getIntent().getStringExtra("date");
-        status=getIntent().getBooleanExtra("new",true);
+        activityId=getIntent().getStringExtra("activityId");
 
-        // Set click listeners for buttons
         transportationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, TransportationActivity.class);
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });
@@ -43,7 +41,7 @@ public class CategoryActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ConsumptionActivity.class);
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });

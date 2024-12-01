@@ -11,8 +11,7 @@ import com.example.plantze_application.R;
 
 public class ConsumptionActivity extends AppCompatActivity {
     private Button mealButton,clothesButton,electronicsButton,billsButton,othersButton;
-    private String date;
-    private boolean status;
+    private String date,activityId;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -24,14 +23,14 @@ public class ConsumptionActivity extends AppCompatActivity {
         billsButton = findViewById(R.id.billsButton);
         othersButton = findViewById(R.id.othersButton);
         date = getIntent().getStringExtra("date");
-        status=getIntent().getBooleanExtra("new",true);
+        activityId=getIntent().getStringExtra("activityId");
 
         mealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ConsumptionActivity.this, MealActivity.class);
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });
@@ -41,7 +40,7 @@ public class ConsumptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ConsumptionActivity.this, ClothesActivity.class);
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });
@@ -51,7 +50,7 @@ public class ConsumptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ConsumptionActivity.this, ElectronicsActivity.class);
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });
@@ -61,7 +60,7 @@ public class ConsumptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ConsumptionActivity.this, BillsActivity.class);
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });
@@ -71,7 +70,7 @@ public class ConsumptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ConsumptionActivity.this, OthersActivity.class);
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });

@@ -17,8 +17,7 @@ public class MealActivity extends AppCompatActivity {
     private RadioGroup mealRadioGroup;
     private EditText servingsInput;
     private Button submitButton;
-    private String date;
-    private boolean status;
+    private String date,activityId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,7 @@ public class MealActivity extends AppCompatActivity {
         servingsInput = findViewById(R.id.servingsInput);
         submitButton = findViewById(R.id.submitButton);
         date = getIntent().getStringExtra("date");
-        status=getIntent().getBooleanExtra("new",true);
+        activityId=getIntent().getStringExtra("activityId");
 
         mealRadioGroup.check(R.id.beefRadio);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +62,7 @@ public class MealActivity extends AppCompatActivity {
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Meal");
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });

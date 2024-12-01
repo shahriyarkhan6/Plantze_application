@@ -16,8 +16,7 @@ import com.example.plantze_application.R;
 public class FlightActivity extends AppCompatActivity {
     private EditText flightsInput;
     private Button submitButton;
-    private String date;
-    private boolean status;
+    private String date, activityId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +25,7 @@ public class FlightActivity extends AppCompatActivity {
         flightsInput = findViewById(R.id.flightsInput);
         submitButton = findViewById(R.id.submitButton);
         date = getIntent().getStringExtra("date");
-        status=getIntent().getBooleanExtra("new",true);
+        activityId=getIntent().getStringExtra("activityId");
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +42,7 @@ public class FlightActivity extends AppCompatActivity {
                 intent.putExtra("category", "Transportation");
                 intent.putExtra("type", "Flight");
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });

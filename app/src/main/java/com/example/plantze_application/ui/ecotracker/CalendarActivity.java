@@ -22,13 +22,15 @@ public class CalendarActivity extends AppCompatActivity {
     };
     private int month = calendar.get(Calendar.MONTH), year = calendar.get(Calendar.YEAR);
     private String s_month = monthNames[month];
-    private boolean status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_et_calendar);
 
-        // Initialize views
+        calendar = Calendar.getInstance();
+        month = calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+
         monthYearText = findViewById(R.id.monthYearText);
         firstRow = findViewById(R.id.firstRow);
         secondRow = findViewById(R.id.secondRow);
@@ -36,50 +38,37 @@ public class CalendarActivity extends AppCompatActivity {
         fourthRow = findViewById(R.id.fourthRow);
         fifthRow = findViewById(R.id.fifthRow);
 
-        // Set initial calendar
         updateCalendarView();
 
-        // Set up previous and next month buttons
         Button prevMonthButton = findViewById(R.id.prevMonthButton);
         Button nextMonthButton = findViewById(R.id.nextMonthButton);
 
         prevMonthButton.setOnClickListener(v -> navigateMonth(false)); // Move to previous month
         nextMonthButton.setOnClickListener(v -> navigateMonth(true)); // Move to next month
     }
-
     private void navigateMonth(boolean forward) {
         if (forward) {
-            // Go to next month
             month++;
             if (month > 11) {
-                month = 0; // January
+                month = 0;
                 year++;
             }
         } else {
-            // Go to previous month
             month--;
             if (month < 0) {
-                month = 11; // December
+                month = 11;
                 year--;
             }
         }
-
-        // Update the month and year display
-        s_month = monthNames[month];
-        monthYearText.setText(s_month + " " + year);
-
-        // Update the calendar rows based on the new month and year
         updateCalendarView();
     }
 
     private void updateCalendarView() {
-        // Get the number of days in the current month
+        s_month = monthNames[month];
+        monthYearText.setText(s_month + " " + year);
         int numberOfDays = getDaysInMonth(year, month);
-
-        // Set the calendar rows with the number of days
         setCalendarRows(numberOfDays);
     }
-
     private void setCalendarRows(int numberOfDays) {
         // Clear previous views
         firstRow.removeAllViews();
@@ -112,8 +101,6 @@ public class CalendarActivity extends AppCompatActivity {
             currentRow.addView(button);
         }
     }
-
-
     private int getDaysInMonth(int year, int month) {
         calendar.set(year, month, 1);
         return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);

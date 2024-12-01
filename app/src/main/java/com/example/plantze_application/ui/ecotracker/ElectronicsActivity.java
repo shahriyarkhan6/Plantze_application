@@ -17,8 +17,7 @@ public class ElectronicsActivity extends AppCompatActivity {
     private RadioGroup deviceRadioGroup;
     private EditText devicesInput;
     private Button submitButton;
-    private String date;
-    private boolean status;
+    private String date, activityId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,7 @@ public class ElectronicsActivity extends AppCompatActivity {
         devicesInput = findViewById(R.id.devicesInput);
         submitButton = findViewById(R.id.submitButton);
         date = getIntent().getStringExtra("date");
-        status=getIntent().getBooleanExtra("new",true);
+        activityId=getIntent().getStringExtra("activityId");
 
         deviceRadioGroup.check(R.id.smartphoneRadio);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +60,7 @@ public class ElectronicsActivity extends AppCompatActivity {
                 intent.putExtra("category", "Consumption");
                 intent.putExtra("type", "Electronics");
                 intent.putExtra("date",date);
-                intent.putExtra("new",status);
+                intent.putExtra("activityId",activityId);
                 startActivity(intent);
             }
         });
