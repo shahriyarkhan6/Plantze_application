@@ -31,6 +31,7 @@ public class ResultActivity extends AppCompatActivity {
     private TextView resultText, categoryText, typeText, dateText;
     private String finalEmission, category, type, date, activityId;
     private double emission;
+
     public static String formatDate(String inputDate) {
         SimpleDateFormat inputFormat = new SimpleDateFormat("MMMM d, yyyy");
         SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -53,11 +54,11 @@ public class ResultActivity extends AppCompatActivity {
         finalEmission = getIntent().getStringExtra("finalEmission");
         emission = Double.parseDouble(finalEmission);
         emission = Double.parseDouble(df.format(emission));
-        finalEmission=String.valueOf(emission);
+        finalEmission = String.valueOf(emission);
         category = getIntent().getStringExtra("category");
         type = getIntent().getStringExtra("type");
         date = getIntent().getStringExtra("date");
-        activityId=getIntent().getStringExtra("activityId");
+        activityId = getIntent().getStringExtra("activityId");
 
         Log.d("ResultActivity", "Activity: " + activityId);
 
@@ -75,16 +76,17 @@ public class ResultActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Objects.equals(activityId, "new"))
-                    addActivityToFirestore();
-                else
-                    updateActivity();
-                Intent intent = new Intent(ResultActivity.this, CalendarActivity.class);
-                startActivity(intent);
+                // Choose either add or update activity, based on activityId
+                if (Objects.equals(activityId, "new")) {
+                    addActivity();  // For new activity
+                } else {
+                    updateActivity();  // For updating existing activity
+                }
             }
         });
     }
-    private void updateActivity(){
+
+    private void updateActivity() {
         SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
         String userID = sharedPref.getString("USER_ID", null);
         Log.d("ResultActivity", "User ID: " + userID);
@@ -118,6 +120,9 @@ public class ResultActivity extends AppCompatActivity {
                                                 .addOnSuccessListener(aVoid -> {
                                                     Log.d("Firestore", "Activity updated successfully.");
                                                     Toast.makeText(ResultActivity.this, "Activity updated!", Toast.LENGTH_SHORT).show();
+
+                                                    // Navigate after update
+                                                    navigateToCalendarActivity();
                                                 })
                                                 .addOnFailureListener(e -> {
                                                     Log.e("Firestore", "Error updating activity", e);
@@ -135,10 +140,9 @@ public class ResultActivity extends AppCompatActivity {
                         Toast.makeText(ResultActivity.this, "Failed to retrieve activities", Toast.LENGTH_SHORT).show();
                     });
         }
-
-
     }
-    private void addActivityToFirestore() {
+
+    private void addActivity() {
         SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
         String userID = sharedPref.getString("USER_ID", null);
         Log.d("ResultActivity", "User ID: " + userID);
@@ -157,12 +161,20 @@ public class ResultActivity extends AppCompatActivity {
             db.collection("users").document(userID)
                     .update("Activities", FieldValue.arrayUnion(activity))
                     .addOnSuccessListener(aVoid -> {
-                        Log.d("ResultActivity", "Activity added to list: "+activityId);
+                        Log.d("ResultActivity", "Activity added to list: " + activityId);
                         Toast.makeText(ResultActivity.this, "Activity saved successfully!", Toast.LENGTH_SHORT).show();
+
+                        navigateToCalendarActivity();
                     })
                     .addOnFailureListener(e -> {
                         Log.e("ResultActivity", "Error saving activity", e);
                         Toast.makeText(ResultActivity.this, "Failed to save activity", Toast.LENGTH_SHORT).show();
                     });
         }
-    }}
+    }
+    private void navigateToCalendarActivity() {
+        Intent intent = new Intent(ResultActivity.this, CalendarActivity.class);
+        intent.putExtra("variable", "nothing");
+        startActivity(intent);
+    }
+}

@@ -184,7 +184,6 @@ public class CalendarActivity extends AppCompatActivity {
         }
         updateCalendarView();
     }
-
     private void updateCalendarView() {
         s_month = monthNames[month];
         monthYearText.setText(s_month + " " + year);
