@@ -4,12 +4,17 @@
     package="com.example.plantze_application">
 
 
+
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
 
     <!-- SDK versions -->
     <uses-sdk
         android:minSdkVersion="21"/>
+
+
 
 
     <application
@@ -24,7 +29,10 @@
         tools:targetApi="31">
 
 
+
+
         <!-- WelcomeActivity2 as the entry point -->
+
 
         <activity
             android:name=".ui.login.ForgotPasswordActivity"
@@ -35,9 +43,11 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <activity
             android:name=".ui.registration.RegisterActivity"
@@ -60,6 +70,7 @@
         <activity android:name=".ui.annual_footprint.FishActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.FoodWasteActivity" android:exported="true"/>
 
+
         <!-- Housing related activities -->
         <activity android:name=".ui.annual_footprint.HouseTypeActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.HousePeopleNum" android:exported="true"/>
@@ -68,6 +79,7 @@
         <activity android:name=".ui.annual_footprint.HouseHeatType" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.HouseHeatWaterType" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.HouseRenewableEnergy" android:exported="true"/>
+
 
         <!-- Transportation related activities -->
         <activity android:name=".ui.annual_footprint.TransportationActivity" android:exported="true"/>
@@ -78,11 +90,41 @@
         <activity android:name=".ui.annual_footprint.ShortHaulFlightsActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.LongHaulFlightsActivity" android:exported="true"/>
 
+
         <!-- Consumption related activities -->
         <activity android:name=".ui.annual_footprint.ConsumptionActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.EcoFriendlyProductsActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.ElectronicDevicesActivity" android:exported="true"/>
         <activity android:name=".ui.annual_footprint.RecyclingActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.LocationActivity" android:exported="true"/>
+        <activity android:name=".ui.habit_tracking.HabitTrackingActivity" />
+        <activity android:name=".ui.habit_tracking.TransportationHabitsActivity" />
+        <activity android:name=".ui.habit_tracking.WalkingHabitActivity" />
+        <activity android:name=".ui.habit_tracking.CyclingHabitActivity" />
+        <activity android:name=".ui.habit_tracking.FoodHabitsActivity" />
+        <activity android:name=".ui.habit_tracking.MeatFreeHabitActivity" />
+        <activity android:name=".ui.habit_tracking.ReducedFoodWasteHabitActivity" />
+        <activity android:name=".ui.habit_tracking.EcoFriendlyPurchasesHabitActivity" />
+        <activity android:name=".ui.habit_tracking.ConsumptionHabitsActivity" />
+        <activity android:name=".ui.habit_tracking.RecyclingHabitActivity" />
+        <activity android:name=".ui.habit_tracking.RenewableEnergyHabitActivity" />
+        <activity android:name=".ui.habit_tracking.EnergyHabitsActivity" />
+        <activity android:name=".ui.habit_tracking.EnergyConservationHabitActivity" />
+        <receiver android:name=".ui.habit_tracking.NotificationReceiver" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- Ecotracker Menus-->
         <activity android:name=".ui.ecotracker.CalendarActivity" android:exported="true"/>
@@ -104,4 +146,6 @@
         <activity android:name=".ui.ecotracker.PublicActivity" android:exported="true"/>
     </application>
 
+
 </manifest>
+

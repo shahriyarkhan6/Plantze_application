@@ -66,6 +66,28 @@ public class FoodWasteActivity extends AppCompatActivity {
             intent.putExtra("transportCarbonEmission", transportCarbonEmission);
             startActivity(intent);
 
+            SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+            String userID = sharedPref.getString("USER_ID", null);
+
+            if (userID != null) {
+                Map<String, Object> updatedData = new HashMap<>();
+                updatedData.put("Annual Food Emission", currentEmission); // Example data
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                db.collection("users").document(userID)
+                        .update(updatedData)
+                        .addOnSuccessListener(aVoid -> {
+                            // Update successful
+                            Toast.makeText(FoodWasteActivity.this, "User info updated successfully!", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            // Handle error
+                            Log.e("Firestore", "Error updating user info", e);
+                        });
+            }
+
+
         });
 
 
