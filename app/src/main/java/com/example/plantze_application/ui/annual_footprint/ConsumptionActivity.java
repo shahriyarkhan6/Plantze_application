@@ -76,16 +76,6 @@ public class ConsumptionActivity extends AppCompatActivity {
             double clothingEmissions = calculateClothingEmissions(frequency);
             double totalEmissions = currentEmissions + clothingEmissions;
 
-            // Pass clothing frequency to next activity
-            Intent intent = new Intent(ConsumptionActivity.this, EcoFriendlyProductsActivity.class);
-            intent.putExtra("CURRENT_EMISSIONS", totalEmissions);
-            intent.putExtra("CLOTHING_FREQUENCY", frequency); // Pass clothing frequency
-
-            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
-            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
-            intent.putExtra("housingCarbonEmission", housingCarbonEmission);
-
-            startActivity(intent);
 
             // Save the selected frequency and emissions in Firestore
             SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
@@ -108,6 +98,10 @@ public class ConsumptionActivity extends AppCompatActivity {
                             // Navigate to the next activity
                             Intent intent = new Intent(ConsumptionActivity.this, EcoFriendlyProductsActivity.class);
                             intent.putExtra("CURRENT_EMISSIONS", totalEmissions);
+
+                            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
+                            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
+                            intent.putExtra("housingCarbonEmission", housingCarbonEmission);
                             startActivity(intent);
                         })
                         .addOnFailureListener(e -> {

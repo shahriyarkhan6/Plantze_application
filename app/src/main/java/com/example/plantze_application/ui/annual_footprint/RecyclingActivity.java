@@ -94,15 +94,7 @@ public class RecyclingActivity extends AppCompatActivity {
             RadioButton selectedButton = findViewById(selectedId);
             String recyclingChoice = selectedButton.getText().toString().trim();
 
-            // Calculate adjusted emissions after applying the reduction
-            double adjustedEmissions = currentEmissions - reductionPercentage;
-            adjustedEmissions = adjustedEmissions + foodCarbonEmission + housingCarbonEmission + transportCarbonEmission;
 
-            // Display the adjusted emissions
-            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ per year\n" +
-                    "Food carbon emissions: " + foodCarbonEmission +"\n" +
-                    "Transport carbon emissions: " + transportCarbonEmission + "\n" +
-                    "Housing carbon emissions: " + housingCarbonEmission);
 
 
             //Intent intent = new Intent(RecyclingActivity.this, MainActivity.class);
@@ -130,6 +122,16 @@ public class RecyclingActivity extends AppCompatActivity {
 
             // Apply the reduction to current emissions
             currentEmissions = Math.max(0, currentEmissions - totalReduction);
+
+            // Calculate adjusted emissions after applying the reduction
+            double adjustedEmissions = currentEmissions - totalReduction;
+            adjustedEmissions = adjustedEmissions + foodCarbonEmission + housingCarbonEmission + transportCarbonEmission;
+
+            // Display the adjusted emissions
+            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ per year\n" +
+                    "Food carbon emissions: " + foodCarbonEmission +"\n" +
+                    "Transport carbon emissions: " + transportCarbonEmission + "\n" +
+                    "Housing carbon emissions: " + housingCarbonEmission);
 
 
             // Update the emissions display

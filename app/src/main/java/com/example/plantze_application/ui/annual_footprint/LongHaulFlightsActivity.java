@@ -71,7 +71,7 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
 
 
             // Update Firestore and SharedPreferences
-            updateFirestoreAndPreferences(totalEmissions);
+            updateFirestoreAndPreferences(carbonEmission);
         });
 
 

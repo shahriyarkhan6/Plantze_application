@@ -68,16 +68,6 @@ public class ElectronicDevicesActivity extends AppCompatActivity {
 
             emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO₂ per year");
 
-            // Pass the updated emissions and clothing frequency to the next activity
-            Intent intent = new Intent(ElectronicDevicesActivity.this, RecyclingActivity.class);
-            intent.putExtra("CURRENT_EMISSIONS", totalEmissions);
-            intent.putExtra("CLOTHING_FREQUENCY", clothingFrequency); // Pass clothing frequency
-
-            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
-            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
-            intent.putExtra("housingCarbonEmission", housingCarbonEmission);
-
-            startActivity(intent);
 
             // Save the electronic devices frequency and emissions in Firestore
             SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
@@ -101,6 +91,10 @@ public class ElectronicDevicesActivity extends AppCompatActivity {
                             Intent intent = new Intent(ElectronicDevicesActivity.this, RecyclingActivity.class);
                             intent.putExtra("CURRENT_EMISSIONS", totalEmissions);
                             intent.putExtra("CLOTHING_FREQUENCY", clothingFrequency);
+
+                            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
+                            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
+                            intent.putExtra("housingCarbonEmission", housingCarbonEmission);
                             startActivity(intent);
                         })
                         .addOnFailureListener(e -> {
