@@ -23,4 +23,6 @@
         android:name="com.example.plantze_application.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+
 </navigation>

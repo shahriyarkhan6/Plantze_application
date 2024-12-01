@@ -77,7 +77,6 @@ public class RegisterActivity extends AppCompatActivity {
         editTextConfirmPassword = findViewById(R.id.confirm_password);
         editTextFirstName = findViewById(R.id.first_name);
         editTextLastname = findViewById(R.id.last_name);
-        //add the onclick for the other button
 
         registerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,40 +92,43 @@ public class RegisterActivity extends AppCompatActivity {
                 first_name = String.valueOf(editTextFirstName.getText()).trim();
                 last_name = String.valueOf(editTextLastname.getText()).trim();
 
+                //Check if email inputted is empty
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(RegisterActivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                //Check if password inputted is empty
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(RegisterActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                //Check if both passwords match
                 if(!(password.equals(confirm_password))){
                     Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                //Check if first name inputted is empty
                 if(TextUtils.isEmpty(first_name)){
                     Toast.makeText(RegisterActivity.this, "Enter first name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                //Check if last name inputted is empty
                 if(TextUtils.isEmpty(last_name)){
                     Toast.makeText(RegisterActivity.this, "Enter last name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                //Check if both first name and last name inputted is empty
                 if((TextUtils.isEmpty(first_name)) && (TextUtils.isEmpty(last_name))){
                     Toast.makeText(RegisterActivity.this, "Enter full name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                //Check if email inputted is valid
                 if(!(isValidEmail(email))){
                     Toast.makeText(RegisterActivity.this, "Invalid email address", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                //Firebase will now handle user creation.
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -164,7 +166,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 .addOnFailureListener(new OnFailureListener() {
                                                     @Override
                                                     public void onFailure(@NonNull Exception e) {
-                                                        // Log and show error if Firestore write fails
+                                                        // Show error if Firestore write fails
                                                         Log.e("Firestore", "Error adding user to Firestore", e);
                                                         Toast.makeText(RegisterActivity.this, "Failed to save user data. Please try again.", Toast.LENGTH_SHORT).show();
                                                     }
@@ -173,8 +175,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 } else{
 
-                                    // If sign in fails, display a message to the user.
-
+                                    // If sign in fails, then display a message to the user.
                                     Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                             }}

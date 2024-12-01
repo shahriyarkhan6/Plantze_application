@@ -1,5 +1,7 @@
 package com.example.plantze_application.ui.login;
 
+import static android.app.ProgressDialog.show;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +28,7 @@ import com.example.plantze_application.ui.dashboard.DashboardViewModel;
 import com.example.plantze_application.ui.registration.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotpasswordbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //User will be directed to a page where they can reset their password if they have forgotten it
                 Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
                 finish();
@@ -84,32 +88,37 @@ public class LoginActivity extends AppCompatActivity {
                 email = String.valueOf(editTextEmail.getText()).trim();
                 password = String.valueOf(editTextPassword.getText()).trim();
 
+                //Check if email inputted is empty
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(LoginActivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                //Check if password inputted is empty
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(LoginActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                //call function here
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
+
+                                    // Sign in
                                     Toast.makeText(getApplicationContext(),"Login Successful", Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = mAuth.getCurrentUser();
+
+                                    //Store the user's id so then it can be accessed and used from anywhere in the app
                                     if (user != null){
                                         String userID = user.getUid(); // This UID is to be used in Firestore
 
                                         SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPref.edit();
                                         editor.putString("USER_ID", userID);
-                                        editor.apply(); // Save changes
+                                        editor.apply();
+
                                         // Fetch Login# from Firestore
                                         db.collection("users").document(userID).get()
                                                 .addOnCompleteListener(task1 -> {
@@ -118,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         if (documentSnapshot.exists()) {
                                                             String loginNumber = documentSnapshot.getString("Login#");
                                                             if ("0".equals(loginNumber)) {
+
                                                                 // New user: Update Login# to 1
                                                                 Map<String, Object> update = new HashMap<>();
                                                                 update.put("Login#", "1");
@@ -126,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                             if (updateTask.isSuccessful()) {
                                                                                 // Navigate to the AnnualFootPrintActivity for the new user
                                                                                 Intent intent = new Intent(LoginActivity.this, AnnualFootprintActivity.class);
+                                                                                intent.putExtra("message", "Let's get started! We will calculate your current carbon footprint based on your lifestyle. You only need to do this once, unless you choose to do so again.");
                                                                                 startActivity(intent);
                                                                                 finish();
                                                                             } else {
@@ -149,8 +160,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                                 } else {
-                                    // If sign in fails, display a message to the user.
-
+                                    // If sign in fails, then display a message to the user.
                                     Toast.makeText(LoginActivity.this, "Invalid email or password.",
                                             Toast.LENGTH_SHORT).show();
                                 }
