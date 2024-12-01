@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.plantze_application.R;
+import com.google.android.material.snackbar.Snackbar;
 
 public class AnnualFootprintActivity extends AppCompatActivity {
 
@@ -20,6 +21,18 @@ public class AnnualFootprintActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_annualfootprint);
+        // Show the message for 5 seconds
+        String welcomeMessage = getIntent().getStringExtra("message");
+        if (welcomeMessage != null) {
+            Snackbar snackbar = Snackbar.make(
+                    findViewById(android.R.id.content),
+                    welcomeMessage,
+                    Snackbar.LENGTH_LONG
+            );
+            snackbar.setTextMaxLines(5);
+            snackbar.setDuration(5000);
+            snackbar.show();
+        }
 
         // Initialize buttons
         foodButton = findViewById(R.id.foodButton);

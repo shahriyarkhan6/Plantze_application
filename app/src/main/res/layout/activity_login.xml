@@ -65,22 +65,27 @@
             android:text="Login"
             android:textColor="@color/black"
             android:background="@drawable/rounded_button_shape"
+            android:backgroundTint="#d8dbe2"
             android:padding="18dp"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
             android:id="@+id/login_button"
             tools:ignore="HardcodedText" />
 
-        <Button
-            android:layout_width="wrap_content"
+        <android.widget.Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text = "Forgot Password?"
-            android:textSize = "12sp"
-            android:textColor="@color/white"
-            android:padding = "10dp"
+            android:text="Forgot Password?"
+            android:textColor="@color/black"
+            android:background="@drawable/rounded_button_shape"
+            android:backgroundTint="#a9bcd0"
+            android:padding="10dp"
             android:layout_marginTop="20dp"
+            android:textSize="18sp"
             android:id="@+id/forgot_password_button"
             tools:ignore="HardcodedText" />
+
+
 
         <FrameLayout
             android:layout_width="match_parent"

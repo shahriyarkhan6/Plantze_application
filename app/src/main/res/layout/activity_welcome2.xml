@@ -17,14 +17,14 @@ tools:context=".ui.login.WelcomeActivity2">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-90dp"
+        android:layout_marginTop="-70dp"
         android:src="@drawable/planetzelogo"/>
 
     <ImageView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="-130dp"
-        android:src="@drawable/account_icon"/>
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="-110dp"
+        android:src="@drawable/earth"/>
 
     <android.widget.Button
         android:layout_width="match_parent"
@@ -32,8 +32,9 @@ tools:context=".ui.login.WelcomeActivity2">
         android:text="Sign Up"
         android:textColor="@color/black"
         android:background="@drawable/rounded_button_shape"
+        android:backgroundTint="#d8dbe2"
         android:padding="18dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="38dp"
         android:textSize="20sp"
         android:id="@+id/signup_button"
         tools:ignore="HardcodedText" />
@@ -44,6 +45,7 @@ tools:context=".ui.login.WelcomeActivity2">
         android:text="Login"
         android:textColor="@color/black"
         android:background="@drawable/rounded_button_shape"
+        android:backgroundTint="#d8dbe2"
         android:padding="18dp"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
@@ -64,7 +66,7 @@ tools:context=".ui.login.WelcomeActivity2">
     android:text="Welcome to"
     android:textColor="@color/black"
     android:textSize="24sp"
-    android:paddingTop="16dp"
+    android:paddingTop="24dp"
     tools:ignore="HardcodedText" />
 
 

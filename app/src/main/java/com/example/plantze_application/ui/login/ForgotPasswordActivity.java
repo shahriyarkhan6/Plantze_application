@@ -55,15 +55,18 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 String email;
                 email = String.valueOf(editTextEmail.getText()).trim();
 
+                //Check for empty email input
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(ForgotPasswordActivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                //Check if email inputted is valid
                 if (!(isValidEmail(email))) {
                     Toast.makeText(ForgotPasswordActivity.this, "Invalid email address", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                //Firebase will now handle the password reset
                 firebaseAuth.sendPasswordResetEmail(email)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
