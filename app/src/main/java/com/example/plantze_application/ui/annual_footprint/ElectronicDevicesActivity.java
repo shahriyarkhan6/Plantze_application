@@ -16,6 +16,9 @@ public class ElectronicDevicesActivity extends AppCompatActivity {
     private TextView emissionsDisplay;
     private double currentEmissions;
     private String clothingFrequency;
+    private double foodCarbonEmission;
+    private double transportCarbonEmission;
+    private double housingCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,10 @@ public class ElectronicDevicesActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.nextButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
         emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO₂ per year");
+
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
+        housingCarbonEmission = getIntent().getDoubleExtra("housingCarbonEmission", 0);
 
         nextButton.setOnClickListener(v -> {
             int selectedDevicesId = devicesGroup.getCheckedRadioButtonId();
@@ -46,6 +53,11 @@ public class ElectronicDevicesActivity extends AppCompatActivity {
             Intent intent = new Intent(ElectronicDevicesActivity.this, RecyclingActivity.class);
             intent.putExtra("CURRENT_EMISSIONS", totalEmissions);
             intent.putExtra("CLOTHING_FREQUENCY", clothingFrequency); // Pass clothing frequency
+
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
+            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
+            intent.putExtra("housingCarbonEmission", housingCarbonEmission);
+
             startActivity(intent);
         });
     }

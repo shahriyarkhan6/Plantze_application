@@ -1,14 +1,23 @@
 package com.example.plantze_application.ui.annual_footprint;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RecyclingActivity extends AppCompatActivity {
     private RadioGroup recyclingGroup;
@@ -16,6 +25,9 @@ public class RecyclingActivity extends AppCompatActivity {
     private TextView emissionsDisplay;
     private double currentEmissions;
     private String clothingFrequency;
+    private double transportCarbonEmission;
+    private double foodCarbonEmission;
+    private double housingCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +35,10 @@ public class RecyclingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycling);
 
         // Retrieve current emissions and clothing frequency from the previous activity
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0.0);
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
+        housingCarbonEmission = getIntent().getDoubleExtra("housingCarbonEmission", 0);
+
         currentEmissions = getIntent().getDoubleExtra("CURRENT_EMISSIONS", 0);
         clothingFrequency = getIntent().getStringExtra("CLOTHING_FREQUENCY"); // Receive clothing frequency
 
@@ -48,14 +64,25 @@ public class RecyclingActivity extends AppCompatActivity {
 
             // Calculate adjusted emissions after applying the reduction
             double adjustedEmissions = currentEmissions - reductionPercentage;
+            adjustedEmissions = adjustedEmissions + foodCarbonEmission + housingCarbonEmission + transportCarbonEmission;
 
             // Display the adjusted emissions
-            emissionsDisplay.setText("Adjusted Emissions after Recycling: " + adjustedEmissions + " CO₂ per year");
+            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ per year\n" +
+                    "Food carbon emissions: " + foodCarbonEmission +"\n" +
+                    "Transport carbon emissions: " + transportCarbonEmission + "\n" +
+                    "Housing carbon emissions: " + housingCarbonEmission);
+
+
+            //Intent intent = new Intent(RecyclingActivity.this, MainActivity.class);
+           // startActivity(intent);
 
             // Optionally, you can pass the updated emissions to another activity
             // Intent intent = new Intent(RecyclingActivity.this, NextActivity.class);
             // intent.putExtra("UPDATED_EMISSIONS", adjustedEmissions);
             // startActivity(intent);
+
+
+
         });
     }
 

@@ -1,5 +1,6 @@
 package com.example.plantze_application.ui.annual_footprint;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -14,20 +15,20 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
     private RadioGroup flightsGroup;
     private Button calculateButton;
     private TextView emissionsDisplay;
-    private double currentEmissions;
+    private double carbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_long_haul_flights);
 
-        currentEmissions = getIntent().getDoubleExtra("TOTAL_EMISSIONS", 0);
+        carbonEmission = getIntent().getDoubleExtra("carbonEmission", 0);
 
         flightsGroup = findViewById(R.id.flightsGroup);
         calculateButton = findViewById(R.id.calculateButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
 
-        emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO2");
+        emissionsDisplay.setText("Current Emissions: " + carbonEmission + " CO2");
 
         calculateButton.setOnClickListener(v -> {
             int selectedFlightsId = flightsGroup.getCheckedRadioButtonId();
@@ -42,11 +43,20 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
 
             double flightEmissions = getFlightEmissions(flights);
 
-            double totalEmissions = currentEmissions + flightEmissions;
+            carbonEmission = carbonEmission + flightEmissions;
 
-            emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO2");
+            emissionsDisplay.setText("Total Emissions: " + carbonEmission + " CO₂ per year");
+
+
+            Intent intent = new Intent(LongHaulFlightsActivity.this, DietActivity.class);
+            intent.putExtra("transportCarbonEmission", carbonEmission);
+            startActivity(intent);
 
         });
+
+
+
+
     }
 
     private double getFlightEmissions(String flights) {

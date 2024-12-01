@@ -15,7 +15,7 @@ public class PublicTransportTimeActivity extends AppCompatActivity {
     private RadioGroup timeGroup;
     private Button calculateButton;
     private TextView emissionsDisplay;
-    private double carEmissions;
+    private double carbonEmission;
     private String frequency;
 
     @Override
@@ -23,8 +23,9 @@ public class PublicTransportTimeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_transport_time);
 
-        carEmissions = getIntent().getDoubleExtra("CAR_EMISSIONS", 0);
+        carbonEmission = getIntent().getDoubleExtra("carbonEmission", 0);
         frequency = getIntent().getStringExtra("FREQUENCY");
+
 
         timeGroup = findViewById(R.id.timeGroup);
         calculateButton = findViewById(R.id.calculateButton);
@@ -43,12 +44,13 @@ public class PublicTransportTimeActivity extends AppCompatActivity {
 
             double transportEmissions = calculateTransportEmissions(frequency, timeSpent);
 
-            double totalEmissions = carEmissions + transportEmissions;
+            double totalEmissions = carbonEmission + transportEmissions;
 
             emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO₂ per year");
 
             Intent intent = new Intent(PublicTransportTimeActivity.this, ShortHaulFlightsActivity.class);
-            intent.putExtra("TOTAL_EMISSIONS", totalEmissions);
+            intent.putExtra("carbonEmission", totalEmissions);
+
             startActivity(intent);
         });
     }

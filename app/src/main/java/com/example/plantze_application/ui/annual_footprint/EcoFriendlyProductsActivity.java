@@ -16,6 +16,9 @@ public class EcoFriendlyProductsActivity extends AppCompatActivity {
     private TextView emissionsDisplay;
     private double currentEmissions;
     private String clothingFrequency;
+    private double foodCarbonEmission;
+    private double transportCarbonEmission;
+    private double housingCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,10 @@ public class EcoFriendlyProductsActivity extends AppCompatActivity {
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
         emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO₂ per year");
 
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
+        housingCarbonEmission = getIntent().getDoubleExtra("housingCarbonEmission", 0);
+
         nextButton.setOnClickListener(v -> {
             int selectedId = ecoFriendlyGroup.getCheckedRadioButtonId();
             if (selectedId == -1) {
@@ -40,10 +47,15 @@ public class EcoFriendlyProductsActivity extends AppCompatActivity {
             double reductionPercentage = calculateEcoFriendlyReduction(ecoFriendlyChoice);
             double adjustedEmissions = currentEmissions * (1 - reductionPercentage);
 
+
             // Pass updated emissions and clothing frequency to next activity
             Intent intent = new Intent(EcoFriendlyProductsActivity.this, ElectronicDevicesActivity.class);
             intent.putExtra("CURRENT_EMISSIONS", adjustedEmissions);
             intent.putExtra("CLOTHING_FREQUENCY", clothingFrequency); // Pass clothing frequency
+
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
+            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
+            intent.putExtra("housingCarbonEmission", housingCarbonEmission);
             startActivity(intent);
         });
     }

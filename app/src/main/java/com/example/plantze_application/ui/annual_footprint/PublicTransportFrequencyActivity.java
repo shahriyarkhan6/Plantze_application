@@ -13,14 +13,14 @@ public class PublicTransportFrequencyActivity extends AppCompatActivity {
 
     private RadioGroup frequencyGroup;
     private Button nextButton;
-    private double carEmissions;
+    private double carbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_transport_frequency);
 
-        carEmissions = getIntent().getDoubleExtra("CAR_EMISSIONS", 0);
+        carbonEmission = getIntent().getDoubleExtra("CAR_EMISSIONS", 0);
 
         frequencyGroup = findViewById(R.id.frequencyGroup);
         nextButton = findViewById(R.id.nextButton);
@@ -38,7 +38,7 @@ public class PublicTransportFrequencyActivity extends AppCompatActivity {
 
             Intent intent = new Intent(PublicTransportFrequencyActivity.this, PublicTransportTimeActivity.class);
             intent.putExtra("FREQUENCY", frequency);
-            intent.putExtra("CAR_EMISSIONS", carEmissions);
+            intent.putExtra("carbonEmission", carbonEmission);
             startActivity(intent);
         });
     }

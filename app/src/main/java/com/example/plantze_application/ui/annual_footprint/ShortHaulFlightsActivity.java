@@ -15,20 +15,20 @@ public class ShortHaulFlightsActivity extends AppCompatActivity {
     private RadioGroup flightsGroup;
     private Button nextButton;
     private TextView emissionsDisplay;
-    private double currentEmissions;
+    private double carbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_short_haul_flights);
 
-        currentEmissions = getIntent().getDoubleExtra("TOTAL_EMISSIONS", 0);
+        carbonEmission = getIntent().getDoubleExtra("carbonEmission", 0);
 
         flightsGroup = findViewById(R.id.flightsGroup);
         nextButton = findViewById(R.id.nextButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
 
-        emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO2");
+        emissionsDisplay.setText("Current Emissions: " + carbonEmission + " CO2");
 
         nextButton.setOnClickListener(v -> {
             int selectedFlightsId = flightsGroup.getCheckedRadioButtonId();
@@ -43,12 +43,12 @@ public class ShortHaulFlightsActivity extends AppCompatActivity {
 
             double flightEmissions = getFlightEmissions(flights);
 
-            double totalEmissions = currentEmissions + flightEmissions;
+            double totalEmissions = carbonEmission + flightEmissions;
 
-            emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO2");
+            emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO₂ per year");
 
             Intent nextIntent = new Intent(ShortHaulFlightsActivity.this, LongHaulFlightsActivity.class);
-            nextIntent.putExtra("TOTAL_EMISSIONS", totalEmissions);
+            nextIntent.putExtra("carbonEmission", totalEmissions);
             startActivity(nextIntent);
         });
     }

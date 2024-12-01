@@ -13,9 +13,11 @@ public class HouseElectricityBill extends AppCompatActivity {
     private RadioGroup houseElectricityBillRadioGroup;
     private Button submitButton;
     private TextView resultTextView;
-    private int currentEmission;
+    //private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
+    private double foodCarbonEmission;
+    private double transportCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,11 @@ public class HouseElectricityBill extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
 
-        currentEmission = getIntent().getIntExtra("carbonEmission", 0);
+        //housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
+
+        foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
         resultTextView.setText("Final value will be displayed after answering all housing questions!");
 
@@ -47,12 +52,16 @@ public class HouseElectricityBill extends AppCompatActivity {
                 currentColumnRow = 25;
             }
 
-            resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
+           // resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
 
             Intent intent = new Intent(HouseElectricityBill.this, HouseHeatType.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("ColumnRow", currentColumnRow);
-            intent.putExtra("carbonEmission", currentEmission);
+            //intent.putExtra("carbonEmission", housingCurrentEmission);
+
+            intent.putExtra("foodCarbonEmission", foodCarbonEmission);
+            intent.putExtra("transportCarbonEmission", transportCarbonEmission);
+
             startActivity(intent);
 
         });
