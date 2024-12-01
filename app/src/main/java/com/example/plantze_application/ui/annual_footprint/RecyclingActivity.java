@@ -35,7 +35,7 @@ public class RecyclingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycling);
 
         // Retrieve current emissions and clothing frequency from the previous activity
-        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0.0);
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         housingCarbonEmission = getIntent().getDoubleExtra("housingCarbonEmission", 0);
 
@@ -67,7 +67,10 @@ public class RecyclingActivity extends AppCompatActivity {
             adjustedEmissions = adjustedEmissions + foodCarbonEmission + housingCarbonEmission + transportCarbonEmission;
 
             // Display the adjusted emissions
-            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ per year");
+            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ per year\n" +
+                    "Food carbon emissions: " + foodCarbonEmission +"\n" +
+                    "Transport carbon emissions: " + transportCarbonEmission + "\n" +
+                    "Housing carbon emissions: " + housingCarbonEmission);
 
 
             //Intent intent = new Intent(RecyclingActivity.this, MainActivity.class);

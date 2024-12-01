@@ -1,10 +1,7 @@
 package com.example.plantze_application.ui.annual_footprint;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
@@ -12,10 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class LongHaulFlightsActivity extends AppCompatActivity {
 
@@ -60,6 +53,8 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
             startActivity(intent);
 
         });
+
+
 
 
     }

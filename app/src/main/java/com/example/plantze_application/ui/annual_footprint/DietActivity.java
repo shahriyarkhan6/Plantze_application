@@ -16,6 +16,7 @@ public class DietActivity extends AppCompatActivity {
     private RadioGroup dietRadioGroup;
     private Button submitButton;
     private TextView resultTextView;
+    private double transportCarbonEmission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class DietActivity extends AppCompatActivity {
         dietRadioGroup = findViewById(R.id.dietRadioGroup);
         submitButton = findViewById(R.id.submitButton);
         resultTextView = findViewById(R.id.resultTextView);
+
+        transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +55,8 @@ public class DietActivity extends AppCompatActivity {
                 }
 
                 intent.putExtra("carbonEmission", carbonEmission);
+                intent.putExtra("transportCarbonEmission", transportCarbonEmission);
+
 
                 startActivity(intent);
             }
