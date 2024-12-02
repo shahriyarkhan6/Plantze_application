@@ -87,6 +87,8 @@ public class CalendarActivity extends AppCompatActivity {
                                         Log.d("Firestore", "No emissions found for given date");
                                     }
                                 }
+                                totalEmissions = Double.parseDouble(String.format("%.2f", totalEmissions));
+                                monthEmissions = Double.parseDouble(String.format("%.2f", monthEmissions));
                                 overallText.setText("Overall: "+totalEmissions+ " kg");
                                 monthlyText.setText("This month: "+monthEmissions+" kg");
                             } else {

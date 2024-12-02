@@ -71,10 +71,14 @@ public class DateActivity extends AppCompatActivity {
                                             .addOnSuccessListener(aVoid -> {
                                                 Log.d("Firestore", "Activity deleted successfully.");
                                                 Toast.makeText(DateActivity.this, "Activity deleted!", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(DateActivity.this, CalendarActivity.class);
+                                                startActivity(intent);
                                             })
                                             .addOnFailureListener(e -> {
                                                 Log.e("Firestore", "Error deleting activity", e);
                                                 Toast.makeText(DateActivity.this, "Failed to delete activity", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(DateActivity.this, CalendarActivity.class);
+                                                startActivity(intent);
                                             });
                                 } else {
                                     Log.d("Firestore", "No matching activity found to delete.");
@@ -129,9 +133,7 @@ public class DateActivity extends AppCompatActivity {
         });
 
         delete.setOnClickListener(v-> {
-            Intent intent = new Intent(DateActivity.this, CalendarActivity.class);
             deleteActivity(id_);
-            startActivity(intent);
         });
 
         buttonRow.addView(edit);
