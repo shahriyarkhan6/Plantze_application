@@ -60,5 +60,7 @@ dependencies {
     //For chart
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation ("com.google.firebase:firebase-auth:21.5.0")
+    implementation("org.mindrot:jbcrypt:0.4")
+
 
 }

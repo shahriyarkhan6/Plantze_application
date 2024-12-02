@@ -32,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -128,6 +129,9 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                //Store the hashed password in database for security purposes
+                String hashedpassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
                 //Firebase will now handle user creation.
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -146,7 +150,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         user.put("First Name", first_name);
                                         user.put("Last Name", last_name);
                                         user.put("Email", email);
-                                        user.put("Password", password);
+                                        user.put("Password", hashedpassword);
                                         user.put("User ID", uid);
                                         user.put("Login#","0");
 
@@ -179,9 +183,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                             }}
-
-
-
 
 
 

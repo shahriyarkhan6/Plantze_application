@@ -31,41 +31,35 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-        //AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                //R.id.navigation_home, R.id.navigation_dashboard)
-                //.build();
 
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_main_activity);
+        NavigationUI.setupWithNavController(binding.navView, navController);
 
-        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_main_activity);
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        //NavigationUI.setupWithNavController(binding.navView, navController);
-
-        // Adding the custom item selected listener
-        // Handle menu item clicks
         // Manually set click listeners for each navigation item
         navView.setOnItemSelectedListener(item -> {
             String title = (String) item.getTitle();
 
             if ("Eco-Tracker".equals(title)) {
                 // Handle Eco-Tracker navigation
-                // Add code for Eco-Tracker navigation here (if needed)
                 Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent);
                 return true;
 
             } else if ("Eco-Gauge".equals(title)) {
+
                 // Handle Eco-Gauge navigation
-                // Add code for Eco-Gauge navigation here (if needed)
+                navController.navigate(R.id.navigation_dashboard);
                 return true;
 
             } else if ("Annual Footprint".equals(title)) {
+
                 // Manually launch AnnualFootprintActivity
                 Intent intent = new Intent(MainActivity.this, AnnualFootprintActivity.class);
                 startActivity(intent);
                 return true;
             }
 
-            return false; // Default behavior
+            return false;
         });
 
 
