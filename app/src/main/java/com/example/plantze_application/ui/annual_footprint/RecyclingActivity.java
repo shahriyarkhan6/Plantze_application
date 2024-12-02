@@ -84,30 +84,19 @@ public class RecyclingActivity extends AppCompatActivity {
 
         // Handle the Next button click
         nextButton.setOnClickListener(v -> {
+            // Disabling the button to prevent multiple clicks
+            nextButton.setEnabled(false);
+
+            //ensuring user selects an option
             int selectedId = recyclingGroup.getCheckedRadioButtonId();
             if (selectedId == -1) {
                 Toast.makeText(this, "Please select how often you recycle.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-
             // Get the selected recycling choice
             RadioButton selectedButton = findViewById(selectedId);
             String recyclingChoice = selectedButton.getText().toString().trim();
-
-
-
-
-            //Intent intent = new Intent(RecyclingActivity.this, MainActivity.class);
-           // startActivity(intent);
-
-            // Optionally, you can pass the updated emissions to another activity
-            // Intent intent = new Intent(RecyclingActivity.this, NextActivity.class);
-            // intent.putExtra("UPDATED_EMISSIONS", adjustedEmissions);
-            // startActivity(intent);
-
-
-
 
             if (clothingFrequency == null || deviceFrequency == null) {
                 Toast.makeText(this, "Failed to load user data. Please try again later.", Toast.LENGTH_SHORT).show();
@@ -128,16 +117,17 @@ public class RecyclingActivity extends AppCompatActivity {
             double adjustedEmissions = currentEmissions - totalReduction;
             adjustedEmissions = adjustedEmissions + foodCarbonEmission + housingCarbonEmission + transportCarbonEmission;
 
+            adjustedEmissions  = adjustedEmissions/10000;
+
+            foodCarbonEmission = foodCarbonEmission/10000;
+            housingCarbonEmission = housingCarbonEmission/10000;
+            transportCarbonEmission = transportCarbonEmission/10000;
+
             // Display the adjusted emissions
-            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ per year\n" +
-                    "Food carbon emissions: " + foodCarbonEmission +"CO₂ per year\n" +
-                    "Transport carbon emissions: " + transportCarbonEmission + "CO₂ per year\n" +
-                    "Housing carbon emissions: " + housingCarbonEmission+ "CO₂ per year");
-
-
-            // Update the emissions display
-            //updateEmissionsDisplay();
-
+            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ tons per year\n" +
+                    "Food carbon emissions: " + foodCarbonEmission +"CO₂ tons per year\n" +
+                    "Transport carbon emissions: " + transportCarbonEmission + "CO₂ tons per year\n" +
+                    "Housing carbon emissions: " + housingCarbonEmission+ "CO₂ tons per year");
 
             // Save the adjusted emissions to Firestore
             db.collection("users").document(userId).update("Annual Consumption Emissions", currentEmissions)
@@ -153,13 +143,10 @@ public class RecyclingActivity extends AppCompatActivity {
         returnHomeButton.setOnClickListener(v -> {
 
             Intent intent = new Intent(RecyclingActivity.this, MainActivity.class);
-            //intent.putExtra("housingCarbonEmission", housingCurrentEmission);
             startActivity(intent);
 
         });
     }
-
-
 
     private double calculateClothingReduction(String clothingFrequency, String recyclingChoice) {
         if (clothingFrequency == null || recyclingChoice == null) return 0;
