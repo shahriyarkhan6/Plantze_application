@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#d8dbe2"
     android:padding="16dp">
 
     <!-- Title TextView for the question -->
@@ -11,7 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="What is the size of your home?"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#1b1b1e"
         android:layout_marginBottom="20dp" />
 
     <!-- RadioGroup for food waste options -->
@@ -47,21 +50,13 @@
 
     </RadioGroup>
 
-    <!-- Result TextView to display the current or total carbon emission -->
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Carbon Emission: 0 CO₂"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp" />
-
-    <!-- Submit Button -->
+    <!-- Next Button -->
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:layout_gravity="center"
+        android:text="Next"
         android:layout_marginTop="20dp" />
 
 </LinearLayout>

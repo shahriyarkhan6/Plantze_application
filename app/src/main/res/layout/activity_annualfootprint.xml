@@ -5,56 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d8dbe2"
     tools:context=".ui.annual_footprint.AnnualFootprintActivity">
-
-
-    <!-- Food Button -->
-    <Button
-        android:id="@+id/foodButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Food"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
 
     <!-- Transportation Button -->
     <Button
         android:id="@+id/transportationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transportation"
-        app:layout_constraintTop_toBottomOf="@id/foodButton"
+        android:text="Annual Footprint Questions"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-
-    <!-- Consumption Button -->
-    <Button
-        android:id="@+id/consumptionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Consumption"
-        app:layout_constraintTop_toBottomOf="@id/transportationButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-
-    <!-- Housing Button -->
-    <Button
-        android:id="@+id/housingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Housing"
-        app:layout_constraintTop_toBottomOf="@id/consumptionButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="144dp" />
 
     <!-- Location Button -->
     <Button
@@ -62,11 +26,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location"
-        app:layout_constraintTop_toBottomOf="@id/housingButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transportationButton"
         android:layout_marginTop="16dp" />
-
 
     <!-- Habit Tracking Button -->
     <Button
@@ -74,10 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Habit Tracking"
-        app:layout_constraintTop_toBottomOf="@id/locationButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/locationButton"
         android:layout_marginTop="16dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,14 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#d8dbe2"
+
     android:padding="16dp">
+
 
     <TextView
         android:id="@+id/instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How much time do you spend on public transport per week?"
-        android:textSize="16sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#1b1b1e"
         android:paddingBottom="20dp"/>
 
     <RadioGroup
@@ -54,14 +59,8 @@
         android:id="@+id/calculateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculate Emissions"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Next" />
 
-    <TextView
-        android:id="@+id/emissionsDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estimated Emissions: "
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"/>
 </LinearLayout>

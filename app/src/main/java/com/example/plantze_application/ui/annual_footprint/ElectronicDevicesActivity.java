@@ -23,7 +23,6 @@ import java.util.Map;
 public class ElectronicDevicesActivity extends AppCompatActivity {
     private RadioGroup devicesGroup;
     private Button nextButton;
-    private TextView emissionsDisplay;
     private double currentEmissions;
     private String clothingFrequency;
     private double foodCarbonEmission;
@@ -44,8 +43,6 @@ public class ElectronicDevicesActivity extends AppCompatActivity {
 
         devicesGroup = findViewById(R.id.devicesGroup);
         nextButton = findViewById(R.id.nextButton);
-        emissionsDisplay = findViewById(R.id.emissionsDisplay);
-        emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO₂ per year");
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
@@ -64,9 +61,6 @@ public class ElectronicDevicesActivity extends AppCompatActivity {
             String frequency = selectedDevicesButton.getText().toString();
             double devicesEmissions = calculateDevicesEmissions(frequency);
             double totalEmissions = currentEmissions + devicesEmissions;
-
-
-            emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO₂ per year");
 
 
             // Save the electronic devices frequency and emissions in Firestore

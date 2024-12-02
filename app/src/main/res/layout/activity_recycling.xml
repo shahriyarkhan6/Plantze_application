@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#d8dbe2"
     android:padding="16dp">
 
     <TextView
@@ -10,8 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How often do you recycle?"
-        android:textSize="18sp"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#1b1b1e" />
 
     <RadioGroup
         android:id="@+id/recyclingGroup"
@@ -23,29 +24,26 @@
             android:id="@+id/neverRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Never"
-            android:layout_marginBottom="10dp"/>
+            android:text="Never" />
 
         <RadioButton
             android:id="@+id/occasionalRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Occasionally"
-            android:layout_marginBottom="10dp"/>
+            android:text="Occasionally" />
 
         <RadioButton
             android:id="@+id/frequentRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Frequently"
-            android:layout_marginBottom="10dp"/>
+            android:text="Frequently" />
 
         <RadioButton
             android:id="@+id/alwaysRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Always"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="Always" />
     </RadioGroup>
 
     <TextView
@@ -54,12 +52,22 @@
         android:layout_height="wrap_content"
         android:text="Current Emissions: 0 CO₂ per year"
         android:textSize="16sp"
-        android:layout_marginBottom="20dp"/>
+        android:textStyle="bold"
+        android:textColor="#1b1b1e"
+        android:layout_marginBottom="30dp"/>
 
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Submit Data"
+        android:layout_gravity="center" />
+
+    <!-- Return Home Button -->
+    <Button
+        android:id="@+id/returnHomeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return Home"
         android:layout_gravity="center" />
 </LinearLayout>

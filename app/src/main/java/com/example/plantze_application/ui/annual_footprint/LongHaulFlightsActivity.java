@@ -39,9 +39,9 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
 
         flightsGroup = findViewById(R.id.flightsGroup);
         calculateButton = findViewById(R.id.calculateButton);
-        emissionsDisplay = findViewById(R.id.emissionsDisplay);
+        //emissionsDisplay = findViewById(R.id.emissionsDisplay);
 
-        emissionsDisplay.setText("Current Emissions: " + carbonEmission + " CO2");
+       // emissionsDisplay.setText("Current Emissions: " + carbonEmission + " CO2");
 
 
         calculateButton.setOnClickListener(v -> {
@@ -62,7 +62,7 @@ public class LongHaulFlightsActivity extends AppCompatActivity {
 
             carbonEmission = carbonEmission + flightEmissions;
 
-            emissionsDisplay.setText("Total Emissions: " + carbonEmission + " CO₂ per year");
+            //emissionsDisplay.setText("Total Emissions: " + carbonEmission + " CO₂ per year");
 
 
             Intent intent = new Intent(LongHaulFlightsActivity.this, DietActivity.class);

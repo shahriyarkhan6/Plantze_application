@@ -26,9 +26,9 @@ public class ShortHaulFlightsActivity extends AppCompatActivity {
 
         flightsGroup = findViewById(R.id.flightsGroup);
         nextButton = findViewById(R.id.nextButton);
-        emissionsDisplay = findViewById(R.id.emissionsDisplay);
+        //emissionsDisplay = findViewById(R.id.emissionsDisplay);
 
-        emissionsDisplay.setText("Current Emissions: " + carbonEmission + " CO2");
+        //emissionsDisplay.setText("Current Emissions: " + carbonEmission + " CO2");
 
         nextButton.setOnClickListener(v -> {
             int selectedFlightsId = flightsGroup.getCheckedRadioButtonId();
@@ -45,7 +45,7 @@ public class ShortHaulFlightsActivity extends AppCompatActivity {
 
             double totalEmissions = carbonEmission + flightEmissions;
 
-            emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO₂ per year");
+            //emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO₂ per year");
 
             Intent nextIntent = new Intent(ShortHaulFlightsActivity.this, LongHaulFlightsActivity.class);
             nextIntent.putExtra("carbonEmission", totalEmissions);

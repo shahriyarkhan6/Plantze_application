@@ -25,7 +25,7 @@ public class DietActivity extends AppCompatActivity {
 
         dietRadioGroup = findViewById(R.id.dietRadioGroup);
         submitButton = findViewById(R.id.submitButton);
-        resultTextView = findViewById(R.id.resultTextView);
+        //resultTextView = findViewById(R.id.resultTextView);
 
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
@@ -45,7 +45,7 @@ public class DietActivity extends AppCompatActivity {
                     carbonEmission = 0; // kg
                 }
 
-                resultTextView.setText("Carbon Emission: " + carbonEmission + " CO₂");
+                //resultTextView.setText("Carbon Emission: " + carbonEmission + " CO₂");
 
                 Intent intent;
                 if (selectedId == R.id.radioMeatBased) {

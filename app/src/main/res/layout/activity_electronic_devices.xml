@@ -3,36 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
+    android:background="#d8dbe2"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/questionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How many electronic devices have you purchased in the past year?"
+        android:textColor="#1b1b1e"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingBottom="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center" />
-
-    <TextView
-        android:id="@+id/emissionsDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Emissions: 0 CO₂ per year"
-        android:textSize="18sp"
-        android:paddingBottom="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center" />
+        android:textStyle="bold" />
 
     <RadioGroup
         android:id="@+id/devicesGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="20dp">
+        android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/radioNone"
@@ -69,7 +56,8 @@
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:layout_marginTop="20dp"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Next" />
 
 </LinearLayout>

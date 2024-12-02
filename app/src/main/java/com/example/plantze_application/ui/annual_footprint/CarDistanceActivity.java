@@ -36,7 +36,7 @@ public class CarDistanceActivity extends AppCompatActivity {
 
 
         distanceGroup = findViewById(R.id.distanceGroup);
-        resultTextView = findViewById(R.id.resultTextView);
+        //resultTextView = findViewById(R.id.resultTextView);
         nextButton = findViewById(R.id.nextButton);
 
 
@@ -77,7 +77,7 @@ public class CarDistanceActivity extends AppCompatActivity {
 
 
         // Display the calculated emissions
-        resultTextView.setText("Estimated Emissions: " + emissions + " kg CO₂ per year");
+        //resultTextView.setText("Estimated Emissions: " + emissions + " kg CO₂ per year");
     }
 }
 

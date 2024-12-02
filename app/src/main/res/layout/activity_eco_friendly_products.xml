@@ -2,14 +2,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d8dbe2"
     android:padding="16dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Do you buy second-hand or eco-friendly products?"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#1b1b1e"
+        android:layout_marginBottom="20dp" />
 
     <RadioGroup
         android:id="@+id/ecoFriendlyGroup"
@@ -19,24 +22,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Regularly" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Occasionally" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/emissionsDisplay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Current Emissions: 0 CO₂ per year"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/nextButton"

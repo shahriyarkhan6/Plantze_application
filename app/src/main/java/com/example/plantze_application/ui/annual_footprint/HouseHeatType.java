@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
 
@@ -12,8 +14,6 @@ public class HouseHeatType extends AppCompatActivity {
 
     private RadioGroup houseHeatTypeRadioGroup;
     private Button submitButton;
-    private TextView resultTextView;
-    //private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
     private int energyComparison;
@@ -23,24 +23,35 @@ public class HouseHeatType extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //linking to activity_house_type xml file
         setContentView(R.layout.activity_house_heat_type);
 
+        //buttons and options that link to xml files
         houseHeatTypeRadioGroup = findViewById(R.id.houseHeatTypeRadioGroup);
         submitButton = findViewById(R.id.submitButton);
-        resultTextView = findViewById(R.id.resultTextView);
 
-        //housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
+        //bringing over previous category values from intent
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
         currentColumnRow = getIntent().getIntExtra("ColumnRow", 0);
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
-        resultTextView.setText("Final value will be displayed after answering all housing questions!");
+        //button settings
         submitButton.setOnClickListener(v -> {
             int selectedId = houseHeatTypeRadioGroup.getCheckedRadioButtonId();
             energyComparison = 0;
 
+            // Check if an option is selected
+            if (selectedId == -1) {
+                Toast.makeText(this, "Please select an option before proceeding.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            /*
+            setting column # based on selected option & setting a number to compare energy
+            types in the next question
+             */
             if (selectedId == R.id.radioNaturalGas) {
                 currentColumnRow = currentColumnRow;
                 energyComparison = 1;
@@ -61,13 +72,11 @@ public class HouseHeatType extends AppCompatActivity {
                 energyComparison = 6;
             }
 
-           // resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
-
+            //linking this question to the next question and bringing relevant data
             Intent intent = new Intent(HouseHeatType.this, HouseHeatWaterType.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("ColumnRow", currentColumnRow);
             intent.putExtra("EnergyComparison", energyComparison);
-            //intent.putExtra("carbonEmission", housingCurrentEmission);
 
             intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             intent.putExtra("transportCarbonEmission", transportCarbonEmission);
