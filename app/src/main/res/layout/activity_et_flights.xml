@@ -13,7 +13,9 @@
         android:layout_height="wrap_content"
         android:text="Flight Information"
         android:textSize="40sp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:textColor="#373f51"
+        android:textStyle="bold"/>
 
     <!-- Subtitle TextView -->
     <TextView
@@ -22,7 +24,8 @@
         android:layout_height="wrap_content"
         android:text="Total distance covered (km)"
         android:textSize="24sp"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginBottom="0dp"
+        android:textColor="#373f51"/>
 
     <!-- Numeric Input Field -->
     <EditText

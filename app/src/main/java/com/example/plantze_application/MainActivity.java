@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.plantze_application.ui.annual_footprint.AnnualFootprintActivity;
+import com.example.plantze_application.ui.ecotracker.CalendarActivity;
 import com.example.plantze_application.ui.login.LoginActivity;
 import com.example.plantze_application.ui.registration.RegisterActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,9 +16,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.plantze_application.databinding.ActivityMainBinding;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             if ("Eco-Tracker".equals(title)) {
                 // Handle Eco-Tracker navigation
                 // Add code for Eco-Tracker navigation here (if needed)
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
                 return true;
 
             } else if ("Eco-Gauge".equals(title)) {

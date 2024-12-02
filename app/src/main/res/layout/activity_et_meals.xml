@@ -12,7 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Meal information"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:textColor="#373f51"
+        android:textStyle="bold"/>
 
     <!-- Subtitle TextView -->
     <TextView
@@ -21,7 +23,8 @@
         android:layout_height="wrap_content"
         android:text="Type of meal"
         android:textSize="24sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="#373f51"/>
 
     <!-- RadioGroup for food waste options -->
     <RadioGroup
@@ -75,7 +78,8 @@
         android:layout_height="wrap_content"
         android:text="Number of servings consumed"
         android:textSize="24sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="#373f51"/>
 
     <!-- Numeric Input Field -->
     <EditText

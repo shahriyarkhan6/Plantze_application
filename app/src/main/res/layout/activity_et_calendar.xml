@@ -68,7 +68,8 @@
             android:text="November 2024"
             android:textSize="24sp"
             android:gravity="center"
-            android:layout_marginHorizontal="16dp" />
+            android:layout_marginHorizontal="16dp"
+            android:textColor="#373f51"/>
 
         <!-- Space between the buttons (this pushes the title to the center) -->
         <Space

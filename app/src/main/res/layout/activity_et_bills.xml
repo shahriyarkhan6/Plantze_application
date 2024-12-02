@@ -38,8 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Electricity"
-            android:backgroundTint="#FF0000"/>
+            android:text="Electricity"/>
 
         <RadioButton
             android:id="@+id/gasRadio"
@@ -63,7 +62,8 @@
         android:layout_height="wrap_content"
         android:text="Bill amount"
         android:textSize="24sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="#373f51"/>
 
     <!-- Numeric Input Field -->
     <EditText
@@ -73,7 +73,8 @@
         android:inputType="number"
         android:textSize="20dp"
         android:hint="Enter amount"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        />
 
     <!-- Submit Button -->
     <Button

@@ -12,7 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cycling or Walking"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:textColor="#373f51"
+        android:textStyle="bold"/>
 
 
     <!-- Subtitle TextView -->
@@ -22,7 +24,8 @@
         android:layout_height="wrap_content"
         android:text="Distance (km)"
         android:textSize="24sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="#373f51"/>
 
     <!-- Numeric Input Field -->
     <EditText
