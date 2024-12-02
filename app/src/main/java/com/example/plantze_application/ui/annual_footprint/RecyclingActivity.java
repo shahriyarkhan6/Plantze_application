@@ -23,6 +23,7 @@ import java.util.Map;
 public class RecyclingActivity extends AppCompatActivity {
     private RadioGroup recyclingGroup;
     private Button nextButton;
+    private Button returnHomeButton;
     private TextView emissionsDisplay;
     private double currentEmissions;
     private double transportCarbonEmission;
@@ -49,6 +50,7 @@ public class RecyclingActivity extends AppCompatActivity {
         recyclingGroup = findViewById(R.id.recyclingGroup);
         nextButton = findViewById(R.id.nextButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
+        returnHomeButton = findViewById(R.id.returnHomeButton);
 
 
         // Retrieve current emissions from intent
@@ -135,7 +137,7 @@ public class RecyclingActivity extends AppCompatActivity {
 
 
             // Update the emissions display
-            updateEmissionsDisplay();
+            //updateEmissionsDisplay();
 
 
             // Save the adjusted emissions to Firestore
@@ -146,6 +148,14 @@ public class RecyclingActivity extends AppCompatActivity {
 
             Log.d("RecyclingActivity", "Reductions applied. Clothing: " + clothingReduction + ", Device: " + deviceReduction + ", Total: " + totalReduction);
 
+
+        });
+
+        returnHomeButton.setOnClickListener(v -> {
+
+            Intent intent = new Intent(RecyclingActivity.this, MainActivity.class);
+            //intent.putExtra("housingCarbonEmission", housingCurrentEmission);
+            startActivity(intent);
 
         });
     }
