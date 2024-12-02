@@ -29,7 +29,9 @@ public class WelcomeActivity2 extends AppCompatActivity {
         findViewById(R.id.signup_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 // Redirect to RegisterActivity
+
                 Intent intent = new Intent(WelcomeActivity2.this, RegisterActivity.class);
                 startActivity(intent);
                 finish();
@@ -39,7 +41,9 @@ public class WelcomeActivity2 extends AppCompatActivity {
         findViewById(R.id.login_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 // Redirect to LoginActivity
+
                 Intent intent = new Intent(WelcomeActivity2.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
