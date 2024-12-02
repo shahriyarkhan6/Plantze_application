@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d8dbe2"
     tools:context=".CarDistanceActivity">
 
     <!-- Title text -->
@@ -12,8 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How many km do you drive in a year?"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="#1b1b1e"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,27 +69,28 @@
             android:text="More than 25,000 km" />
     </RadioGroup>
 
-    <!-- Emissions result text -->
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estimated Emissions: 0 CO₂ per year"
-        app:layout_constraintTop_toBottomOf="@id/distanceGroup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingTop="16dp" />
+<!--    &lt;!&ndash; Emissions result text &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/resultTextView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Estimated Emissions: 0 CO₂ per year"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/distanceGroup"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:paddingTop="16dp" />-->
 
     <!-- "Next" button to proceed to the next question -->
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:layout_marginTop="12dp"
         android:enabled="true"
-        app:layout_constraintTop_toBottomOf="@id/resultTextView"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Next"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingTop="16dp" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distanceGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

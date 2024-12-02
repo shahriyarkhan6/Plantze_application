@@ -29,7 +29,7 @@ public class PublicTransportTimeActivity extends AppCompatActivity {
 
         timeGroup = findViewById(R.id.timeGroup);
         calculateButton = findViewById(R.id.calculateButton);
-        emissionsDisplay = findViewById(R.id.emissionsDisplay);
+        //emissionsDisplay = findViewById(R.id.emissionsDisplay);
 
         calculateButton.setOnClickListener(v -> {
             int selectedTimeId = timeGroup.getCheckedRadioButtonId();
@@ -46,7 +46,7 @@ public class PublicTransportTimeActivity extends AppCompatActivity {
 
             double totalEmissions = carbonEmission + transportEmissions;
 
-            emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO₂ per year");
+            //emissionsDisplay.setText("Total Emissions: " + totalEmissions + " CO₂ per year");
 
             Intent intent = new Intent(PublicTransportTimeActivity.this, ShortHaulFlightsActivity.class);
             intent.putExtra("carbonEmission", totalEmissions);

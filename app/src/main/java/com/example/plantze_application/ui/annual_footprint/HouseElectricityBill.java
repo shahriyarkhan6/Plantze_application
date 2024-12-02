@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
 
@@ -12,8 +14,6 @@ public class HouseElectricityBill extends AppCompatActivity {
 
     private RadioGroup houseElectricityBillRadioGroup;
     private Button submitButton;
-    private TextView resultTextView;
-    //private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
     private double foodCarbonEmission;
@@ -26,7 +26,6 @@ public class HouseElectricityBill extends AppCompatActivity {
 
         houseElectricityBillRadioGroup = findViewById(R.id.houseElectricityBillRadioGroup);
         submitButton = findViewById(R.id.submitButton);
-        resultTextView = findViewById(R.id.resultTextView);
 
         //housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
@@ -34,11 +33,15 @@ public class HouseElectricityBill extends AppCompatActivity {
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
-        resultTextView.setText("Final value will be displayed after answering all housing questions!");
-
         submitButton.setOnClickListener(v -> {
             int selectedId = houseElectricityBillRadioGroup.getCheckedRadioButtonId();
             currentColumnRow = 0; // Use double for food waste emission values
+
+            // Check if an option is selected
+            if (selectedId == -1) {
+                Toast.makeText(this, "Please select an option before proceeding.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (selectedId == R.id.radioUnder50) {
                 currentColumnRow = 0;
@@ -51,8 +54,6 @@ public class HouseElectricityBill extends AppCompatActivity {
             } else if (selectedId == R.id.radioOver200) {
                 currentColumnRow = 25;
             }
-
-           // resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
 
             Intent intent = new Intent(HouseElectricityBill.this, HouseHeatType.class);
             intent.putExtra("ArrayRow", currentArrayRow);

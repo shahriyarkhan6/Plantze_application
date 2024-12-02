@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
 
@@ -12,7 +14,6 @@ public class HousePeopleNum extends AppCompatActivity {
 
     private RadioGroup housePeopleNumRadioGroup;
     private Button submitButton;
-    private TextView resultTextView;
     private int currentArrayRow;
     private double foodCarbonEmission;
     private double transportCarbonEmission;
@@ -25,17 +26,19 @@ public class HousePeopleNum extends AppCompatActivity {
 
         housePeopleNumRadioGroup = findViewById(R.id.housePeopleNumRadioGroup);
         submitButton = findViewById(R.id.submitButton);
-        resultTextView = findViewById(R.id.resultTextView);
-
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
-        resultTextView.setText("Final value will be displayed after answering all housing questions!");
-
         submitButton.setOnClickListener(v -> {
             int selectedId = housePeopleNumRadioGroup.getCheckedRadioButtonId();
+
+            // Check if an option is selected
+            if (selectedId == -1) {
+                Toast.makeText(this, "Please select an option before proceeding.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (selectedId == R.id.radio1) {
                 currentArrayRow = currentArrayRow + 0;
@@ -47,7 +50,6 @@ public class HousePeopleNum extends AppCompatActivity {
                 currentArrayRow = currentArrayRow + 3;
             }
 
-            //resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
 
             Intent intent = new Intent(HousePeopleNum.this, HouseElectricityBill.class);
             intent.putExtra("ArrayRow", currentArrayRow);

@@ -23,7 +23,6 @@ import java.util.Map;
 public class ConsumptionActivity extends AppCompatActivity {
     private RadioGroup frequencyGroup;
     private Button nextButton;
-    private TextView emissionsDisplay;
     private double currentEmissions;
     private double foodCarbonEmission;
     private double transportCarbonEmission;
@@ -41,8 +40,6 @@ public class ConsumptionActivity extends AppCompatActivity {
         currentEmissions = getIntent().getDoubleExtra("CURRENT_EMISSIONS", 0);
         frequencyGroup = findViewById(R.id.frequencyGroup);
         nextButton = findViewById(R.id.nextButton);
-        emissionsDisplay = findViewById(R.id.emissionsDisplay);
-        emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO₂ per year");
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
@@ -56,7 +53,6 @@ public class ConsumptionActivity extends AppCompatActivity {
                 String frequency = selectedButton.getText().toString();
                 double clothingEmissions = calculateClothingEmissions(frequency);
                 double totalEmissions = currentEmissions + clothingEmissions;
-                emissionsDisplay.setText("Current Emissions: " + totalEmissions + " CO₂ per year");
             }
         });
 

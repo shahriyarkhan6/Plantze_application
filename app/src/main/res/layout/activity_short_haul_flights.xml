@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#d8dbe2"
     android:padding="16dp">
 
     <TextView
@@ -10,13 +11,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How many short-haul flights have you taken in the past year?"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#1b1b1e"
+        android:gravity="center"
         android:layout_marginBottom="16dp"/>
 
     <!-- Radio buttons for short-haul flight options -->
     <RadioGroup
         android:id="@+id/flightsGroup"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content">
 
         <RadioButton
@@ -48,13 +53,8 @@
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Next" />
 
-    <TextView
-        android:id="@+id/emissionsDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Emissions: 0 CO2"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"/>
+
 </LinearLayout>

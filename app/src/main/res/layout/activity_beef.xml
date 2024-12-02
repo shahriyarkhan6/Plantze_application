@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#d8dbe2"
     android:padding="16dp">
 
     <!-- Title TextView -->
@@ -11,7 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How often do you eat beef?"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#1b1b1e"
+        android:layout_gravity="center"
         android:layout_marginBottom="20dp" />
 
     <!-- RadioGroup for beef consumption options -->
@@ -19,6 +23,7 @@
         android:id="@+id/beefRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
 
         <RadioButton
@@ -46,20 +51,12 @@
             android:text="Never" />
     </RadioGroup>
 
-    <!-- Result TextView -->
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Carbon Emission: 0 CO₂"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp" />
-
     <!-- Submit Button -->
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="Next"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp" />
 </LinearLayout>

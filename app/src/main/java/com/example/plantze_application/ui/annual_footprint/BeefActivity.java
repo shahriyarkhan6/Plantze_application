@@ -26,13 +26,13 @@ public class BeefActivity extends AppCompatActivity {
 
         beefRadioGroup = findViewById(R.id.beefRadioGroup);
         submitButton = findViewById(R.id.submitButton);
-        resultTextView = findViewById(R.id.resultTextView);
+        //resultTextView = findViewById(R.id.resultTextView);
 
         currentEmission = getIntent().getIntExtra("carbonEmission", 0);
 
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
-        resultTextView.setText("Current Carbon Emission: " + currentEmission + " kg");
+        //resultTextView.setText("Current Carbon Emission: " + currentEmission + " kg");
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class BeefActivity extends AppCompatActivity {
                 currentEmission += beefEmission;
 
 
-                resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
+                //resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
 
                 Intent intent = new Intent(BeefActivity.this, PorkActivity.class);
                 intent.putExtra("carbonEmission", currentEmission);

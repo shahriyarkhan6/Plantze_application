@@ -13,7 +13,6 @@ import com.example.plantze_application.R;
 public class EcoFriendlyProductsActivity extends AppCompatActivity {
     private RadioGroup ecoFriendlyGroup;
     private Button nextButton;
-    private TextView emissionsDisplay;
     private double currentEmissions;
     private String clothingFrequency;
     private double foodCarbonEmission;
@@ -29,8 +28,6 @@ public class EcoFriendlyProductsActivity extends AppCompatActivity {
         clothingFrequency = getIntent().getStringExtra("CLOTHING_FREQUENCY"); // Receive clothing frequency
         ecoFriendlyGroup = findViewById(R.id.ecoFriendlyGroup);
         nextButton = findViewById(R.id.nextButton);
-        emissionsDisplay = findViewById(R.id.emissionsDisplay);
-        emissionsDisplay.setText("Current Emissions: " + currentEmissions + " CO₂ per year");
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);

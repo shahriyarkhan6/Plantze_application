@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
 
@@ -12,8 +14,6 @@ public class HouseHeatType extends AppCompatActivity {
 
     private RadioGroup houseHeatTypeRadioGroup;
     private Button submitButton;
-    private TextView resultTextView;
-    //private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
     private int energyComparison;
@@ -27,7 +27,6 @@ public class HouseHeatType extends AppCompatActivity {
 
         houseHeatTypeRadioGroup = findViewById(R.id.houseHeatTypeRadioGroup);
         submitButton = findViewById(R.id.submitButton);
-        resultTextView = findViewById(R.id.resultTextView);
 
         //housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
@@ -36,10 +35,15 @@ public class HouseHeatType extends AppCompatActivity {
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
-        resultTextView.setText("Final value will be displayed after answering all housing questions!");
         submitButton.setOnClickListener(v -> {
             int selectedId = houseHeatTypeRadioGroup.getCheckedRadioButtonId();
             energyComparison = 0;
+
+            // Check if an option is selected
+            if (selectedId == -1) {
+                Toast.makeText(this, "Please select an option before proceeding.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (selectedId == R.id.radioNaturalGas) {
                 currentColumnRow = currentColumnRow;
@@ -61,7 +65,6 @@ public class HouseHeatType extends AppCompatActivity {
                 energyComparison = 6;
             }
 
-           // resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
 
             Intent intent = new Intent(HouseHeatType.this, HouseHeatWaterType.class);
             intent.putExtra("ArrayRow", currentArrayRow);

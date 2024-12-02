@@ -55,7 +55,6 @@ public class RecyclingActivity extends AppCompatActivity {
 
         // Retrieve current emissions from intent
         currentEmissions = getIntent().getDoubleExtra("CURRENT_EMISSIONS", 0);
-        updateEmissionsDisplay();
 
 
         // Retrieve Firestore data for user choices
@@ -131,9 +130,9 @@ public class RecyclingActivity extends AppCompatActivity {
 
             // Display the adjusted emissions
             emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ per year\n" +
-                    "Food carbon emissions: " + foodCarbonEmission +"\n" +
-                    "Transport carbon emissions: " + transportCarbonEmission + "\n" +
-                    "Housing carbon emissions: " + housingCarbonEmission);
+                    "Food carbon emissions: " + foodCarbonEmission +"CO₂ per year\n" +
+                    "Transport carbon emissions: " + transportCarbonEmission + "CO₂ per year\n" +
+                    "Housing carbon emissions: " + housingCarbonEmission+ "CO₂ per year");
 
 
             // Update the emissions display
@@ -160,10 +159,6 @@ public class RecyclingActivity extends AppCompatActivity {
         });
     }
 
-
-    private void updateEmissionsDisplay() {
-        emissionsDisplay.setText("Adjusted Emissions: " + currentEmissions + " CO₂ per year");
-    }
 
 
     private double calculateClothingReduction(String clothingFrequency, String recyclingChoice) {

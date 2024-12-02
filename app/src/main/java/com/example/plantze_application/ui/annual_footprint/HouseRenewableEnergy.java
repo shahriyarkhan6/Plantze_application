@@ -26,8 +26,6 @@ public class HouseRenewableEnergy extends AppCompatActivity {
 
     private RadioGroup houseRenewableEnergyRadioGroup;
     private Button submitButton;
-    private Button returnHomeButton;
-    private TextView resultTextView;
     private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
@@ -44,8 +42,6 @@ public class HouseRenewableEnergy extends AppCompatActivity {
 
         houseRenewableEnergyRadioGroup = findViewById(R.id.houseRenewableEnergyRadioGroup);
         submitButton = findViewById(R.id.submitButton);
-        resultTextView = findViewById(R.id.resultTextView);
-        returnHomeButton = findViewById(R.id.returnHomeButton);
 
         housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
@@ -55,10 +51,14 @@ public class HouseRenewableEnergy extends AppCompatActivity {
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
-        resultTextView.setText("Current Carbon Emission: " + housingCurrentEmission + " CO₂");
-
         submitButton.setOnClickListener(v -> {
             int selectedId = houseRenewableEnergyRadioGroup.getCheckedRadioButtonId();
+
+            // Check if an option is selected
+            if (selectedId == -1) {
+                Toast.makeText(this, "Please select an option before proceeding.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (selectedId == R.id.radioPrimarily) {
                 housingCurrentEmission = housingCurrentEmission - 6000;
@@ -120,15 +120,14 @@ public class HouseRenewableEnergy extends AppCompatActivity {
             };
 
 
-            if (currentArrayRow >= 0 && currentArrayRow < HousingData.length &&
-                    currentColumnRow >= 0 && currentColumnRow < HousingData[currentArrayRow].length) {
-                int specificValue = HousingData[currentArrayRow][currentColumnRow];
-                housingCurrentEmission = housingCurrentEmission + specificValue;
-                resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
-            } else {
-                resultTextView.setText("Invalid row or column indices. Row:" + currentArrayRow + "Column: " + currentColumnRow );
 
-            }
+            int specificValue = HousingData[currentArrayRow][currentColumnRow];
+            housingCurrentEmission = housingCurrentEmission + specificValue;
+                //resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
+
+                //resultTextView.setText("Invalid row or column indices. Row:" + currentArrayRow + "Column: " + currentColumnRow );
+
+
 
             //Adding Housing Carbon Data to user info
             SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
@@ -163,14 +162,6 @@ public class HouseRenewableEnergy extends AppCompatActivity {
 
         });
 
-
-        returnHomeButton.setOnClickListener(v -> {
-
-            Intent intent = new Intent(HouseRenewableEnergy.this, MainActivity.class);
-            //intent.putExtra("housingCarbonEmission", housingCurrentEmission);
-            startActivity(intent);
-
-        });
     }
 
 }

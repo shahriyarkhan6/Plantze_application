@@ -24,12 +24,12 @@ public class TransportationActivity extends AppCompatActivity {
             RadioButton selectedRadioButton = findViewById(checkedId);
             String selectedOption = selectedRadioButton.getText().toString();
 
-
+            //brings user to car question
             if (selectedOption.equals("Yes")) {
                 Intent intent = new Intent(TransportationActivity.this, CarTypeActivity.class);
                 startActivity(intent);
 
-
+            //skips car questions of user doesn't drive
             } else if (selectedOption.equals("No")) {
                 Intent intent = new Intent(TransportationActivity.this, PublicTransportFrequencyActivity.class);
                 startActivity(intent);

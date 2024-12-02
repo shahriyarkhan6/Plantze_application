@@ -21,7 +21,6 @@ public class FoodWasteActivity extends AppCompatActivity {
 
     private RadioGroup foodWasteRadioGroup;
     private Button submitButton;
-    private TextView resultTextView;
     private int currentEmission;
     private double transportCarbonEmission;
 
@@ -32,13 +31,10 @@ public class FoodWasteActivity extends AppCompatActivity {
 
         foodWasteRadioGroup = findViewById(R.id.foodWasteRadioGroup);
         submitButton = findViewById(R.id.submitButton);
-        resultTextView = findViewById(R.id.resultTextView);
 
         currentEmission = getIntent().getIntExtra("carbonEmission", 0);
 
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
-
-        resultTextView.setText("Current Carbon Emission: " + currentEmission + " CO₂");
 
         submitButton.setOnClickListener(v -> {
             int selectedId = foodWasteRadioGroup.getCheckedRadioButtonId();
@@ -55,8 +51,6 @@ public class FoodWasteActivity extends AppCompatActivity {
             }
 
             currentEmission += foodWasteEmission;
-
-            resultTextView.setText("Total Carbon Emission: " + currentEmission + " CO₂");
 
             double foodCarbonEmission = currentEmission;
 

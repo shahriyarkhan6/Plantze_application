@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d8dbe2"
     tools:context=".ConsumptionActivity">
 
     <!-- Title -->
@@ -15,6 +16,8 @@
         android:text="How often do you buy new clothes?"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="#1b1b1e"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,25 +59,13 @@
             android:text="Rarely" />
     </RadioGroup>
 
-    <!-- Emissions Display -->
-    <TextView
-        android:id="@+id/emissionsDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Emissions: 0 CO₂ per year"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/frequencyGroup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
     <!-- Next Button -->
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
-        app:layout_constraintTop_toBottomOf="@id/emissionsDisplay"
+        app:layout_constraintTop_toBottomOf="@id/frequencyGroup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
