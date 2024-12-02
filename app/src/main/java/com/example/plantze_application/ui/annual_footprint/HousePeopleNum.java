@@ -22,15 +22,20 @@ public class HousePeopleNum extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //linking to activity_house_type xml file
         setContentView(R.layout.activity_house_people_num);
 
+        //buttons and options that link to xml files
         housePeopleNumRadioGroup = findViewById(R.id.housePeopleNumRadioGroup);
         submitButton = findViewById(R.id.submitButton);
+
+        //bringing over previous category values from intent
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
+        //button settings
         submitButton.setOnClickListener(v -> {
             int selectedId = housePeopleNumRadioGroup.getCheckedRadioButtonId();
 
@@ -40,6 +45,7 @@ public class HousePeopleNum extends AppCompatActivity {
                 return;
             }
 
+            //setting even more specific row # based on selected option
             if (selectedId == R.id.radio1) {
                 currentArrayRow = currentArrayRow + 0;
             } else if (selectedId == R.id.radio2) {
@@ -50,7 +56,7 @@ public class HousePeopleNum extends AppCompatActivity {
                 currentArrayRow = currentArrayRow + 3;
             }
 
-
+            //linking this question to the next question and bringing relevant data
             Intent intent = new Intent(HousePeopleNum.this, HouseElectricityBill.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             //intent.putExtra("carbonEmission", housingCurrentEmission);

@@ -22,15 +22,18 @@ public class HouseTypeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //linking to activity_house_type xml file
         setContentView(R.layout.activity_house_type);
 
+        //buttons and options that link to xml files
         houseTypeRadioGroup = findViewById(R.id.houseTypeRadioGroup);
-
         submitButton = findViewById(R.id.submitButton);
 
+        //bringing over previous category values from intent
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
+        //button settings
         submitButton.setOnClickListener(v -> {
             int selectedId = houseTypeRadioGroup.getCheckedRadioButtonId();
             currentArrayRow = 0;
@@ -41,6 +44,7 @@ public class HouseTypeActivity extends AppCompatActivity {
                 return;
             }
 
+            //setting row # based on selected option
             if (selectedId == R.id.radioDetached) {
                 currentArrayRow = 0;
             } else if (selectedId == R.id.radioSemi) {
@@ -53,6 +57,7 @@ public class HouseTypeActivity extends AppCompatActivity {
                 currentArrayRow = 24;
             }
 
+            //linking this question to the next question and bringing relevant data
             Intent intent = new Intent(HouseTypeActivity.this, HouseSize.class);
             intent.putExtra("ArrayRow", currentArrayRow);
 

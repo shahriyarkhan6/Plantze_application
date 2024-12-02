@@ -23,18 +23,21 @@ public class HouseHeatType extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //linking to activity_house_type xml file
         setContentView(R.layout.activity_house_heat_type);
 
+        //buttons and options that link to xml files
         houseHeatTypeRadioGroup = findViewById(R.id.houseHeatTypeRadioGroup);
         submitButton = findViewById(R.id.submitButton);
 
-        //housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
+        //bringing over previous category values from intent
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
         currentColumnRow = getIntent().getIntExtra("ColumnRow", 0);
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
+        //button settings
         submitButton.setOnClickListener(v -> {
             int selectedId = houseHeatTypeRadioGroup.getCheckedRadioButtonId();
             energyComparison = 0;
@@ -45,6 +48,10 @@ public class HouseHeatType extends AppCompatActivity {
                 return;
             }
 
+            /*
+            setting column # based on selected option & setting a number to compare energy
+            types in the next question
+             */
             if (selectedId == R.id.radioNaturalGas) {
                 currentColumnRow = currentColumnRow;
                 energyComparison = 1;
@@ -65,12 +72,11 @@ public class HouseHeatType extends AppCompatActivity {
                 energyComparison = 6;
             }
 
-
+            //linking this question to the next question and bringing relevant data
             Intent intent = new Intent(HouseHeatType.this, HouseHeatWaterType.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("ColumnRow", currentColumnRow);
             intent.putExtra("EnergyComparison", energyComparison);
-            //intent.putExtra("carbonEmission", housingCurrentEmission);
 
             intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             intent.putExtra("transportCarbonEmission", transportCarbonEmission);

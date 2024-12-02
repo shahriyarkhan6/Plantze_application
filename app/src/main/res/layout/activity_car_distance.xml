@@ -8,29 +8,32 @@
     tools:context=".CarDistanceActivity">
 
     <!-- Title text -->
+
+    <!-- Distance selection options -->
+
+    <!-- "Next" button to proceed to the next question -->
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:text="How many km do you drive in a year?"
+        android:textColor="#1b1b1e"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#1b1b1e"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Distance selection options -->
     <RadioGroup
         android:id="@+id/distanceGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        android:paddingTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingTop="16dp">
+        app:layout_constraintTop_toBottomOf="@id/titleTextView">
 
         <RadioButton
             android:id="@+id/radioUpTo5000"
@@ -69,18 +72,6 @@
             android:text="More than 25,000 km" />
     </RadioGroup>
 
-<!--    &lt;!&ndash; Emissions result text &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/resultTextView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Estimated Emissions: 0 CO₂ per year"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/distanceGroup"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:paddingTop="16dp" />-->
-
-    <!-- "Next" button to proceed to the next question -->
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"

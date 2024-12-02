@@ -16,14 +16,12 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"
-        android:gravity="center"
         android:paddingBottom="20dp"/>
 
     <RadioGroup
         android:id="@+id/timeGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical">
 
         <RadioButton

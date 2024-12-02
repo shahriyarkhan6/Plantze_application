@@ -22,17 +22,20 @@ public class HouseElectricityBill extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //linking to activity_house_type xml file
         setContentView(R.layout.activity_house_electricity_bill);
 
+        //buttons and options that link to xml files
         houseElectricityBillRadioGroup = findViewById(R.id.houseElectricityBillRadioGroup);
         submitButton = findViewById(R.id.submitButton);
 
-        //housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
+        //bringing over previous category values from intent
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
+        //button settings
         submitButton.setOnClickListener(v -> {
             int selectedId = houseElectricityBillRadioGroup.getCheckedRadioButtonId();
             currentColumnRow = 0; // Use double for food waste emission values
@@ -43,6 +46,7 @@ public class HouseElectricityBill extends AppCompatActivity {
                 return;
             }
 
+            //setting column # based on selected option
             if (selectedId == R.id.radioUnder50) {
                 currentColumnRow = 0;
             } else if (selectedId == R.id.radio50to100) {
@@ -55,10 +59,11 @@ public class HouseElectricityBill extends AppCompatActivity {
                 currentColumnRow = 25;
             }
 
+
+            //linking this question to the next question and bringing relevant data
             Intent intent = new Intent(HouseElectricityBill.this, HouseHeatType.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("ColumnRow", currentColumnRow);
-            //intent.putExtra("carbonEmission", housingCurrentEmission);
 
             intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             intent.putExtra("transportCarbonEmission", transportCarbonEmission);

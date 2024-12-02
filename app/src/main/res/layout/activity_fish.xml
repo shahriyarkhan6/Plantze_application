@@ -15,7 +15,6 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"
-        android:layout_gravity="center"
         android:layout_marginBottom="20dp"/>
 
     <!-- RadioGroup for fish consumption options -->
@@ -23,7 +22,6 @@
         android:id="@+id/fishRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical">
 
         <RadioButton

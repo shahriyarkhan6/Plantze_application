@@ -14,13 +14,11 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"
-        android:gravity="center"
         android:layout_marginBottom="16dp"/>
 
     <RadioGroup
         android:id="@+id/flightsGroup"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content">
 
         <RadioButton

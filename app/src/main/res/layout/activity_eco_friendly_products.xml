@@ -12,22 +12,22 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"
-        android:gravity="center"
         android:layout_marginBottom="20dp" />
 
     <RadioGroup
         android:id="@+id/ecoFriendlyGroup"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Regularly" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Occasionally" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

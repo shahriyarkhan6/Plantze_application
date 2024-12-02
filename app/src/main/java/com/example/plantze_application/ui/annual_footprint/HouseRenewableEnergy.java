@@ -29,28 +29,30 @@ public class HouseRenewableEnergy extends AppCompatActivity {
     private int housingCurrentEmission;
     private int currentColumnRow;
     private int currentArrayRow;
-    private int energyComparison;
+    //private int energyComparison;
     private double foodCarbonEmission;
     public double transportCarbonEmission;
-
-//    private List<HousingDataModel> dataHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //linking to activity_house_type xml file
         setContentView(R.layout.activity_house_renewable_energy);
 
+        //buttons and options that link to xml files
         houseRenewableEnergyRadioGroup = findViewById(R.id.houseRenewableEnergyRadioGroup);
         submitButton = findViewById(R.id.submitButton);
 
+        //bringing over previous category values from intent
         housingCurrentEmission = getIntent().getIntExtra("carbonEmission", 0);
         currentArrayRow = getIntent().getIntExtra("ArrayRow", 0);
         currentColumnRow = getIntent().getIntExtra("ColumnRow", 0);
-        energyComparison = getIntent().getIntExtra("EnergyComparison", 0);
+        //energyComparison = getIntent().getIntExtra("EnergyComparison", 0);
 
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0);
 
+        //button settings
         submitButton.setOnClickListener(v -> {
             int selectedId = houseRenewableEnergyRadioGroup.getCheckedRadioButtonId();
 
@@ -60,13 +62,21 @@ public class HouseRenewableEnergy extends AppCompatActivity {
                 return;
             }
 
+            //modifying carbon emission value based on chosen setting
             if (selectedId == R.id.radioPrimarily) {
                 housingCurrentEmission = housingCurrentEmission - 6000;
             } else if (selectedId == R.id.radioPartially) {
-                housingCurrentEmission = housingCurrentEmission - 6000;
-            } else if (selectedId == R.id.radioOil) {
-                housingCurrentEmission = housingCurrentEmission;
+                housingCurrentEmission = housingCurrentEmission - 4000;
             }
+//            else if (selectedId == R.id.radioOil) {
+//                housingCurrentEmission = housingCurrentEmission;
+//            }
+
+            /*
+            housing data from formula file converted into a nested array
+            previous questions have been used to determine array index to find
+            relevant number
+             */
 
             int[][] HousingData = {
                     {2400, 200, 2100, 2870, 2170, 2440, 400, 5200, 4400, 2340, 2610, 1200, 6100, 5400, 2510, 2780, 1700, 7200, 6400, 2680, 3100, 2300, 8200, 7400, 3000},
@@ -119,17 +129,11 @@ public class HouseRenewableEnergy extends AppCompatActivity {
                     {3577, 980, 0, 2600, 3300, 3600, 980, 0, 5150, 3600, 4300, 2350, 0, 5700, 4600, 6200, 3150, 0, 6000, 4630, 11100, 4000, 0, 7800, 5100}
             };
 
-
-
+            //finding the relevant value within the array
             int specificValue = HousingData[currentArrayRow][currentColumnRow];
             housingCurrentEmission = housingCurrentEmission + specificValue;
-                //resultTextView.setText("Total Carbon Emission: " + housingCurrentEmission + " CO₂");
 
-                //resultTextView.setText("Invalid row or column indices. Row:" + currentArrayRow + "Column: " + currentColumnRow );
-
-
-
-            //Adding Housing Carbon Data to user info
+            //Adding Housing Carbon Data to user info on Firebase
             SharedPreferences sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
             String userID = sharedPref.getString("USER_ID", null);
 
@@ -151,8 +155,10 @@ public class HouseRenewableEnergy extends AppCompatActivity {
 
             }
 
-            double housingCarbonEmission = housingCurrentEmission; // Implicit conversion
+            //converting hosuing carbon emission into a double data type
+            double housingCarbonEmission = housingCurrentEmission;
 
+            //linking this question to the next question and bringing relevant data
             Intent intent = new Intent(HouseRenewableEnergy.this, ConsumptionActivity.class);
             intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             intent.putExtra("housingCarbonEmission", housingCarbonEmission); // Pass as double

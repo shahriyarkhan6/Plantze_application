@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,41 +12,38 @@
         android:text="How often do you recycle?"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#1b1b1e"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="#1b1b1e" />
 
     <RadioGroup
         android:id="@+id/recyclingGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/neverRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Never"/>
+            android:text="Never" />
 
         <RadioButton
             android:id="@+id/occasionalRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Occasionally"/>
+            android:text="Occasionally" />
 
         <RadioButton
             android:id="@+id/frequentRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Frequently"/>
+            android:text="Frequently" />
 
         <RadioButton
             android:id="@+id/alwaysRecycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Always"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="Always" />
     </RadioGroup>
 
     <TextView
@@ -55,7 +51,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Current Emissions: 0 CO₂ per year"
-        android:layout_gravity="center"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"

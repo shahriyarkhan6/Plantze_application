@@ -15,15 +15,15 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"
-        android:gravity="center"
         android:layout_marginBottom="20dp" />
 
     <!-- RadioGroup for food waste options -->
+
+    <!-- Submit Button -->
     <RadioGroup
         android:id="@+id/foodWasteRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical">
 
         <RadioButton
@@ -51,7 +51,6 @@
             android:text="Frequently" />
     </RadioGroup>
 
-    <!-- Submit Button -->
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"

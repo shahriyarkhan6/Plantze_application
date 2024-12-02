@@ -43,6 +43,7 @@ public class RecyclingActivity extends AppCompatActivity {
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         housingCarbonEmission = getIntent().getDoubleExtra("housingCarbonEmission", 0);
 
+
         currentEmissions = getIntent().getDoubleExtra("CURRENT_EMISSIONS", 0);
         clothingFrequency = getIntent().getStringExtra("CLOTHING_FREQUENCY"); // Receive clothing frequency
 
