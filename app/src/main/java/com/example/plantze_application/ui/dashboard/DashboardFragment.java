@@ -20,6 +20,7 @@ import com.example.plantze_application.databinding.FragmentDashboardBinding;
 import com.example.plantze_application.ui.annual_footprint.AnnualFootprintActivity;
 import com.example.plantze_application.ui.ecotracker.CalendarActivity;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -40,30 +41,34 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        TextView textView = binding.textDashboard;
-        TextView emissionText = binding.textEmissions;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        TextView titleText = binding.textDashboard;
+
         // Set up line chart:
-        LineChart linechart = binding.chart;
+        LineChart linechart = binding.lineChart;
+        PieChart piechart = binding.pieChart;
         // Pull Data from Firebase:
-        DashboardChart newChart = new DashboardChart(linechart);
+        DashboardChart newChart = new DashboardChart(linechart, piechart);
         // create chart:
-        newChart.collectWeek(emissionText);
+        titleText.setText("Past Week's Emissions");
+        newChart.collectWeek();
 
         // Set up the Annual Emissions button click listener
         Button getWeekButton = binding.weekButton;  // Reference the annual emissions button
         getWeekButton.setOnClickListener(v -> {
+            titleText.setText("Past Week's Emissions");
             // Start the AnnualFootprintActivity when the button is clicked
-            newChart.collectWeek(emissionText);
+            newChart.collectWeek();
         });
         Button getMonthButton = binding.monthButton;  // Reference the Ecotracker button
         getMonthButton.setOnClickListener(v -> {
+            titleText.setText("Past Month's Emissions");
             // Start the Ecotracker when the button is clicked
-            newChart.collectMonth(emissionText);
+            newChart.collectMonth();
         });
         Button getYearButton = binding.yearButton;  // Reference the Ecotracker button
         getYearButton.setOnClickListener(v -> {
-            newChart.collectYear(emissionText);
+            titleText.setText("Past Year's Emissions");
+            newChart.collectYear();
         });
         return root;
     }
