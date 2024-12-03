@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
+//
     private ActivityMainBinding binding;
 
     @Override

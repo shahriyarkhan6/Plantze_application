@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
             }
         });
 
-        presenter = new LoginPresenterInteractor(this);
+        presenter = new LoginPresenter(this);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         loginbutton = findViewById(R.id.login_button);
