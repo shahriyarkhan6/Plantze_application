@@ -26,7 +26,7 @@ public class LoginPresenter {
 
     }
 
-    //@Override
+
     public void handleLoginCredentials(String email, String password) {
 
         //Check if email inputted is empty
