@@ -18,7 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.plantze_application.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
+//
     private ActivityMainBinding binding;
 
     @Override
