@@ -94,45 +94,60 @@ public class RegisterActivity extends AppCompatActivity {
                 last_name = String.valueOf(editTextLastname.getText()).trim();
 
                 //Check if email inputted is empty
+
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(RegisterActivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 //Check if password inputted is empty
+
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(RegisterActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 //Check if both passwords match
+
                 if(!(password.equals(confirm_password))){
                     Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 //Check if first name inputted is empty
+
                 if(TextUtils.isEmpty(first_name)){
                     Toast.makeText(RegisterActivity.this, "Enter first name", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 //Check if last name inputted is empty
+
                 if(TextUtils.isEmpty(last_name)){
                     Toast.makeText(RegisterActivity.this, "Enter last name", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 //Check if both first name and last name inputted is empty
+
                 if((TextUtils.isEmpty(first_name)) && (TextUtils.isEmpty(last_name))){
                     Toast.makeText(RegisterActivity.this, "Enter full name", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 //Check if email inputted is valid
+
                 if(!(isValidEmail(email))){
                     Toast.makeText(RegisterActivity.this, "Invalid email address", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 //Store the hashed password in database for security purposes
+
                 String hashedpassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
                 //Firebase will now handle user creation.
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -142,9 +157,12 @@ public class RegisterActivity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
 
                                     // Get the currently signed-in user
+
                                     FirebaseUser currentUser = mAuth.getCurrentUser();
                                     if (currentUser != null) {
+
                                         // Prepare user data
+
                                         String uid = currentUser.getUid();
                                         Map<String, Object> user = new HashMap<>();
                                         user.put("First Name", first_name);
@@ -154,14 +172,16 @@ public class RegisterActivity extends AppCompatActivity {
                                         user.put("User ID", uid);
                                         user.put("Login#","0");
 
-
                                         // Save user data to Firestore using the UID as the document ID
+
                                         db.collection("users").document(uid)
                                                 .set(user)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void unused) {
+
                                                         // Navigate to LoginActivity
+
                                                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                         startActivity(intent);
                                                         finish();
@@ -170,7 +190,9 @@ public class RegisterActivity extends AppCompatActivity {
                                                 .addOnFailureListener(new OnFailureListener() {
                                                     @Override
                                                     public void onFailure(@NonNull Exception e) {
+
                                                         // Show error if Firestore write fails
+
                                                         Log.e("Firestore", "Error adding user to Firestore", e);
                                                         Toast.makeText(RegisterActivity.this, "Failed to save user data. Please try again.", Toast.LENGTH_SHORT).show();
                                                     }
@@ -180,6 +202,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 } else{
 
                                     // If sign in fails, then display a message to the user.
+
                                     Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                             }}
