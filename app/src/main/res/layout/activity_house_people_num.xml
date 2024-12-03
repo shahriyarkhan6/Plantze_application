@@ -11,7 +11,7 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What is the size of your home?"
+        android:text="How many people live in your household?"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"
