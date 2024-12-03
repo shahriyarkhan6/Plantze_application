@@ -1,6 +1,7 @@
 package com.example.plantze_application.ui.dashboard;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,6 +23,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.utils.EntryXComparator;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,7 @@ public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         DashboardViewModel dashboardViewModel =
@@ -36,31 +40,30 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
+        TextView textView = binding.textDashboard;
+        TextView emissionText = binding.textEmissions;
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         // Set up line chart:
-        LineChart chart = binding.chart;
-        ArrayList<Entry> chart_entries = new ArrayList<>();
-        chart_entries.add(new Entry(5, 7));
-        chart_entries.add(new Entry(8, 10));
-        chart_entries.add(new Entry(12, 13));
-        LineDataSet chart_data = new LineDataSet(chart_entries, "CO2 Emissions over time");
-        LineData c_data = new LineData(chart_data);
-        chart.setData(c_data);
-        chart.invalidate();
-        // Set up the Annual Emissions button click listener
-        Button annualEmissionsButton = binding.annualEmissionsButton;  // Reference the annual emissions button
-        annualEmissionsButton.setOnClickListener(v -> {
-            // Start the AnnualFootprintActivity when the button is clicked
-            Intent intent = new Intent(getActivity(), AnnualFootprintActivity.class);
-            startActivity(intent);
-        });
+        LineChart linechart = binding.chart;
+        // Pull Data from Firebase:
+        DashboardChart newChart = new DashboardChart(linechart);
+        // create chart:
+        newChart.collectWeek(emissionText);
 
-        Button ecotrackerButton = binding.ecotrackerButton;  // Reference the Ecotracker button
-        ecotrackerButton.setOnClickListener(v -> {
+        // Set up the Annual Emissions button click listener
+        Button getWeekButton = binding.weekButton;  // Reference the annual emissions button
+        getWeekButton.setOnClickListener(v -> {
+            // Start the AnnualFootprintActivity when the button is clicked
+            newChart.collectWeek(emissionText);
+        });
+        Button getMonthButton = binding.monthButton;  // Reference the Ecotracker button
+        getMonthButton.setOnClickListener(v -> {
             // Start the Ecotracker when the button is clicked
-            Intent intent = new Intent(getActivity(), CalendarActivity.class);
-            startActivity(intent);
+            newChart.collectMonth(emissionText);
+        });
+        Button getYearButton = binding.yearButton;  // Reference the Ecotracker button
+        getYearButton.setOnClickListener(v -> {
+            newChart.collectYear(emissionText);
         });
         return root;
     }
