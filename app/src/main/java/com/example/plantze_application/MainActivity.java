@@ -12,6 +12,9 @@ import com.example.plantze_application.ui.ecotracker.EcoTrackerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import com.example.plantze_application.databinding.ActivityMainBinding;
 
