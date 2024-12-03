@@ -73,12 +73,12 @@
 
         <!-- Housing related activities -->
         <activity android:name=".ui.annual_footprint.HouseTypeActivity" android:exported="true"/>
-        <activity android:name=".ui.annual_footprint.HousePeopleNum" android:exported="true"/>
-        <activity android:name=".ui.annual_footprint.HouseSize" android:exported="true"/>
-        <activity android:name=".ui.annual_footprint.HouseElectricityBill" android:exported="true"/>
-        <activity android:name=".ui.annual_footprint.HouseHeatType" android:exported="true"/>
-        <activity android:name=".ui.annual_footprint.HouseHeatWaterType" android:exported="true"/>
-        <activity android:name=".ui.annual_footprint.HouseRenewableEnergy" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HousePeopleNumActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseSizeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseElectricityBillActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseHeatTypeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseHeatWaterTypeActivity" android:exported="true"/>
+        <activity android:name=".ui.annual_footprint.HouseRenewableEnergyActivity" android:exported="true"/>
 
 
         <!-- Transportation related activities -->

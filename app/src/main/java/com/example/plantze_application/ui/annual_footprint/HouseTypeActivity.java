@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,7 +57,7 @@ public class HouseTypeActivity extends AppCompatActivity {
             }
 
             //linking this question to the next question and bringing relevant data
-            Intent intent = new Intent(HouseTypeActivity.this, HouseSize.class);
+            Intent intent = new Intent(HouseTypeActivity.this, HouseSizeActivity.class);
             intent.putExtra("ArrayRow", currentArrayRow);
 
             intent.putExtra("foodCarbonEmission", foodCarbonEmission);

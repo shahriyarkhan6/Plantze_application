@@ -7,14 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
-import com.example.plantze_application.ui.dashboard.DashboardFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -22,7 +19,7 @@ import java.util.Map;
 //import com.example.plantze_application.ui.annual_footprint.HousingDataModel;
 
 
-public class HouseRenewableEnergy extends AppCompatActivity {
+public class HouseRenewableEnergyActivity extends AppCompatActivity {
 
     private RadioGroup houseRenewableEnergyRadioGroup;
     private Button submitButton;
@@ -145,7 +142,7 @@ public class HouseRenewableEnergy extends AppCompatActivity {
                 db.collection("users").document(userID)
                         .update(updatedData)
                         .addOnSuccessListener(aVoid -> {
-                            Toast.makeText(HouseRenewableEnergy.this, "User info updated successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HouseRenewableEnergyActivity.this, "User info updated successfully!", Toast.LENGTH_SHORT).show();
                         })
                         .addOnFailureListener(e -> {
 
@@ -159,7 +156,7 @@ public class HouseRenewableEnergy extends AppCompatActivity {
             double housingCarbonEmission = housingCurrentEmission;
 
             //linking this question to the next question and bringing relevant data
-            Intent intent = new Intent(HouseRenewableEnergy.this, ConsumptionActivity.class);
+            Intent intent = new Intent(HouseRenewableEnergyActivity.this, ConsumptionActivity.class);
             intent.putExtra("foodCarbonEmission", foodCarbonEmission);
             intent.putExtra("housingCarbonEmission", housingCarbonEmission); // Pass as double
             intent.putExtra("transportCarbonEmission", transportCarbonEmission);
