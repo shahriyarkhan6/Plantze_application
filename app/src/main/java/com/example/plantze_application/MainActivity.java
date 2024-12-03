@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.plantze_application.ui.annual_footprint.AnnualFootprintActivity;
 import com.example.plantze_application.ui.ecotracker.CalendarActivity;
+import com.example.plantze_application.ui.home.HomeFragment;
 import com.example.plantze_application.ui.login.LoginActivity;
 import com.example.plantze_application.ui.registration.RegisterActivity;
 import com.example.plantze_application.ui.ecotracker.EcoTrackerActivity;
@@ -40,26 +41,16 @@ public class MainActivity extends AppCompatActivity {
             String title = (String) item.getTitle();
 
             if ("Eco-Tracker".equals(title)) {
-                // Handle Eco-Tracker navigation
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-                return true;
+                navController.navigate(R.id.navigation_home);
 
             } else if ("Eco-Gauge".equals(title)) {
-
-                // Handle Eco-Gauge navigation
                 navController.navigate(R.id.navigation_dashboard);
-                return true;
 
             } else if ("Annual Footprint".equals(title)) {
-
-                // Manually launch AnnualFootprintActivity
-                Intent intent = new Intent(MainActivity.this, AnnualFootprintActivity.class);
-                startActivity(intent);
-                return true;
+                navController.navigate(R.id.navigation_notifications);
             }
 
-            return false;
+            return true;
         });
     }
 }
