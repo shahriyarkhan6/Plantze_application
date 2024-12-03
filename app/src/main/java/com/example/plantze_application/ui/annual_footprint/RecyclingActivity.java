@@ -1,6 +1,5 @@
 package com.example.plantze_application.ui.annual_footprint;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,14 +16,12 @@ import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class RecyclingActivity extends AppCompatActivity {
     private RadioGroup recyclingGroup;
     private Button nextButton;
     private Button returnHomeButton;
     private TextView emissionsDisplay;
+    private TextView comparisonMessage; // Added TextView for the comparison message
     private double currentEmissions;
     private double transportCarbonEmission;
     private double foodCarbonEmission;
@@ -32,42 +29,34 @@ public class RecyclingActivity extends AppCompatActivity {
     private String clothingFrequency = null;
     private String deviceFrequency = null;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycling);
 
-        // Retrieve current emissions and clothing frequency from the previous activity
+        // Retrieve emissions and clothing frequency from the previous activity
         transportCarbonEmission = getIntent().getDoubleExtra("transportCarbonEmission", 0.0);
         foodCarbonEmission = getIntent().getDoubleExtra("foodCarbonEmission", 0);
         housingCarbonEmission = getIntent().getDoubleExtra("housingCarbonEmission", 0);
 
 
         currentEmissions = getIntent().getDoubleExtra("CURRENT_EMISSIONS", 0);
-        clothingFrequency = getIntent().getStringExtra("CLOTHING_FREQUENCY"); // Receive clothing frequency
 
         // Initialize UI components
         recyclingGroup = findViewById(R.id.recyclingGroup);
         nextButton = findViewById(R.id.nextButton);
         emissionsDisplay = findViewById(R.id.emissionsDisplay);
+        comparisonMessage = findViewById(R.id.comparisonMessage);
         returnHomeButton = findViewById(R.id.returnHomeButton);
 
-
-        // Retrieve current emissions from intent
-        currentEmissions = getIntent().getDoubleExtra("CURRENT_EMISSIONS", 0);
-
-
-        // Retrieve Firestore data for user choices
+        // Retrieve Firestore data
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String userId = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE).getString("USER_ID", null);
-
 
         if (userId == null) {
             Toast.makeText(this, "User not logged in.", Toast.LENGTH_SHORT).show();
             return;
         }
-
 
         // Load clothing and device frequency from Firestore
         db.collection("users").document(userId).get()
@@ -82,16 +71,16 @@ public class RecyclingActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> Log.e("Firestore", "Failed to retrieve data", e));
 
-
         // Handle the Next button click
         nextButton.setOnClickListener(v -> {
             // Disabling the button to prevent multiple clicks
             nextButton.setEnabled(false);
 
-            //ensuring user selects an option
+            // Ensuring user selects an option
             int selectedId = recyclingGroup.getCheckedRadioButtonId();
             if (selectedId == -1) {
                 Toast.makeText(this, "Please select how often you recycle.", Toast.LENGTH_SHORT).show();
+                nextButton.setEnabled(true);
                 return;
             }
 
@@ -101,57 +90,67 @@ public class RecyclingActivity extends AppCompatActivity {
 
             if (clothingFrequency == null || deviceFrequency == null) {
                 Toast.makeText(this, "Failed to load user data. Please try again later.", Toast.LENGTH_SHORT).show();
+                nextButton.setEnabled(true);
                 return;
             }
-
 
             // Calculate reductions
             double clothingReduction = calculateClothingReduction(clothingFrequency, recyclingChoice);
             double deviceReduction = calculateDeviceReduction(deviceFrequency, recyclingChoice);
             double totalReduction = clothingReduction + deviceReduction;
 
-
-            // Apply the reduction to current emissions
-            currentEmissions = Math.max(0, currentEmissions - totalReduction);
-
             // Calculate adjusted emissions after applying the reduction
-            double adjustedEmissions = currentEmissions - totalReduction;
-            adjustedEmissions = adjustedEmissions + foodCarbonEmission + housingCarbonEmission + transportCarbonEmission;
+            currentEmissions = Math.max(0, currentEmissions - totalReduction);
+            final double adjustedEmissions = currentEmissions + foodCarbonEmission + housingCarbonEmission + transportCarbonEmission;
 
-            adjustedEmissions  = adjustedEmissions/10000;
-
-            foodCarbonEmission = foodCarbonEmission/10000;
-            housingCarbonEmission = housingCarbonEmission/10000;
-            transportCarbonEmission = transportCarbonEmission/10000;
-
-            // Display the adjusted emissions
-            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissions + " CO₂ tons per year\n" +
-                    "Food carbon emissions: " + foodCarbonEmission +"CO₂ tons per year\n" +
-                    "Transport carbon emissions: " + transportCarbonEmission + "CO₂ tons per year\n" +
-                    "Housing carbon emissions: " + housingCarbonEmission+ "CO₂ tons per year");
+            final double adjustedEmissionsInTons = adjustedEmissions / 10000;
+            final double foodEmissionsInTons = foodCarbonEmission / 10000;
+            final double housingEmissionsInTons = housingCarbonEmission / 10000;
+            final double transportEmissionsInTons = transportCarbonEmission / 10000;
 
             // Save the adjusted emissions to Firestore
-            db.collection("users").document(userId).update("Annual Consumption Emissions", currentEmissions)
+            db.collection("users").document(userId).update("Annual Consumption Emissions", adjustedEmissionsInTons)
                     .addOnSuccessListener(aVoid -> Log.d("Firestore", "Emissions updated successfully."))
                     .addOnFailureListener(e -> Log.e("Firestore", "Error updating emissions", e));
 
+            // Retrieve user location and compare emissions
+            db.collection("users").document(userId).get()
+                    .addOnSuccessListener(locationSnapshot -> {
+                        String userLocation = locationSnapshot.getString("Location");
+                        Double locationEmissions = locationSnapshot.getDouble("Location Emissions");
 
-            Log.d("RecyclingActivity", "Reductions applied. Clothing: " + clothingReduction + ", Device: " + deviceReduction + ", Total: " + totalReduction);
+                        if (userLocation != null && locationEmissions != null) {
+                            double percentageDifference = ((locationEmissions - adjustedEmissionsInTons) / locationEmissions) * 100;
 
+                            String message;
+                            if (percentageDifference < 0) {
+                                message = "Your carbon footprint is " + String.format("%.2f", Math.abs(percentageDifference)) + "% above the national average for " + userLocation + ".";
+                            } else {
+                                message = "Your carbon footprint is " + String.format("%.2f", Math.abs(percentageDifference)) + "% below the national average for " + userLocation + ".";
+                            }
 
+                            comparisonMessage.setText(message);
+                        }
+                    })
+                    .addOnFailureListener(e -> Log.e("Firestore", "Error loading location data", e));
+
+            // Display the adjusted emissions
+            emissionsDisplay.setText("Total carbon emissions: " + adjustedEmissionsInTons + " CO₂ tons per year\n" +
+                    "Food carbon emissions: " + foodEmissionsInTons + " CO₂ tons per year\n" +
+                    "Transport carbon emissions: " + transportEmissionsInTons + " CO₂ tons per year\n" +
+                    "Housing carbon emissions: " + housingEmissionsInTons + " CO₂ tons per year");
+
+            nextButton.setEnabled(true);
         });
 
         returnHomeButton.setOnClickListener(v -> {
-
             Intent intent = new Intent(RecyclingActivity.this, MainActivity.class);
             startActivity(intent);
-
         });
     }
 
     private double calculateClothingReduction(String clothingFrequency, String recyclingChoice) {
         if (clothingFrequency == null || recyclingChoice == null) return 0;
-
 
         switch (clothingFrequency) {
             case "Monthly":
@@ -164,7 +163,6 @@ public class RecyclingActivity extends AppCompatActivity {
                 return 0;
         }
     }
-
 
     private double getClothingReduction(String recyclingChoice, double occasional, double frequent, double always) {
         switch (recyclingChoice) {
@@ -181,10 +179,8 @@ public class RecyclingActivity extends AppCompatActivity {
         }
     }
 
-
     private double calculateDeviceReduction(String deviceFrequency, String recyclingChoice) {
         if (deviceFrequency == null || recyclingChoice == null) return 0;
-
 
         switch (deviceFrequency) {
             case "1 Time":
@@ -199,7 +195,6 @@ public class RecyclingActivity extends AppCompatActivity {
                 return 0;
         }
     }
-
 
     private double getDeviceReduction(String recyclingChoice, double occasional, double frequent, double always) {
         switch (recyclingChoice) {
@@ -216,4 +211,3 @@ public class RecyclingActivity extends AppCompatActivity {
         }
     }
 }
-

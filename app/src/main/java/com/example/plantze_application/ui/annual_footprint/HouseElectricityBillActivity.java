@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.plantze_application.R;
 
-public class HouseElectricityBill extends AppCompatActivity {
+public class HouseElectricityBillActivity extends AppCompatActivity {
 
     private RadioGroup houseElectricityBillRadioGroup;
     private Button submitButton;
@@ -61,7 +60,7 @@ public class HouseElectricityBill extends AppCompatActivity {
 
 
             //linking this question to the next question and bringing relevant data
-            Intent intent = new Intent(HouseElectricityBill.this, HouseHeatType.class);
+            Intent intent = new Intent(HouseElectricityBillActivity.this, HouseHeatTypeActivity.class);
             intent.putExtra("ArrayRow", currentArrayRow);
             intent.putExtra("ColumnRow", currentColumnRow);
 

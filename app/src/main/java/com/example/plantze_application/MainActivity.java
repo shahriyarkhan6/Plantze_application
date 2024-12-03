@@ -2,18 +2,16 @@ package com.example.plantze_application;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.plantze_application.ui.annual_footprint.AnnualFootprintActivity;
 import com.example.plantze_application.ui.ecotracker.CalendarActivity;
 import com.example.plantze_application.ui.login.LoginActivity;
 import com.example.plantze_application.ui.registration.RegisterActivity;
+import com.example.plantze_application.ui.ecotracker.EcoTrackerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.example.plantze_application.databinding.ActivityMainBinding;
 
@@ -24,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -61,9 +58,5 @@ public class MainActivity extends AppCompatActivity {
 
             return false;
         });
-
-
-
     }
-
 }
