@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
 import com.example.plantze_application.ui.dashboard.DashboardViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -229,6 +230,15 @@ public class DateActivity extends AppCompatActivity {
                 Intent intent = new Intent(DateActivity.this, CategoryActivity.class);
                 intent.putExtra("date",s_date);
                 intent.putExtra("activityId", "new");
+                startActivity(intent);
+            }
+        });
+
+        Button returnHomeButton = findViewById(R.id.returnHomeButton);
+        returnHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DateActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

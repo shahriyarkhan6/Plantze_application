@@ -42,41 +42,35 @@
         app:layout_constraintVertical_bias="0.882" />
 
     <Button
-        android:id="@+id/month_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:text="Month"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toEndOf="@+id/YearButton"
-        app:layout_constraintTop_toBottomOf="@+id/chart"
-        app:layout_constraintVertical_bias="0.157" />
-
-    <Button
         android:id="@+id/year_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Year"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chart"
-        app:layout_constraintVertical_bias="0.157" />
+        android:layout_marginLeft="40dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/chart"/>
+
+    <Button
+        android:id="@+id/month_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Month"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/chart"/>
 
     <Button
         android:id="@+id/week_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
         android:text="Week"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/year_button"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chart"
-        app:layout_constraintVertical_bias="0.157" />
+        android:layout_marginRight="40dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/chart"/>
+
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart"
