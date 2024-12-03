@@ -54,20 +54,32 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="30dp" />
+
+    <TextView
+        android:id="@+id/comparisonMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+         />
 
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit Data"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
 
-    <!-- Return Home Button -->
     <Button
         android:id="@+id/returnHomeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Return Home"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp" />
+
 </LinearLayout>

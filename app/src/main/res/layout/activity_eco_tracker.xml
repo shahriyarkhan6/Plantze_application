@@ -8,16 +8,16 @@
     android:background="#d8dbe2">
 
     <Button
-        android:id="@+id/transportationButton"
+        android:id="@+id/ecoTrackerCalendarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Annual Footprint Calculator"
+        android:text="Eco Tracker Calendar"
         android:layout_marginBottom="20dp" />
 
     <Button
-        android:id="@+id/locationButton"
+        android:id="@+id/habitTrackingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Location"
-        android:layout_marginBottom="20dp" />
+        android:text="Habit Tracking"
+        android:layout_marginTop="20dp" />
 </LinearLayout>
