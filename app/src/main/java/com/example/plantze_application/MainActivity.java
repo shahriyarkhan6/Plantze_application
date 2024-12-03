@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
             if ("Eco-Tracker".equals(title)) {
                 // Handle Eco-Tracker navigation
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                Intent intent = new Intent(MainActivity.this, EcoTrackerActivity.class);
                 startActivity(intent);
                 return true;
 
