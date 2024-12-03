@@ -12,9 +12,10 @@
         android:id="@+id/meatFreeDaysTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Congratulations! You have chosen plant-based meals for 0 days."
+        android:text="You have chosen plant-based meals for 0 days."
         android:textSize="18sp"
         android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
