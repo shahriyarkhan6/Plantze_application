@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
-import com.example.plantze_application.ui.dashboard.DashboardViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.ParseException;

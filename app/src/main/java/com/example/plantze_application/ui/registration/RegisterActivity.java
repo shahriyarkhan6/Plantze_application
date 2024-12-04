@@ -17,10 +17,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.plantze_application.MainActivity;
 import com.example.plantze_application.R;
-import com.example.plantze_application.ui.dashboard.DashboardFragment;
-import com.example.plantze_application.ui.dashboard.DashboardViewModel;
 import com.example.plantze_application.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,7 +27,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import org.mindrot.jbcrypt.BCrypt;
 

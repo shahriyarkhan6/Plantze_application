@@ -63,9 +63,9 @@ public class DashboardChart {
         LineChart emissionsLineChart = (LineChart)chart;
         LineDataSet chart_data = new LineDataSet(entries, "CO2 Emissions in KGs over "
                 + range + " " + timescale.toString());
+        chart_data.setLineWidth(1f);
         LineData c_data = new LineData(chart_data);
         c_data.setDrawValues(true);
-
         emissionsLineChart.setData(c_data);
 
         formatLineChart(emissionsLineChart, range);
@@ -97,6 +97,7 @@ public class DashboardChart {
         l.setXEntrySpace(7f);
         l.setYEntrySpace(0f);
         l.setYOffset(0f);
+        l.setDrawInside(false);
 
 
         pc.getDescription().setEnabled(false);
