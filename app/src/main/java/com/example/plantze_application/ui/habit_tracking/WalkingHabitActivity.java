@@ -94,7 +94,7 @@ public class WalkingHabitActivity extends AppCompatActivity {
     }
 
     private void updateWalkingDaysText() {
-        String text = "Congratulations! You have spent " + walkingDays + " days walking instead of driving.";
+        String text = "You have spent " + walkingDays + " days walking instead of driving.";
         walkingDaysTextView.setText(text);
     }
 }

@@ -11,7 +11,7 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What type of energy do you use to heat water?"
+        android:text="Do you use any renewable energy sources for electricity or heating?"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#1b1b1e"

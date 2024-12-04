@@ -55,7 +55,7 @@ public class HouseElectricityBillActivity extends AppCompatActivity {
             } else if (selectedId == R.id.radio150to200) {
                 currentColumnRow = 15;
             } else if (selectedId == R.id.radioOver200) {
-                currentColumnRow = 25;
+                currentColumnRow = 20;
             }
 
 
